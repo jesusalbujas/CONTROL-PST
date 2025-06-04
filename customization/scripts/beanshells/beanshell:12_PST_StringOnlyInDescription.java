@@ -1,4 +1,4 @@
-// beanshell:JAU01_StringOnlyInDescription
+// beanshell:12_PST_StringOnlyInDescription
 
 // Obtiene el valor actual del campo 'name'
 String nameValue = A_Tab.getValue("Description");

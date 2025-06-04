@@ -1,3 +1,4 @@
+// beanshell:11_PST_SerialValidation
 import org.compiere.util.DB;
 
 // Inicializa la variable para almacenar el valor original del número de serie
