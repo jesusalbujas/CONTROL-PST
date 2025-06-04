@@ -1,5 +1,5 @@
 -- Establecemos la lógica del trigger
-CREATE OR REPLACE FUNCTION update_value_with_HR_Department_id()
+CREATE OR REPLACE FUNCTION update_value_with_PST_Department_id()
 RETURNS trigger
 LANGUAGE 'plpgsql'
 COST 100
@@ -7,16 +7,16 @@ VOLATILE NOT LEAKPROOF
 AS $BODY$
 BEGIN
     -- Actualizar el campo Value con el valor del id de la tabla
-    NEW.Value := NEW.HR_Department_ID::text;  -- Convertimos el valor numérico a texto
+    NEW.Value := NEW.PST_Department_ID::text;  -- Convertimos el valor numérico a texto
     RETURN NEW;
 END;
 $BODY$;
 
 --- Asignamos el trigger a la tabla
-CREATE TRIGGER trg_update_value_with_HR_Department_id
-BEFORE INSERT ON HR_Department
+CREATE TRIGGER trg_update_value_with_PST_Department_id
+BEFORE INSERT ON PST_Department
 FOR EACH ROW
-EXECUTE FUNCTION update_value_with_HR_Department_id();
+EXECUTE FUNCTION update_value_with_PST_Department_id();
 
 
 
