@@ -1,4 +1,4 @@
-# Proyecto Universitario usando ADempiere :technologist:
+<h1 align="center">Proyecto Universitario usando ADempiere :technologist:</h1>
 
 <p align="center">
   <a href="https://github.com/jesusalbujas/CONTROL-PST/blob/main/LICENSE">
@@ -6,14 +6,17 @@
   </a>
 </p>
 
+---
 
-## Proyectos:
+<h2 align="center">Proyectos usados</h2>
 
+<div align="center">
 
-
-| Home Page                                                               | Asset Management System                                                 | Appwrite Management System                                               |
+| Home Page                                                               | Asset Management System                                                 | Appwrite Management System                                               |
 | :---------------------------------------------------------------------- | :---------------------------------------------------------------------- | :----------------------------------------------------------------------- |
 | [![Homepage Release](https://img.shields.io/github/v/release/jesusalbujas/project-landing-page)](https://github.com/jesusalbujas/project-landing-page) | [![sms](https://img.shields.io/github/v/release/jesusalbujas/assets-management-system)](https://github.com/jesusalbujas/assets-management-system) | [![ams](https://img.shields.io/github/v/release/jesusalbujas/appwrite-management-system)](https://github.com/jesusalbujas/appwrite-management-system) |
+
+</div>
 
 ---
 
