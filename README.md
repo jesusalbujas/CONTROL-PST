@@ -10,26 +10,10 @@
 ## Proyectos:
 
 
-<div style="display: flex; flex-wrap: wrap; justify-content: space-around; align-items: center;">
-  <div style="margin: 10px; text-align: center;">
-    <b>Home Page</b><br>
-    <a href="https://github.com/jesusalbujas/project-landing-page">
-      <img src="https://img.shields.io/github/v/release/jesusalbujas/project-landing-page" alt="Homepage Release">
-    </a>
-  </div>
-  <div style="margin: 10px; text-align: center;">
-    <b>Asset Management System</b><br>
-    <a href="https://github.com/jesusalbujas/assets-management-system">
-      <img src="https://img.shields.io/github/v/release/jesusalbujas/assets-management-system" alt="sms">
-    </a>
-  </div>
-  <div style="margin: 10px; text-align: center;">
-    <b>Appwrite Management System</b><br>
-    <a href="https://github.com/jesusalbujas/appwrite-management-system">
-      <img src="https://img.shields.io/github/v/release/jesusalbujas/appwrite-management-system" alt="ams">
-    </a>
-  </div>
-</div>
+
+| Home Page                                                               | Asset Management System                                                 | Appwrite Management System                                               |
+| :---------------------------------------------------------------------- | :---------------------------------------------------------------------- | :----------------------------------------------------------------------- |
+| [![Homepage Release](https://img.shields.io/github/v/release/jesusalbujas/project-landing-page)](https://github.com/jesusalbujas/project-landing-page) | [![sms](https://img.shields.io/github/v/release/jesusalbujas/assets-management-system)](https://github.com/jesusalbujas/assets-management-system) | [![ams](https://img.shields.io/github/v/release/jesusalbujas/appwrite-management-system)](https://github.com/jesusalbujas/appwrite-management-system) |
 
 ---
 
