@@ -1,30 +1,20 @@
 # Proyecto Universitario usando ADempiere :technologist:
 
 <p align="center">
-  <a href="https://github.com/JesusAlbujas/adempiere-base/blob/main/LICENSE">
-    <img src="https://img.shields.io/badge/license-GNU/GPL%20(v2)-blue" alt="License">
+  <a href="https://github.com/jesusalbujas/CONTROL-PST/blob/main/LICENSE">
+  <a href="https://github.com/jesusalbujas/"> <img width=600px  src="./docs/logo.jpg" alt="Logo"/> </a>
   </a>
 </p>
 
-![image](https://github.com/JesusAlbujas/adempiere-base/assets/134967453/a7083320-31d4-4a0b-b4b9-dc50e6dd9b12)
 
 ## Proyectos:
 
-[*Versión de Backend y Proxy*:](https://github.com/jesusalbujas/adempiere-grpc-server)
 
-![Backend gRPC Release](https://img.shields.io/github/v/release/jesusalbujas/adempiere-grpc-server)
 
-[*Versión de FrontEnd*:](https://github.com/jesusalbujas/frontend-university-project)
+| Home Page                                                               | Asset Management System                                                 | Appwrite Management System                                               |
+| :---------------------------------------------------------------------- | :---------------------------------------------------------------------- | :----------------------------------------------------------------------- |
+| [![Homepage Release](https://img.shields.io/github/v/release/jesusalbujas/project-landing-page)](https://github.com/jesusalbujas/project-landing-page) | [![sms](https://img.shields.io/github/v/release/jesusalbujas/assets-management-system)](https://github.com/jesusalbujas/assets-management-system) | [![ams](https://img.shields.io/github/v/release/jesusalbujas/appwrite-management-system)](https://github.com/jesusalbujas/appwrite-management-system) |
 
-![Frontend Release](https://img.shields.io/github/v/release/jesusalbujas/frontend-university-project)
-
-[*Versión de HomePage*:](https://github.com/jesusalbujas/project-landing-page)
-
-![Homepage Release](https://img.shields.io/github/v/release/jesusalbujas/project-landing-page)
-
-[*Versión de Postgres*:](https://github.com/jesusalbujas/postgres-university)
-
-![Homepage Release](https://img.shields.io/github/v/release/jesusalbujas/postgres-university)
 ---
 
 Este es un proyecto de implementación del sistema ADempiere para un Control de Activos Fijos.
