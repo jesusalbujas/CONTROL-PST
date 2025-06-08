@@ -1,5 +1,3 @@
-<h1 align="center">Proyecto Universitario usando ADempiere :technologist:</h1>
-
 <p align="center">
   <a href="https://github.com/jesusalbujas/CONTROL-PST/blob/main/LICENSE">
   <a href="https://github.com/jesusalbujas/"> <img width=600px  src="./docs/logo.jpg" alt="Logo"/> </a>
