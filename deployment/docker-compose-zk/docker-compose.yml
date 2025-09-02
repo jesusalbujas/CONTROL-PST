@@ -4,7 +4,7 @@ services:
     container_name: ${ADEMPIERE_ZK_HOST}
     restart: ${GENERIC_RESTART}
     ports:
-      - ${ADEMPIERE_ZK_PORT}:8080
+      - 8080:8080
     healthcheck:
       test: "bash -c 'printf \"GET / HTTP/1.1\n\n\" > /dev/tcp/postgresql.service/5432; exit $?;'"
       interval: 10s
@@ -12,18 +12,18 @@ services:
       start_period: 20s
       timeout: 10s
     environment:
-      ADEMPIERE_DB_SERVER: ${ADEMPIERE_ZK_DB_HOST}
-      ADEMPIERE_DB_NAME: ${ADEMPIERE_ZK_DB_NAME}
-      ADEMPIERE_DB_USER: ${ADEMPIERE_ZK_DB_USER}
-      ADEMPIERE_DB_PASSWORD: ${ADEMPIERE_ZK_DB_PASSWORD}
-      ADEMPIERE_ZK_DB_PORT: ${ADEMPIERE_ZK_DB_PORT}
+      ADEMPIERE_DB_SERVER: postgres13
+      ADEMPIERE_DB_NAME: PST_3
+      ADEMPIERE_DB_USER: adempiere
+      ADEMPIERE_DB_PASSWORD: adempiere
+      ADEMPIERE_DB_PORT: 5432
     volumes:
       - ${TIMEZONE_PATH_ON_HOST}:${TIMEZONE_PATH_ON_CONTAINER}:${TIMEZONE_OPTIONS}    # Map the Timezone  of the host to the Timezone of the container
       - ${LOCALTIME_PATH_ON_HOST}:${LOCALTIME_PATH_ON_CONTAINER}:${LOCALTIME_OPTIONS} # Map the Localtime of the host to the Timezone of the container
     networks:
-      - shared_network
+      - adempiere_network
 
 networks:
-  shared_network:
-    name: ${DEFAULT_NETWORK}
+  adempiere_network:
+    name: adempiere_network
     external: true
