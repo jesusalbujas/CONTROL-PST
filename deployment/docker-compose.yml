@@ -71,6 +71,8 @@ services:
       KC_DB_USERNAME: ${ADEMPIERE_DB_USER}
       KC_DB_PASSWORD: ${POSTGRES_PASSWORD}
       KC_DB_URL: ${KEYCLOAK_DB_HOST}
+      KC_HTTP_ENABLED: ${KC_HTTP_ENABLED}
+      KC_HOSTNAME_STRICT: ${KC_HOSTNAME_STRICT}
     command: "start-dev --import-realm"
     ports:
       - ${KEYCLOAK_PORT}:8080
