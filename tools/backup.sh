@@ -15,7 +15,6 @@ FOLDER_TO="/opt/Development/github/postgres-university/postgresql/"
 
 #####################################################################
 
-## Lógica
 
 # Comando para hacer backup
 BACKUP_COMMAND="mkdir /tmp/$FOLDER && pg_dump -U $DB_USER -Fc -d $DB_NAME > /tmp/$FOLDER/$BACKUP_FILE.backup --verbose"
