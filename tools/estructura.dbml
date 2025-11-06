@@ -1,0 +1,292 @@
+Table "adempiere"."pst_department" {
+  "ad_client_id" numeric(10,0) [not null]
+  "ad_org_id" numeric(10,0) [not null]
+  "created" timestamp [not null, default: `now()`]
+  "createdby" numeric(10,0) [not null]
+  "isactive" "char (1)" [not null, default: 'Y']
+  "name" varchar(60)
+  "pst_department_id" numeric(10,0) [not null]
+  "pst_limitassetsallowed" numeric(10,0)
+  "updated" timestamp [not null, default: `now()`]
+  "updatedby" numeric(10,0) [not null]
+  "uuid" varchar(36)
+  "value" varchar(60)
+
+  Checks {
+    `isactive IN ('Y','N')` [name: 'pst_department_isactive_check']
+  }
+
+  Indexes {
+    pst_department_id [pk, name: "pst_department_pkey"]
+  }
+}
+
+Table "adempiere"."pst_employees" {
+  "ad_client_id" numeric(10,0) [not null]
+  "ad_org_id" numeric(10,0) [not null]
+  "created" timestamp [not null, default: `now()`]
+  "createdby" numeric(10,0) [not null]
+  "isactive" "char (1)" [not null, default: 'Y']
+  "name" varchar(60)
+  "pst_employees_id" numeric(10,0) [not null]
+  "updated" timestamp [not null, default: `now()`]
+  "updatedby" numeric(10,0) [not null]
+  "uuid" varchar(36)
+  "value" varchar(60)
+  "taxid" varchar(8)
+  "pst_assetasigned" numeric
+  "name2" varchar(60)
+  "isemployee" "char (1)" [default: 'Y']
+  "pst_department_id" numeric(10,0)
+  "pst_nacionality" varchar(22)
+  "gender" "char (1)"
+  "pst_limitassetsallowed" numeric(10,0)
+  "discord_identifier" varchar(40)
+
+  Checks {
+    `isactive IN ('Y','N')` [name: 'pst_employees_isactive_check']
+    `isemployee IN ('Y','N')` [name: 'pst_employees_isemployee_check']
+  }
+
+  Indexes {
+    pst_employees_id [pk, name: "pst_employees_pkey"]
+  }
+}
+
+Table "adempiere"."pst_typology" {
+  "ad_client_id" numeric(10,0) [not null]
+  "ad_org_id" numeric(10,0) [not null]
+  "created" timestamp [not null, default: `now()`]
+  "createdby" numeric(10,0) [not null]
+  "isactive" "char (1)" [not null, default: 'Y']
+  "name" varchar(60)
+  "pst_typology_id" numeric(10,0) [not null]
+  "updated" timestamp [not null, default: `now()`]
+  "updatedby" numeric(10,0) [not null]
+  "uuid" varchar(36)
+  "value" varchar(60)
+
+  Checks {
+    `isactive IN ('Y','N')` [name: 'pst_typology_isactive_check']
+  }
+
+  Indexes {
+    pst_typology_id [pk, name: "pst_typology_pkey"]
+  }
+}
+
+Table "adempiere"."pst_topics" {
+  "ad_client_id" numeric(10,0) [not null]
+  "ad_org_id" numeric(10,0) [not null]
+  "created" timestamp [not null, default: `now()`]
+  "createdby" numeric(10,0) [not null]
+  "isactive" "char (1)" [not null, default: 'Y']
+  "name" varchar(60)
+  "pst_topics_id" numeric(10,0) [not null]
+  "updated" timestamp [not null, default: `now()`]
+  "updatedby" numeric(10,0) [not null]
+  "uuid" varchar(36)
+  "value" varchar(60)
+
+  Checks {
+    `isactive IN ('Y','N')` [name: 'pst_topics_isactive_check']
+  }
+
+  Indexes {
+    pst_topics_id [pk, name: "pst_topics_pkey"]
+  }
+}
+
+Table "adempiere"."pst_thread" {
+  "ad_client_id" numeric(10,0) [not null]
+  "ad_org_id" numeric(10,0) [not null]
+  "clientvalue" varchar(40)
+  "created" timestamp [not null, default: `now()`]
+  "createdby" numeric(10,0) [not null]
+  "datefinish" timestamp
+  "isactive" "char (1)" [not null, default: 'Y']
+  "processed" "char (1)" [default: 'N']
+  "pst_applicantname" varchar(255)
+  "pst_clientname" varchar(40)
+  "pst_qtymin" numeric(10,0)
+  "pst_thread_id" numeric(10,0) [not null]
+  "pst_thread_status" varchar(60)
+  "pst_topics_id" numeric(10,0)
+  "pst_typology_id" numeric(10,0)
+  "qty" numeric(10,0)
+  "updated" timestamp [not null, default: `now()`]
+  "updatedby" numeric(10,0) [not null]
+  "url" varchar(120)
+  "uuid" varchar(36)
+  "value" varchar(60)
+  "name" varchar(60)
+  "description" varchar(255)
+  "pst_employees_id" numeric(10,0)
+  "pst_closedbyname" varchar(60)
+  "pst_createdbyname" varchar(60)
+  "pst_updatedbyname" varchar(60)
+
+  Checks {
+    `isactive IN ('Y','N')` [name: 'pst_thread_isactive_check']
+    `processed IN ('Y','N')` [name: 'pst_thread_processed_check']
+  }
+
+  Indexes {
+    pst_thread_id [pk, name: "pst_thread_pkey"]
+  }
+}
+
+Table "adempiere"."ad_user" {
+  "ad_user_id" numeric(10,0) [not null]
+  "ad_client_id" numeric(10,0) [not null]
+  "ad_org_id" numeric(10,0) [not null]
+  "name" varchar(60) [not null]
+  "name2" varchar(60)
+  "description" varchar(255)
+  "email" varchar(120)
+  "value" varchar(60)
+  "password" varchar(255)
+  "isactive" "char (1)" [not null, default: 'Y']
+  "created" timestamp [not null, default: `now()`]
+  "createdby" numeric(10,0) [not null]
+  "updated" timestamp [not null, default: `now()`]
+  "updatedby" numeric(10,0) [not null]
+
+  Checks {
+    `isactive IN ('Y','N')` [name: 'ad_user_isactive_check']
+  }
+
+  Indexes {
+    ad_user_id [pk, name: "ad_user_pkey"]
+  }
+}
+
+Table "adempiere"."ad_role" {
+  "ad_role_id" numeric(10,0) [not null]
+  "ad_client_id" numeric(10,0) [not null]
+  "ad_org_id" numeric(10,0) [not null]
+  "name" varchar(60) [not null]
+  "description" varchar(255)
+  "isactive" "char (1)" [not null, default: 'Y']
+  "created" timestamp [not null, default: `now()`]
+  "createdby" numeric(10,0) [not null]
+  "updated" timestamp [not null, default: `now()`]
+  "updatedby" numeric(10,0) [not null]
+
+  Checks {
+    `isactive IN ('Y','N')` [name: 'ad_role_isactive_check']
+  }
+
+  Indexes {
+    ad_role_id [pk, name: "ad_role_pkey"]
+  }
+}
+
+Table "adempiere"."ad_user_roles" {
+  "ad_user_roles_id" numeric(10,0) [not null]
+  "ad_client_id" numeric(10,0) [not null]
+  "ad_org_id" numeric(10,0) [not null]
+  "ad_role_id" numeric(10,0) [not null]
+  "ad_user_id" numeric(10,0) [not null]
+  "isactive" "char (1)" [not null, default: 'Y']
+  "created" timestamp [not null, default: `now()`]
+  "createdby" numeric(10,0) [not null]
+  "updated" timestamp [not null, default: `now()`]
+  "updatedby" numeric(10,0) [not null]
+
+  Checks {
+    `isactive IN ('Y','N')` [name: 'ad_user_roles_isactive_check']
+  }
+
+  Indexes {
+    ad_user_roles_id [pk, name: "ad_user_roles_pkey"]
+  }
+}
+
+Table "adempiere"."ad_window_access" {
+  "ad_window_access_id" numeric(10,0) [not null]
+  "ad_client_id" numeric(10,0) [not null]
+  "ad_org_id" numeric(10,0) [not null]
+  "ad_role_id" numeric(10,0) [not null]
+  "isreadwrite" "char (1)" [not null, default: 'Y']
+  "isactive" "char (1)" [not null, default: 'Y']
+  "created" timestamp [not null, default: `now()`]
+  "createdby" numeric(10,0) [not null]
+  "updated" timestamp [not null, default: `now()`]
+  "updatedby" numeric(10,0) [not null]
+
+  Checks {
+    `isactive IN ('Y','N')` [name: 'ad_window_access_isactive_check']
+    `isreadwrite IN ('Y','N')` [name: 'ad_window_access_isreadwrite_check']
+  }
+
+  Indexes {
+    ad_window_access_id [pk, name: "ad_window_access_pkey"]
+  }
+}
+
+Table "adempiere"."ad_process_access" {
+  "ad_process_access_id" numeric(10,0) [not null]
+  "ad_client_id" numeric(10,0) [not null]
+  "ad_org_id" numeric(10,0) [not null]
+  "ad_role_id" numeric(10,0) [not null]
+  "isreadwrite" "char (1)" [not null, default: 'Y']
+  "isactive" "char (1)" [not null, default: 'Y']
+  "created" timestamp [not null, default: `now()`]
+  "createdby" numeric(10,0) [not null]
+  "updated" timestamp [not null, default: `now()`]
+  "updatedby" numeric(10,0) [not null]
+
+  Checks {
+    `isactive IN ('Y','N')` [name: 'ad_process_access_isactive_check']
+    `isreadwrite IN ('Y','N')` [name: 'ad_process_access_isreadwrite_check']
+  }
+
+  Indexes {
+    ad_process_access_id [pk, name: "ad_process_access_pkey"]
+  }
+}
+
+Table "adempiere"."ad_user_orgaccess" {
+  "ad_user_orgaccess_id" numeric(10,0) [not null]
+  "ad_client_id" numeric(10,0) [not null]
+  "ad_org_id" numeric(10,0) [not null]
+  "ad_user_id" numeric(10,0) [not null]
+  "isactive" "char (1)" [not null, default: 'Y']
+  "isreadonly" "char (1)" [not null, default: 'N']
+  "created" timestamp [not null, default: `now()`]
+  "createdby" numeric(10,0) [not null]
+  "updated" timestamp [not null, default: `now()`]
+  "updatedby" numeric(10,0) [not null]
+
+  Checks {
+    `isactive IN ('Y','N')` [name: 'ad_user_orgaccess_isactive_check']
+    `isreadonly IN ('Y','N')` [name: 'ad_user_orgaccess_isreadonly_check']
+  }
+
+  Indexes {
+    ad_user_orgaccess_id [pk, name: "ad_user_orgaccess_pkey"]
+  }
+}
+
+Ref "fk_pst_employees_department":"adempiere"."pst_department"."pst_department_id" < "adempiere"."pst_employees"."pst_department_id"
+
+Ref "fk_pst_thread_topics":"adempiere"."pst_topics"."pst_topics_id" < "adempiere"."pst_thread"."pst_topics_id" [update: cascade, delete: set null]
+
+Ref "fk_pst_thread_typology":"adempiere"."pst_typology"."pst_typology_id" < "adempiere"."pst_thread"."pst_typology_id" [update: cascade, delete: set null]
+
+Ref "fk_pst_thread_employees":"adempiere"."pst_employees"."pst_employees_id" < "adempiere"."pst_thread"."pst_employees_id" [update: cascade, delete: set null]
+
+Ref "fk_ad_user_roles_role":"adempiere"."ad_role"."ad_role_id" < "adempiere"."ad_user_roles"."ad_role_id"
+
+Ref "fk_ad_user_roles_user":"adempiere"."ad_user"."ad_user_id" < "adempiere"."ad_user_roles"."ad_user_id"
+
+Ref "fk_ad_window_access_role":"adempiere"."ad_role"."ad_role_id" < "adempiere"."ad_window_access"."ad_role_id"
+
+Ref "fk_ad_process_access_role":"adempiere"."ad_role"."ad_role_id" < "adempiere"."ad_process_access"."ad_role_id"
+
+Ref "fk_ad_user_orgaccess_user":"adempiere"."ad_user"."ad_user_id" < "adempiere"."ad_user_orgaccess"."ad_user_id"
+
+Ref "fk_pst_thread_createdby":"adempiere"."ad_user"."ad_user_id" < "adempiere"."pst_thread"."createdby" [update: cascade, delete: restrict]
+
+Ref "fk_pst_thread_updatedby":"adempiere"."ad_user"."ad_user_id" < "adempiere"."pst_thread"."updatedby" [update: cascade, delete: restrict]
