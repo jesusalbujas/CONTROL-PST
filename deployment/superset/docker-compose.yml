@@ -78,6 +78,7 @@ services:
       SUPERSET_LOG_LEVEL: "${SUPERSET_LOG_LEVEL:-info}"
     networks:
       - adempiere_network
+      - shared_network
 
   # superset-init:
   #   image: *superset-image
@@ -161,4 +162,7 @@ volumes:
 
 networks:
   adempiere_network:
+    external: true
+
+  shared_network:
     external: true
