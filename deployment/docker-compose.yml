@@ -58,28 +58,31 @@ services:
   #   networks:
   #     - shared_network
 
-  # keycloak:
-  #   image: ${KEYCLOAK_IMAGE}
-  #   container_name: ${KEYCLOAK_HOST}
-  #   restart: ${GENERIC_RESTART}
-  #   environment:
-  #     KEYCLOAK_ADMIN: ${KEYCLOAK_ADMIN}
-  #     KEYCLOAK_ADMIN_PASSWORD: ${KEYCLOAK_ADMIN_PASSWORD}
-  #     DB_VENDOR: ${KEYCLOAK_DB_VENDOR}
-  #     DB_ADDR: ${KEYCLOAK_DB_HOST}
-  #     DB_DATABASE: ${KEYCLOAK_DB_DATABASE}
-  #     DB_SCHEMA: ${KEYCLOAK_DB_SCHEMA}
-  #     DB_PASSWORD: ${POSTGRES_PASSWORD}
-  #     DB_SERVER: ${POSTGRES_SERVER}
-  #   command: "start-dev --import-realm"
-  #   ports:
-  #     - ${KEYCLOAK_PORT}:8080
-  #   volumes:
-  #     - ./keycloak/master-realm.json:/opt/keycloak/data/import/master-realm.json
-  #     - ./keycloak/adempiere-realm.json:/opt/keycloak/data/import/adempiere-realm.json
-  #     - ./keycloak/university-theme/:/opt/keycloak/themes/university-theme
-  #   networks:
-  #     - shared_network
+  keycloak:
+    image: quay.io/keycloak/keycloak:latest
+    container_name: ${KEYCLOAK_HOST}
+    restart: ${GENERIC_RESTART}
+    environment:
+      KC_BOOTSTRAP_ADMIN_USERNAME: ${KEYCLOAK_ADMIN}
+      KC_BOOTSTRAP_ADMIN_PASSWORD: ${KEYCLOAK_ADMIN_PASSWORD}
+      KC_DB: postgres
+      KC_DB_URL_HOST: ${POSTGRES_SERVER}
+      KC_DB_URL_DATABASE: ${KEYCLOAK_DB_DATABASE}
+      KC_DB_USERNAME: adempiere
+      KC_DB_PASSWORD: ${POSTGRES_PASSWORD}
+      KC_HTTP_ENABLED: "true"
+    command: start-dev --import-realm
+    ports:
+      - ${KEYCLOAK_PORT}:8080
+    depends_on:
+      postgresql.service:
+        condition: service_healthy
+    volumes:
+      - ./keycloak/master-realm.json:/opt/keycloak/data/import/master-realm.json
+      - ./keycloak/adempiere-realm.json:/opt/keycloak/data/import/adempiere-realm.json
+      - ./keycloak/dory-theme/:/opt/keycloak/themes/dory-theme
+    networks:
+      - shared_network
 
 networks:
   shared_network:
