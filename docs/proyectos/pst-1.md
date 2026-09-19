@@ -27,12 +27,12 @@ La **U.E.C. Fe y Alegría "Nuestra Señora de Coromoto"** se encuentra ubicada e
 
 ```mermaid
 flowchart TD
-    A[Diagnóstico Exploratorio en U.E.C. Fe y Alegría] --> B[Identificación de Actores Clave]
-    B --> C[Evaluación del Laboratorio de Computación]
-    C --> D{Hallazgos Principales}
-    D -->|Hardware/SO| E[Equipos inoperativos o desactualizados]
-    D -->|Competencias| F[Brecha en alfabetización digital de estudiantes 5to/6to grado]
-    D -->|Docencia| G[Falta de personal especializado en soporte y ofimática]
+    A["Diagnóstico Exploratorio en U.E.C. Fe y Alegría"] --> B["Identificación de Actores Clave"]
+    B --> C["Evaluación del Laboratorio de Computación"]
+    C --> D{"Hallazgos Principales"}
+    D -->|Hardware/SO| E["Equipos inoperativos o desactualizados"]
+    D -->|Competencias| F["Brecha en alfabetización digital de estudiantes 5to/6to grado"]
+    D -->|Docencia| G["Falta de personal especializado en soporte y ofimática"]
 ```
 
 ### 2.2 Matriz FODA
@@ -50,18 +50,18 @@ flowchart TD
 
 ```mermaid
 graph TD
-    subgraph Efectos
-        E1[Bajo rendimiento en tareas digitales]
-        E2[Inoperatividad de equipos en laboratorio]
-        E3[Dependencia tecnológica de software privativo]
+    subgraph sub_Efectos ["Efectos"]
+        E1["Bajo rendimiento en tareas digitales"]
+        E2["Inoperatividad de equipos en laboratorio"]
+        E3["Dependencia tecnológica de software privativo"]
     end
 
-    P[PROBLEMA CENTRAL: Limitado aprovechamiento tecnológico y equipos desactualizados en U.E.C Fe y Alegría]
+    P["PROBLEMA CENTRAL: Limitado aprovechamiento tecnológico y equipos desactualizados en U.E.C Fe y Alegría"]
 
-    subgraph Causas
-        C1[Falta de mantenimiento técnico preventivo/correctivo]
-        C2[Carencia de planes de alfabetización en software libre]
-        C3[Ausencia de capacitación continua a docentes y alumnos]
+    subgraph sub_Causas ["Causas"]
+        C1["Falta de mantenimiento técnico preventivo/correctivo"]
+        C2["Carencia de planes de alfabetización en software libre"]
+        C3["Ausencia de capacitación continua a docentes y alumnos"]
     end
 
     C1 --> P

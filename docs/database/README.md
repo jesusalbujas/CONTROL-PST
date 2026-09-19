@@ -37,12 +37,12 @@ El modelo de datos de **NexoInt** está encapsulado dentro del esquema PostgreSQ
 
 ```mermaid
 flowchart TD
-    subgraph Ecosistema de Datos NexoInt
-        D1[Dominio 1: Seguridad & RBAC]
-        D2[Dominio 2: Helpdesk & Discord Threads]
-        D3[Dominio 3: Contratos & Facturación]
-        D4[Dominio 4: Jarvis AI & Releases]
-        D5[Dominio 5: Dynamic Reports & Print]
+    subgraph sub_Ecosistema_de_Datos_NexoInt ["Ecosistema de Datos NexoInt"]
+        D1["Dominio 1: Seguridad & RBAC"]
+        D2["Dominio 2: Helpdesk & Discord Threads"]
+        D3["Dominio 3: Contratos & Facturación"]
+        D4["Dominio 4: Jarvis AI & Releases"]
+        D5["Dominio 5: Dynamic Reports & Print"]
     end
 
     D1 <--> D2

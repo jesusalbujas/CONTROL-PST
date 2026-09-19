@@ -30,11 +30,11 @@ Fundada en el año 2012 por iniciativa del Ing. Yamel Senih junto a un equipo de
 
 ```mermaid
 flowchart LR
-    A[Recepción / Inventario Físico] --> B[Registro Manual en Hojas de Cálculo]
-    B --> C{Pérdida de Trazabilidad}
-    C -->|Problema 1| D[Cálculo de depreciación desactualizado]
-    C -->|Problema 2| E[Desconocimiento de ubicación y asignación de equipos]
-    C -->|Problema 3| F[Dificultad en desincorporaciones y auditorías]
+    A["Recepción / Inventario Físico"] --> B["Registro Manual en Hojas de Cálculo"]
+    B --> C{"Pérdida de Trazabilidad"}
+    C -->|Problema 1| D["Cálculo de depreciación desactualizado"]
+    C -->|Problema 2| E["Desconocimiento de ubicación y asignación de equipos"]
+    C -->|Problema 3| F["Dificultad en desincorporaciones y auditorías"]
 ```
 
 ### 2.2 Problema Central
@@ -48,19 +48,19 @@ Se diseñó e implementó una solución integral basada en el ecosistema **ADemp
 
 ```mermaid
 graph TD
-    subgraph Capa de Cliente
-        U1[Navegador Web / Interfaz ZK]
-        U2[Cliente Móvil / Vue Interface]
+    subgraph sub_Capa_de_Cliente ["Capa de Cliente"]
+        U1["Navegador Web / Interfaz ZK"]
+        U2["Cliente Móvil / Vue Interface"]
     end
 
-    subgraph Capa de Servicios y Contenedores Docker
-        N[Nginx Reverse Proxy / Port 80]
-        AD[Servidor ADempiere Application Server]
-        KC[Keycloak Identity Provider]
+    subgraph sub_Capa_de_Servicios_y_Contenedores_Docker ["Capa de Servicios y Contenedores Docker"]
+        N["Nginx Reverse Proxy / Port 80"]
+        AD["Servidor ADempiere Application Server"]
+        KC["Keycloak Identity Provider"]
     end
 
-    subgraph Capa de Persistencia
-        PG[(PostgreSQL Database - Port 5436)]
+    subgraph sub_Capa_de_Persistencia ["Capa de Persistencia"]
+        PG[("PostgreSQL Database - Port 5436")]
     end
 
     U1 -->|HTTP/HTTPS| N
@@ -99,10 +99,10 @@ graph TD
 
 ```mermaid
 flowchart TD
-    R1[Digitalización 100% del Inventario de Activos Fijos] --> RF[Optimización Integral de ERP Consultores y Asociados]
-    R2[Cálculo Automático de Depreciación Contable] --> RF
-    R3[Automatización del Despliegue con Docker Compose] --> RF
-    R4[Manuales de Usuario, Sistema e Instalación Entregados] --> RF
+    R1["Digitalización 100% del Inventario de Activos Fijos"] --> RF["Optimización Integral de ERP Consultores y Asociados"]
+    R2["Cálculo Automático de Depreciación Contable"] --> RF
+    R3["Automatización del Despliegue con Docker Compose"] --> RF
+    R4["Manuales de Usuario, Sistema e Instalación Entregados"] --> RF
 ```
 
 - **Control Centralizado:** Migración completa de registros dispersos hacia una base de datos única y confiable.

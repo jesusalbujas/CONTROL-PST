@@ -34,13 +34,13 @@ La empresa ERP Consultores y Asociados C.A. experimentaba un crecimiento en su c
 
 ```mermaid
 flowchart TD
-    Cliente[Cliente con requerimiento/incidencia] -->|Mensaje en Discord| Dory[Bot Dory en Discord]
-    Dory -->|Apertura de Caso / Creación de Hilo| API[API Backend REST]
-    API -->|Persistencia| DB[(PostgreSQL Database)]
-    Soporte[Equipo de Consultores] -->|Resolución y Cierre con Horas| Dory
-    API --> Web[Portal Web de Gestión / Clientes]
-    DB --> Superset[Apache Superset - Dashboard BI]
-    Superset --> Gerencia[Gerencia y Clientes con Métricas de Consumo]
+    Cliente["Cliente con requerimiento/incidencia"] -->|Mensaje en Discord| Dory["Bot Dory en Discord"]
+    Dory -->|Apertura de Caso / Creación de Hilo| API["API Backend REST"]
+    API -->|Persistencia| DB[("PostgreSQL Database")]
+    Soporte["Equipo de Consultores"] -->|Resolución y Cierre con Horas| Dory
+    API --> Web["Portal Web de Gestión / Clientes"]
+    DB --> Superset["Apache Superset - Dashboard BI"]
+    Superset --> Gerencia["Gerencia y Clientes con Métricas de Consumo"]
 ```
 
 ---
@@ -51,22 +51,22 @@ El sistema fue concebido bajo una arquitectura lógica de 3 capas desacopladas m
 
 ```mermaid
 graph TB
-    subgraph Capa de Presentación e Integración
-        DIS[Discord Channels] <--> BOT[Bot Dory - Discord Integration]
-        CLI[Portal Web Cliente / React - Vue]
-        ADM[Panel Web Administrativo]
+    subgraph sub_Capa_de_Presentaci_n_e_Integraci_n ["Capa de Presentación e Integración"]
+        DIS["Discord Channels"] <--> BOT["Bot Dory - Discord Integration"]
+        CLI["Portal Web Cliente / React - Vue"]
+        ADM["Panel Web Administrativo"]
     end
 
-    subgraph Capa Lógica y de Negocio (Backend API)
-        GATEWAY[API REST Gateway]
-        AUTH[Módulo de Autenticación y Permisos / OAuth 2.0]
-        TICKETS[Módulo Gestor de Tickets y Casos]
-        HOURS[Módulo de Control de Horas y Contratos]
+    subgraph sub_Capa_L_gica_y_de_Negocio_Backend_API ["Capa Lógica y de Negocio (Backend API)"]
+        GATEWAY["API REST Gateway"]
+        AUTH["Módulo de Autenticación y Permisos / OAuth 2.0"]
+        TICKETS["Módulo Gestor de Tickets y Casos"]
+        HOURS["Módulo de Control de Horas y Contratos"]
     end
 
-    subgraph Capa de Datos y Analítica
-        PG[(PostgreSQL Database)]
-        SUPERSET[Apache Superset BI Server]
+    subgraph sub_Capa_de_Datos_y_Anal_tica ["Capa de Datos y Analítica"]
+        PG[("PostgreSQL Database")]
+        SUPERSET["Apache Superset BI Server"]
     end
 
     BOT <--> GATEWAY

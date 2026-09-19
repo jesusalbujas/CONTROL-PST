@@ -47,7 +47,7 @@ El proyecto actual aborda la concepción, diseño, implementación y despliegue 
 
 ```mermaid
 flowchart TD
-    subgraph Ecosistema PST IV
+    subgraph sub_Ecosistema_PST_IV ["Ecosistema PST IV"]
         A["1. nexoint<br>Core Backend, API Gateway, Hub de Integración y Reglas de Negocio"]
         B["2. discord_bot & jarvis<br>Agentes Conversacionales, Asistencia Cognitiva y Automatización en Tiempo Real"]
         C["3. la app (En Desarrollo)<br>Frontend Web y Móvil Reactivo para Autoservicio y Gestión de Clientes"]
@@ -55,7 +55,7 @@ flowchart TD
 
     B <-->|REST API / WebSockets / JWT| A
     C <-->|REST API / GraphQL / JWT| A
-    A <--> DB[(PostgreSQL + Redis Storage)]
+    A <--> DB[("PostgreSQL + Redis Storage")]
 ```
 
 ---
@@ -119,20 +119,20 @@ sequenceDiagram
 
 ```mermaid
 flowchart LR
-    subgraph Actores de Negocio
-        C[Cliente Empresarial]
-        K[Consultor / Soporte Técnico]
-        G[Gerencia de Operaciones]
-        ADM[Administrador de Plataforma]
+    subgraph sub_Actores_de_Negocio ["Actores de Negocio"]
+        C["Cliente Empresarial"]
+        K["Consultor / Soporte Técnico"]
+        G["Gerencia de Operaciones"]
+        ADM["Administrador de Plataforma"]
     end
 
-    subgraph Casos de Uso del Negocio (CUN)
-        CUN1((CUN-01: Solicitar Soporte Técnico))
-        CUN2((CUN-02: Consultar Estado de Servicios y Saldo de Horas))
-        CUN3((CUN-03: Atender y Resolver Incidencia Técnica))
-        CUN4((CUN-04: Imputar Horas de Consultoría))
-        CUN5((CUN-05: Gestionar Contratos y Tarifas))
-        CUN6((CUN-06: Generar Auditoría y Analítica de Servicios))
+    subgraph sub_Casos_de_Uso_del_Negocio_CUN ["Casos de Uso del Negocio (CUN)"]
+        CUN1(("CUN-01: Solicitar Soporte Técnico"))
+        CUN2(("CUN-02: Consultar Estado de Servicios y Saldo de Horas"))
+        CUN3(("CUN-03: Atender y Resolver Incidencia Técnica"))
+        CUN4(("CUN-04: Imputar Horas de Consultoría"))
+        CUN5(("CUN-05: Gestionar Contratos y Tarifas"))
+        CUN6(("CUN-06: Generar Auditoría y Analítica de Servicios"))
     end
 
     C --> CUN1
@@ -148,18 +148,18 @@ flowchart LR
 
 ```mermaid
 graph TD
-    subgraph Consecuencias y Efectos
-        E1[Fricción en la atención al cliente y tiempos de espera]
-        E2[Discrepancias en la facturación de servicios y horas]
-        E3[Falta de una experiencia de usuario unificada y multiplataforma]
+    subgraph sub_Consecuencias_y_Efectos ["Consecuencias y Efectos"]
+        E1["Fricción en la atención al cliente y tiempos de espera"]
+        E2["Discrepancias en la facturación de servicios y horas"]
+        E3["Falta de una experiencia de usuario unificada y multiplataforma"]
     end
 
-    P[PROBLEMA CENTRAL: Fragmentación de canales de servicio y carencia de un núcleo central de integración automatizado en ERP Consultores y Asociados C.A.]
+    P["PROBLEMA CENTRAL: Fragmentación de canales de servicio y carencia de un núcleo central de integración automatizado en ERP Consultores y Asociados C.A."]
 
-    subgraph Causas Raíz
-        C1[Inexistencia de un API Gateway centralizado que unifique la lógica]
-        C2[Dependencia exclusiva de un bot de chat sin app cliente nativa]
-        C3[Falta de asistencia inteligente para la categorización y resolución de incidencias]
+    subgraph sub_Causas_Ra_z ["Causas Raíz"]
+        C1["Inexistencia de un API Gateway centralizado que unifique la lógica"]
+        C2["Dependencia exclusiva de un bot de chat sin app cliente nativa"]
+        C3["Falta de asistencia inteligente para la categorización y resolución de incidencias"]
     end
 
     C1 --> P
@@ -180,17 +180,17 @@ La arquitectura del ecosistema PST IV se fundamenta en un patrón **Modular / Mi
 
 ```mermaid
 graph TB
-    subgraph Clientes y Consumidores
+    subgraph sub_Clientes_y_Consumidores ["Clientes y Consumidores"]
         APP["📱 la app (Frontend Web / Mobile)<br>React / Flutter / Next.js"]
         DISC["💬 Discord Client / Canales de Soporte<br>Comunidad y Clientes"]
         EXT["🌐 Servicios Externos / Webhooks ERP"]
     end
 
-    subgraph Capa de Seguridad y Ruteo
+    subgraph sub_Capa_de_Seguridad_y_Ruteo ["Capa de Seguridad y Ruteo"]
         PROXY["🛡️ Reverse Proxy (Nginx / Traefik)<br>SSL / TLS, Rate Limiting"]
     end
 
-    subgraph Plataforma Central (nexoint)
+    subgraph sub_Plataforma_Central_nexoint ["Plataforma Central (nexoint)"]
         GW["🚪 nexoint API Gateway & Router"]
         AUTH_SRV["🔐 Auth & Security Service (JWT / RBAC)"]
         CORE_SRV["⚙️ Business Logic Service (Tickets, Clientes, Horas)"]
@@ -198,14 +198,14 @@ graph TB
         INT_SRV["🔌 Integration & Webhook Handler"]
     end
 
-    subgraph Capa de Automatización e IA
+    subgraph sub_Capa_de_Automatizaci_n_e_IA ["Capa de Automatización e IA"]
         BOT["🤖 discord_bot (Dory/Bot Core)"]
         JARVIS["🧠 jarvis (AI Agent Orchestrator & Task Automation)"]
     end
 
-    subgraph Capa de Persistencia y Caché
-        DB[(🐘 PostgreSQL DB - Transaccional)]
-        REDIS[(⚡ Redis Cache & Task Queue)]
+    subgraph sub_Capa_de_Persistencia_y_Cach ["Capa de Persistencia y Caché"]
+        DB[("🐘 PostgreSQL DB - Transaccional")]
+        REDIS[("⚡ Redis Cache & Task Queue")]
     end
 
     APP -->|HTTPS / JSON| PROXY
@@ -242,18 +242,18 @@ NexoInt integra un sistema de identidad federada multi-proveedor gestionado a tr
 
 ```mermaid
 flowchart TD
-    User([Usuario / Consultor / Cliente]) --> AuthChoice{Método de Login}
-    AuthChoice -->|Google OAuth| GAuth[GoogleAuthService.signIn]
-    AuthChoice -->|Discord OAuth| DAuth[DiscordAuthService.signIn]
-    AuthChoice -->|Email / Password| PwdAuth[Supabase Auth signInWithPassword]
+    User(["Usuario / Consultor / Cliente"]) --> AuthChoice{"Método de Login"}
+    AuthChoice -->|Google OAuth| GAuth["GoogleAuthService.signIn"]
+    AuthChoice -->|Discord OAuth| DAuth["DiscordAuthService.signIn"]
+    AuthChoice -->|Email / Password| PwdAuth["Supabase Auth signInWithPassword"]
 
-    GAuth --> SupaAuth[Supabase Auth Engine]
+    GAuth --> SupaAuth["Supabase Auth Engine"]
     DAuth --> SupaAuth
     PwdAuth --> SupaAuth
 
-    SupaAuth --> SessionSec[SessionSecurityService: NIST 800-63B / OWASP ASVS]
-    SessionSec --> TokenGen[JWT Session Token + Refresh Token]
-    TokenGen --> AppInit[Inicialización de Contextos: AuthContext, TabContext, SidebarContext]
+    SupaAuth --> SessionSec["SessionSecurityService: NIST 800-63B / OWASP ASVS"]
+    SessionSec --> TokenGen["JWT Session Token + Refresh Token"]
+    TokenGen --> AppInit["Inicialización de Contextos: AuthContext, TabContext, SidebarContext"]
 ```
 
 #### 3.2.2 Lógicas de Seguridad Avanzada y Gestión de Sesión (`SessionSecurityService`)
@@ -286,21 +286,21 @@ Este componente conforma el **subsistema conversacional y de automatización int
 
 ```mermaid
 flowchart LR
-    subgraph Discord Environment
-        Msg[Mensaje de Usuario en Canal] --> Bot[discord_bot]
+    subgraph sub_Discord_Environment ["Discord Environment"]
+        Msg["Mensaje de Usuario en Canal"] --> Bot["discord_bot"]
     end
 
-    subgraph Inteligencia y Lógica de Asistente
-        Bot --> Jarvis[Módulo jarvis Engine]
-        Jarvis --> Intent[Clasificación de Intención / NLP]
-        Intent --> Action{Tipo de Solicitud}
-        Action -->|Ticket / Soporte| TktGen[Generador de Tickets y Hilos]
-        Action -->|Generar Release| RelGen[Jarvis Release Run & Changelog]
-        Action -->|Comando Administrativo| Cmd[Ejecución de Comando Slash]
+    subgraph sub_Inteligencia_y_L_gica_de_Asistente ["Inteligencia y Lógica de Asistente"]
+        Bot --> Jarvis["Módulo jarvis Engine"]
+        Jarvis --> Intent["Clasificación de Intención / NLP"]
+        Intent --> Action{"Tipo de Solicitud"}
+        Action -->|Ticket / Soporte| TktGen["Generador de Tickets y Hilos"]
+        Action -->|Generar Release| RelGen["Jarvis Release Run & Changelog"]
+        Action -->|Comando Administrativo| Cmd["Ejecución de Comando Slash"]
     end
 
-    subgraph Supabase BaaS (Esquema dory)
-        TktGen -->|INSERT dory_thread| DB[(PostgreSQL Supabase)]
+    subgraph sub_Supabase_BaaS_Esquema_dory ["Supabase BaaS (Esquema dory)"]
+        TktGen -->|INSERT dory_thread| DB[("PostgreSQL Supabase")]
         RelGen -->|INSERT dory_jarvis_release_run| DB
     end
 ```
@@ -347,32 +347,32 @@ flowchart LR
 
 ```mermaid
 flowchart TD
-    subgraph FRONTENDS & CANALES
-        A1[Cliente en Móvil/Web - La App]
-        A2[Cliente en Servidor de Discord]
-        A3[Consultor en Consola Web]
+    subgraph sub_FRONTENDS_CANALES ["FRONTENDS & CANALES"]
+        A1["Cliente en Móvil/Web - La App"]
+        A2["Cliente en Servidor de Discord"]
+        A3["Consultor en Consola Web"]
     end
 
-    subgraph API GATEWAY & ROUTING
-        GW[nexoint API Gateway]
+    subgraph sub_API_GATEWAY_ROUTING ["API GATEWAY & ROUTING"]
+        GW["nexoint API Gateway"]
     end
 
-    subgraph SERVICIOS INTERNOS (nexoint)
-        S1[Servicio de Autenticación]
-        S2[Servicio de Gestión de Clientes y Contratos]
-        S3[Servicio de Tickets e Incidencias]
-        S4[Servicio de Imputación de Horas]
-        S5[Servicio de Analítica e Informes]
+    subgraph sub_SERVICIOS_INTERNOS_nexoint ["SERVICIOS INTERNOS (nexoint)"]
+        S1["Servicio de Autenticación"]
+        S2["Servicio de Gestión de Clientes y Contratos"]
+        S3["Servicio de Tickets e Incidencias"]
+        S4["Servicio de Imputación de Horas"]
+        S5["Servicio de Analítica e Informes"]
     end
 
-    subgraph AGENTES & ASISTENTES
-        B1[discord_bot]
-        B2[jarvis Assistant Engine]
+    subgraph sub_AGENTES_ASISTENTES ["AGENTES & ASISTENTES"]
+        B1["discord_bot"]
+        B2["jarvis Assistant Engine"]
     end
 
-    subgraph PERSISTENCIA
-        DB[(PostgreSQL)]
-        Cache[(Redis Cache)]
+    subgraph sub_PERSISTENCIA ["PERSISTENCIA"]
+        DB[("PostgreSQL")]
+        Cache[("Redis Cache")]
     end
 
     A1 -->|REST / WebSockets| GW
@@ -405,24 +405,24 @@ flowchart TD
 
 ```mermaid
 graph TB
-    subgraph Servidor de Producción / Contenedores Docker
-        subgraph Red DMZ / Ingress
-            NGINX[Contenedor Nginx Proxy / Certbot SSL]
+    subgraph sub_Servidor_de_Producci_n_Contenedores_Docker ["Servidor de Producción / Contenedores Docker"]
+        subgraph sub_Red_DMZ_Ingress ["Red DMZ / Ingress"]
+            NGINX["Contenedor Nginx Proxy / Certbot SSL"]
         end
 
-        subgraph Red Aplicación (Backend & Bots)
-            NEXO[Contenedor nexoint - Python/FastAPI o Node.js]
-            BOT_C[Contenedor discord_bot + jarvis - Python/AsyncIO]
-            APP_WEB[Contenedor Web App - SSR / Nginx SPA]
+        subgraph sub_Red_Aplicaci_n_Backend_Bots ["Red Aplicación (Backend & Bots)"]
+            NEXO["Contenedor nexoint - Python/FastAPI o Node.js"]
+            BOT_C["Contenedor discord_bot + jarvis - Python/AsyncIO"]
+            APP_WEB["Contenedor Web App - SSR / Nginx SPA"]
         end
 
-        subgraph Red Base de Datos (Segura / No expuesta)
-            PG_C[(Contenedor PostgreSQL 16)]
-            RED_C[(Contenedor Redis 7)]
+        subgraph sub_Red_Base_de_Datos_Segura_No_expuesta ["Red Base de Datos (Segura / No expuesta)"]
+            PG_C[("Contenedor PostgreSQL 16")]
+            RED_C[("Contenedor Redis 7")]
         end
     end
 
-    Internet((Internet / Usuarios)) -->|HTTPS / Port 443| NGINX
+    Internet(("Internet / Usuarios")) -->|HTTPS / Port 443| NGINX
     NGINX -->|Proxy Pass 8000| NEXO
     NGINX -->|Proxy Pass 3000| APP_WEB
     BOT_C -->|Internal Network| NEXO
@@ -540,23 +540,23 @@ De acuerdo con el esquema PST IV 2018, se debe incluir un **Informe de Resultado
 
 ```mermaid
 flowchart LR
-    subgraph Red Externa (WAN)
-        USR_CLI[Dispositivos de Clientes]
-        USR_CON[Dispositivos de Consultores]
-        DISC_CLOUD[Nube de Discord API Gateway]
+    subgraph sub_Red_Externa_WAN ["Red Externa (WAN)"]
+        USR_CLI["Dispositivos de Clientes"]
+        USR_CON["Dispositivos de Consultores"]
+        DISC_CLOUD["Nube de Discord API Gateway"]
     end
 
-    subgraph Perímetro de Seguridad (Cloud VPS / On-Premise)
-        FW[Firewall / UFW - Puertos 80, 443, 22 SSH Restringido]
-        REV_PROXY[Nginx Ingress Proxy + SSL Let's Encrypt]
+    subgraph sub_Per_metro_de_Seguridad_Cloud_VPS_On_Premise ["Perímetro de Seguridad (Cloud VPS / On-Premise)"]
+        FW["Firewall / UFW - Puertos 80, 443, 22 SSH Restringido"]
+        REV_PROXY["Nginx Ingress Proxy + SSL Let's Encrypt"]
     end
 
-    subgraph Red Lógica Interna de Contenedores (Docker Bridge: 172.20.0.0/16)
-        API_CTR[Contenedor: nexoint-api :8000]
-        BOT_CTR[Contenedor: discord-bot-jarvis]
-        APP_CTR[Contenedor: frontend-app :3000]
-        DB_CTR[(Contenedor: postgres-db :5432)]
-        RED_CTR[(Contenedor: redis-cache :6379)]
+    subgraph sub_Red_L_gica_Interna_de_Contenedores_Docker_Bridge_172_20_0_0_16 ["Red Lógica Interna de Contenedores (Docker Bridge: 172.20.0.0/16)"]
+        API_CTR["Contenedor: nexoint-api :8000"]
+        BOT_CTR["Contenedor: discord-bot-jarvis"]
+        APP_CTR["Contenedor: frontend-app :3000"]
+        DB_CTR[("Contenedor: postgres-db :5432")]
+        RED_CTR[("Contenedor: redis-cache :6379")]
     end
 
     USR_CLI -->|HTTPS 443| FW
@@ -608,7 +608,7 @@ De acuerdo con el esquema oficial de PST IV, el informe final debe incorporar:
 flowchart TD
     Base["📐 Insumos de Ingeniería Disponibles<br>(Arquitectura, NexoInt, Supabase, Discord Bot, Jarvis, Modelo ER)"]
     
-    subgraph Redacción Académica por el Equipo
+    subgraph sub_Redacci_n_Acad_mica_por_el_Equipo ["Redacción Académica por el Equipo"]
         F1["Fase I: Diagnóstico, Legal y Narrativa de Negocio"]
         F2["Fase II: Plantillas de Requerimientos y Casos de Uso"]
         F3["Fase III: Bitácoras de Pruebas y Reporte de Auditoría"]

@@ -93,17 +93,17 @@ flowchart TD
 ```mermaid
 flowchart LR
     subgraph T1["Trayecto I (2023)"]
-        A1[Soporte Técnico Hardware/SO] --> A2[Alfabetización Ofimática Libre]
+        A1["Soporte Técnico Hardware/SO"] --> A2["Alfabetización Ofimática Libre"]
     end
 
     subgraph T2["Trayecto II (2024)"]
-        B1[ADempiere ERP] --> B2[Control de Activos Fijos]
-        B2 --> B3[Docker & PostgreSQL]
+        B1["ADempiere ERP"] --> B2["Control de Activos Fijos"]
+        B2 --> B3["Docker & PostgreSQL"]
     end
 
     subgraph T3["Trayecto III (2025)"]
-        C1[Bot Dory Discord] --> C2[API REST SGI]
-        C2 --> C3[Apache Superset BI]
+        C1["Bot Dory Discord"] --> C2["API REST SGI"]
+        C2 --> C3["Apache Superset BI"]
     end
 
     subgraph T4["Trayecto IV (Actual)"]
