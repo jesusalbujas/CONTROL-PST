@@ -154,6 +154,7 @@ erDiagram
         bigint dory_employee_id FK
         string discord_thread_id
         string erp_version
+        string is_internal_request
         datetime first_erp_response_at
         datetime closed_at
         boolean isactive
@@ -347,15 +348,30 @@ erDiagram
 
 ### 3.2 Tablas de Organización y Clientes
 
+> [!NOTE]
+> **Regla de Integración con Discord (`allowCreate: false` en NexoInt):**  
+> Las empresas clientes (`dory_client`) y sus sucursales / canales de atención (`dory_channel`) **no se crean manualmente en la interfaz de NexoInt**. Se sincronizan de forma transparente desde el árbol de Discord:
+> - **Categoría de Discord** = Registro en `dory_client` (ejemplo: `NATULAC`).
+> - **Canal de Texto de Discord** = Registro en `dory_channel` (ejemplo: `maros-atencion`, `inalcon-atencion`, `anros-atencion`).
+
 #### `dory.dory_client`
 | Columna | Tipo | Nulo | Descripción |
 | :--- | :--- | :---: | :--- |
 | `dory_client_id` | `bigint` | NO | Clave Primaria |
 | `value` | `text` | NO | Código o identificador fiscal (RIF) |
-| `name` | `text` | NO | Razón social de la empresa cliente |
+| `name` | `text` | NO | Razón social de la empresa cliente (derivada de la categoría de Discord) |
 | `description` | `text` | SÍ | Información de contacto y notas |
 | `discord_server_id`| `text`| SÍ | ID del servidor de Discord asignado |
 | `isactive` | `boolean`| NO | Estado de cliente activo/inactivo |
+
+#### `dory.dory_channel`
+| Columna | Tipo | Nulo | Descripción |
+| :--- | :--- | :---: | :--- |
+| `dory_channel_id`| `bigint` | NO | Clave Primaria |
+| `dory_client_id` | `bigint` | NO | FK a `dory.dory_client` (Empresa a la que pertenece) |
+| `name` | `text` | NO | Nombre del canal o sucursal de atención (ej: `maros-atencion`) |
+| `discord_channel_id`| `text`| SÍ | ID del canal de texto en Discord |
+| `isactive` | `boolean`| NO | Estado activo/inactivo |
 
 #### `dory.dory_employee`
 | Columna | Tipo | Nulo | Descripción |
@@ -371,21 +387,26 @@ erDiagram
 
 ### 3.3 Tablas de Tickets y Operaciones de Soporte
 
+> [!NOTE]
+> **Creación Exclusiva de Tickets (`allowCreate: false` en NexoInt):**  
+> Los tickets de soporte (`dory_thread`) únicamente pueden ser originados en Discord (vía mensaje o `/abrir_hilo`). En la consola administrativa NexoInt, `allowCreate` está deshabilitado para preservar la integridad y el vínculo 1:1 con el hilo de Discord.
+
 #### `dory.dory_thread`
 | Columna | Tipo | Nulo | Descripción |
 | :--- | :--- | :---: | :--- |
 | `dory_thread_id` | `bigint` | NO | Clave Primaria autoincremental |
 | `thread_id` | `text` | NO | Código alfanumérico del ticket (ej: `TKT-2026-001`) |
 | `thread_name` | `text` | NO | Asunto / Título de la incidencia |
-| `dory_client_id` | `bigint` | NO | FK a `dory_client` |
-| `dory_channel_id` | `bigint` | SÍ | FK a `dory_channel` |
-| `dory_topic_id` | `bigint` | SÍ | FK a `dory_topic` |
-| `dory_typology_id` | `bigint` | SÍ | FK a `dory_typology` |
-| `dory_thread_status_id`| `bigint`| NO | FK a `dory_thread_status` |
+| `dory_client_id` | `bigint` | NO | FK a `dory_client` (Empresa cliente) |
+| `dory_channel_id` | `bigint` | SÍ | FK a `dory_channel` (Sucursal / canal de atención) |
+| `dory_topic_id` | `bigint` | SÍ | FK a `dory_topic` (Área temática) |
+| `dory_typology_id` | `bigint` | SÍ | FK a `dory_typology` (Tipo de solicitud) |
+| `dory_thread_status_id`| `bigint`| NO | FK a `dory_thread_status` (Estado actual) |
 | `dory_pending_on_id`| `bigint`| SÍ | FK a `dory_pending_on` (Lado del bloqueo) |
 | `dory_employee_id` | `bigint` | SÍ | Consultor principal asignado |
 | `discord_thread_id` | `text` | SÍ | ID del hilo en Discord |
 | `erp_version` | `text` | SÍ | Versión de ERP afectada (ZK / Swing / Core) |
+| `is_internal_request` | `text` | SÍ | Marca de ticket interno (`'Y'` / `'N'`). Los marcados con `'Y'` omiten los recordatorios y escalamientos de SLA |
 | `first_erp_response_at`| `timestamp`| SÍ | Fecha/hora de primera respuesta técnica |
 | `closed_at` | `timestamp`| SÍ | Fecha/hora de resolución y cierre |
 | `isactive` | `boolean` | NO | Estado del registro (Default: `true`) |

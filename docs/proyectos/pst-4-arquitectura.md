@@ -70,7 +70,7 @@ flowchart TD
   2. Integrar inteligencia y flujos automáticos más robustos mediante agentes inteligentes (`jarvis` y `discord_bot`).
   3. Proveer a los clientes de una aplicación moderna (`la app`) con interfaces intuitivas accesibles desde navegadores y dispositivos móviles.
 
-### 2.2 Modelo de Negocio de ERP Consultores y Asociados C.A.
+### 2.2 Modelo de Negocio y Reglas Operativas de ERP Consultores y Asociados C.A.
 
 El modelo de negocio de la empresa se sustenta en la prestación de servicios de software bajo esquemas de suscripción, bolsas de horas de consultoría y proyectos de desarrollo a medida.
 
@@ -82,37 +82,74 @@ El modelo de negocio de la empresa se sustenta en la prestación de servicios de
 | **Relación con Clientes** | Automatizada y personalizada, con trazabilidad milimétrica de casos, tiempos de respuesta y reportes de desempeño. |
 | **Fuentes de Ingresos** | Venta de planes mensuales de soporte técnico, horas de consultoría certificada, desarrollo de extensiones ERP e implementaciones. |
 | **Actividades Clave** | Desarrollo continuo de microservicios, soporte técnico nivel 1, 2 y 3, monitoreo de infraestructura, análisis de datos de servicio. |
-| **Recursos Clave** | Infraestructura en la nube / contenedores Docker, bases de datos PostgreSQL, APIs de comunicación, equipo humano de desarrollo y consultoría. |
+| **Recursos Clave** | Infraestructura en la nube / contenedores Docker, bases de datos PostgreSQL en Supabase, APIs de comunicación, equipo humano de desarrollo y consultoría. |
 | **Socios Clave** | Comunidades de Software Libre, proveedores de infraestructura cloud, proveedores de modelos de lenguaje / IA. |
 | **Estructura de Costos** | Alojamiento en servidores, ancho de banda, licencias de APIs externas, nómina de consultores y costos operativos de mantenimiento. |
+
+#### Reglas de Negocio Clave en el Ecosistema Operativo (Discord ↔ NexoInt ↔ Jarvis):
+
+1. **Jerarquía Organizacional Derivada de Discord:**
+   - La maestra de compañías (`dory.dory_client`) y sus sucursales o canales de atención (`dory.dory_channel`) **no se crean de manera manual en NexoInt** (`allowCreate: false` en las entidades del frontend).
+   - Estas entidades provienen directamente del árbol de servidores de Discord:
+     - **Categoría de Discord** = **Empresa / Cliente** (por ejemplo: `NATULAC`).
+     - **Canales de Texto bajo la Categoría** = **Sucursales o Canales de Atención** (por ejemplo: `maros-atencion`, `inalcon-atencion`, `anros-atencion`).
+   - El bot de Discord resuelve o registra automáticamente en Supabase la compañía (`client_name`) y la sucursal (`org_name`) al interactuar o crear hilos.
+
+2. **Creación Exclusiva de Tickets / Hilos desde Discord:**
+   - Los hilos de soporte (`dory.dory_thread`) **se crean exclusivamente desde Discord** mediante la interacción del cliente o el comando interactivo `/abrir_hilo`.
+   - En la interfaz de NexoInt (`ThreadEntity`), la creación manual está deshabilitada (`allowCreate: false`) para garantizar la correspondencia 1:1 entre el hilo de chat y el registro en base de datos.
+
+3. **Integridad Categorial Estricta (`validateCategoryMatch`):**
+   - Un ticket (`dory_thread`) **jamás puede pertenecer a un canal cuya categoría en base de datos difiera del cliente asignado**.
+   - Si un usuario o proceso intenta vincular un ticket con una empresa cliente A y un canal perteneciente a la empresa cliente B, el sistema detiene la transacción y emite una excepción de coherencia referencial (`ThreadEntity`).
+
+4. **Protección Contra Eliminación de Tickets Enlazados:**
+   - Queda prohibida la eliminación física de cualquier ticket que posea trazabilidad activa con Discord (`url`, `discord_identifier`, `dory_thread_status_id` asignado o código mayor a 10 dígitos). El sistema preserva la inmutabilidad histórica y solo admite cambios de estado o archivo lógico.
+
+5. **Alternancia Automática de Turno (`pending_on`) y Sellado de Primera Respuesta:**
+   - Cada mensaje dentro de un hilo en Discord recalcula en tiempo real el estado y turno del caso:
+     - **Mensaje del Cliente:** Cambia a `pending_on = 'erp'` (requiere atención del equipo consultor) y estatus `ERCYA`.
+     - **Mensaje del Consultor:** Se valida la pertenencia al equipo (por rol Discord o registro en `dory_employee`), asignando `pending_on = 'client'` (espera respuesta del cliente) y estatus `ER`.
+     - **Sellado Inmutable de Primera Respuesta:** Al responder el consultor por primera vez, se graba `first_erp_response_at = NOW()` para auditoría de SLAs.
+
+6. **Políticas de Nudge, Escalamiento Escalonado (L1 / L2) y Horario Hábil:**
+   - Los monitores de escalamiento solo operan en días hábiles (Lunes a Viernes) y horario de oficina en huso horario **Caracas (UTC-4: 08:00 AM a 05:00 PM)**.
+   - Si un ticket permanece sin respuesta del consultor, el bot dispara alertas escalonadas L1 y L2 con marcadores Unicode invisibles (`\u200B...`) y bloqueo en memoria para impedir nudges duplicados.
+
+7. **Modalidades de Contratos de Servicio y Generación de Recibos:**
+   - Soporte para modelos de facturación por **Bolsas de Horas (`HOURS`)**, **Iguala Mensual (`MONTHLY`)**, **Proyectos (`PROJECT`)** y **Días (`DAYS`)**.
+   - Los recibos de servicio (`dory_receipt`) se generan inicialmente en estado Borrador (`DR`); los campos de totales de horas y minutos son de solo lectura agregados a partir de las imputaciones en `dory_charge`.
+
+8. **Integridad Referencial en Estructura de Cargos:**
+   - Un perfil de cargo (`dory_charge` como clasificador de puesto) no puede eliminarse si existen consultores o empleados (`dory_employee`) vinculados a él.
+
+9. **Supervisión Humana Obligatoria en Asistencia Cognitiva (`Jarvis`):**
+   - Los borradores de notas de versión y documentación técnica sugeridos por IA (`dory_jarvis_release_run`) no pueden emitirse como oficiales ni generar artefactos PDF sin la aprobación y cambio explícito de estado por parte de un ingeniero responsable.
 
 ### 2.3 Mapa y Flujograma de Procesos de Negocio
 
 ```mermaid
 sequenceDiagram
     autonumber
-    actor Cliente as Cliente Corporativo
-    participant Bot as Discord Bot / Jarvis
-    participant Core as nexoint (Backend Core)
-    participant DB as Base de Datos
+    actor Cliente as Cliente Empresarial
+    participant Discord as Canal Sucursal (Discord)
+    participant Bot as discord_bot (Dory Core)
+    participant DB as Supabase PostgreSQL (Esquema dory)
     actor Soporte as Consultor / Equipo Soporte
+    participant Nexo as NexoInt (Consola Web)
 
-    Cliente->>Bot: Reporta solicitud o incidencia técnica
-    Bot->>Core: Autentica usuario y verifica contrato activo
-    Core->>DB: Consulta saldo de horas y SLA del cliente
-    alt Contrato Válido con Horas
-        Core-->>Bot: Autoriza apertura de caso y crea Hilo/Ticket
-        Bot->>Cliente: Confirma ticket asignado y número de seguimiento
-        Bot->>Soporte: Notifica en canal interno y sugiere solución (Jarvis)
-        Soporte->>Bot: Interactúa en el hilo y resuelve la incidencia
-        Soporte->>Bot: Ejecuta comando de cierre con desglose de horas
-        Bot->>Core: Envía horas, notas técnicas y estado de cierre
-        Core->>DB: Actualiza saldo de horas y registra auditoría
-        Core-->>Cliente: Notifica cierre vía App / Correo / Discord
-    else Sin Horas Disponibles
-        Core-->>Bot: Alerta de saldo insuficiente
-        Bot-->>Cliente: Solicita renovación o aprobación de horas adicionales
-    end
+    Note over Cliente,Discord: Categoría: NATULAC | Canal: maros-atencion
+    Cliente->>Discord: Reporta requerimiento o abre hilo (/abrir_hilo)
+    Discord->>Bot: Evento ThreadCreate / Interacción Slash
+    Bot->>DB: Sincroniza dory_client (NATULAC) y dory_channel (maros-atencion)
+    Bot->>DB: Registra nuevo dory_thread (allowCreate=false en NexoInt)
+    Bot-->>Discord: Confirma apertura de ticket con mención a consultores
+    Soporte->>Discord: Atiende incidencia e interactúa en el hilo
+    Soporte->>Discord: Ejecuta comando /cerrar_hilo (horas, tópico, tipología)
+    Discord->>Bot: Procesa validaciones de cierre
+    Bot->>DB: Registra dory_charge (horas consumidas) y actualiza dory_thread (closed_at)
+    Bot-->>Discord: Publica resumen de cierre y embed informativo
+    Nexo->>DB: Consulta métricas consolidadas, bolsas de horas y auditoría
 ```
 
 ### 2.4 Diagrama de Casos de Uso del Negocio (CUN)
@@ -313,15 +350,99 @@ flowchart LR
 > El modelo de datos completo, diccionario de más de 25 entidades relacionales, diagramas ER por subdominios y funciones RPC se encuentran documentados exhaustivamente en:  
 > 🔗 [**Documentación del Modelo de Base de Datos NexoInt (Esquema `dory`)**](../database/README.md)
 
-#### Funcionalidades Clave de `discord_bot`:
-- **Comandos Slash (`/`):** Comandos estructurados como `/ticket open`, `/ticket close`, `/horas balance`, `/status`, `/asignar`.
-- **Hilos Automáticos (*Threads*):** Al abrir una incidencia, se genera un hilo privado o dedicado que mantiene limpia la conversación y asocia todos los mensajes al ticket.
-- **Sincronización en Tiempo Real:** Todos los mensajes de valor técnico y archivos adjuntos quedan registrados en el ticket dentro de `nexoint`.
+#### 3.3.2 Funcionalidades y Comandos Slash de `discord_bot`
 
-#### Funcionalidades Clave de `jarvis`:
-- **Asistencia Cognitiva al Consultor:** Sugiere posibles causas de fallas y soluciones basadas en el histórico de tickets similares resueltos en el pasado.
-- **Detección Automática de Urgencia y Tópicos:** Clasifica automáticamente la criticidad de las incidencias recibidas.
-- **Automatización de Notificaciones:** Alerta proactivamente a la gerencia sobre tickets con riesgo de vencer su SLA.
+El bot implementa un conjunto de comandos slash (`/`) fuertemente tipados y auditados que se ejecutan directamente en los hilos o canales de soporte de Discord para gestionar el ciclo de vida de los casos y la imputación de horas:
+
+##### 1. Comando `/cerrar_hilo` (Cierre Operativo e Imputación de Horas)
+Es el comando central utilizado por los consultores para formalizar la solución de una incidencia y debitar las horas trabajadas del contrato de soporte correspondiente.
+- **Canal de Ejecución:** Debe ejecutarse **dentro del hilo de soporte activo** en Discord.
+- **Parámetros:**
+
+| Parámetro | Tipo | Requerido | Descripción / Opciones |
+| :--- | :--- | :---: | :--- |
+| `solicitante` | Usuario (Discord User) | **SÍ** | Usuario cliente que levantó la incidencia técnica. |
+| `topico` | String (Autocomplete) | **SÍ** | Área temática o funcional (ej: `Facturación`, `Ventas`, `Inventario`, `Contabilidad`, `Bancos`, `Nómina`, `Configuración`). |
+| `tipologia` | String (Autocomplete) | **SÍ** | Naturaleza técnica del ticket (ej: `CONSULTORIA`, `ERROR_SISTEMA`, `DESARROLLO`, `CAPACITACION`, `CONFIGURACION`). |
+| `horas` | Entero (0 - 100) | **SÍ** | Cantidad de horas dedicadas a la resolución. |
+| `minutos` | Entero (Choices) | **SÍ** | Fracción de minutos consumidos: opciones fijas `0`, `20` o `30` minutos. |
+| `consultor` | Usuario (Discord User) | **SÍ** | Consultor responsable que ejecutó las labores técnicas. |
+| `version_erp_afectada` | String (Max 120) | NO | Versión del ERP en la que se presentó el caso (ej: `ZK 11`, `Swing 3.9`). |
+| `estatus` | String (Choices) | NO | Estado final de cierre: `PC` (Pendiente Cliente), `PI` (Pendiente Interno), `PR` (Pendiente Release), `PZ` (Pendiente ZK), `PA` (Pendiente Actualización), `ERCYA` (En Revisión CYA), `ER` (En Espera Release), `DP` (Desarrollo Pendiente), `TP` (Testing Pendiente), `CL` (Cerrado - Default). |
+| `descripcion` | String (Max 255) | NO | Resumen técnico o justificación de las actividades realizadas. |
+| `fecha_cierre` | String (YYYY-MM-DD) | NO | Fecha efectiva de imputación (por defecto, fecha actual). |
+
+> **Ejemplo de Ejecución de `/cerrar_hilo`:**
+> ```bash
+> /cerrar_hilo solicitante:@carlos_gonzalez topico:Facturación tipologia:CONSULTORIA horas:1 minutos:30 consultor:@jesus_albujas version_erp_afectada:ZK 11 estatus:CL descripcion:Ajuste de correlativo fiscal y validación de libro de ventas fecha_cierre:2026-09-25
+> ```
+> **Resultado en Base de Datos:**
+> - Se actualiza `dory.dory_thread` fijando `closed_at = NOW()`, `dory_thread_status_id` correspondiente a `CL`, `erp_version = 'ZK 11'`.
+> - Se inserta un registro en `dory.dory_charge` con `hours_spent = 1.5`, vinculado al contrato activo de la empresa cliente (`NATULAC`), descontando el saldo disponible.
+> - Se emite un mensaje enriquecido (*Embed*) en el hilo resumiendo el cargo y archivando el hilo.
+
+---
+
+##### 2. Comando `/abrir_hilo` (Apertura Formal de Incidencia)
+Permite a los usuarios o consultores iniciar un ticket de manera guiada y categorizada.
+- **Flujo Interactivo:**
+  1. El usuario ejecuta `/abrir_hilo`.
+  2. El bot despliega un selector interactivo para definir la visibilidad: **Público** (visible para todo el canal de la sucursal) o **Privado** (hilo privado restringido a consultores y solicitante).
+  3. Despliega un formulario modal donde se ingresa el **Título del Requerimiento** y el **Solicitante**.
+  4. Opcionalmente permite adjuntar el enlace o ID de un mensaje previo del canal para conservar el contexto.
+- **Acción en Base de Datos:**
+  - Resuelve la empresa (`dory_client`) mediante la categoría del canal de Discord (ej: `NATULAC`).
+  - Resuelve la sucursal (`dory_channel`) mediante el nombre del canal (ej: `maros-atencion`).
+  - Inserta el ticket en `dory.dory_thread` con estado inicial `ABIERTO` y asigna el `discord_thread_id`.
+
+---
+
+##### 3. Comando `/actualizar_hilo` (Modificación de Estado en Curso)
+Permite cambiar el estado de avance de un ticket sin cerrarlo ni imputar horas definitivas.
+- **Canal de Ejecución:** Dentro del hilo activo.
+- **Parámetros:**
+  - `estatus` (**Requerido** - Autocomplete): Nuevo estado operativo (ej: `PC`, `PI`, `PR`, `DP`, `TP`).
+  - Parámetros opcionales: `titulo`, `solicitante`, `topico`, `tipologia`, `horas`, `minutos`, `descripcion`, `consultor`, `pendiente_por` (`CLIENTE` o `CONSULTOR`), `issue` (enlace al ticket de Jira / GitHub).
+
+---
+
+##### 4. Comando `/asignar_consultor` (Derivación y Notificación Inteligente)
+Asigna el ticket a un consultor técnico específico del equipo.
+- **Parámetros:**
+  - `consultor` (**Requerido** - Autocomplete): Selecciona al consultor de la lista activa de `dory.dory_employee`.
+- **Efecto Operativo:**
+  - Actualiza `dory.dory_thread.dory_employee_id`.
+  - El bot invoca al motor cognitivo (`DeepSeek` o plantilla de Jarvis) para redactar una notificación cordial y técnica dentro del hilo, informando al cliente sobre la asignación del especialista.
+
+---
+
+##### 5. Comando `/agendar` (Compromisos y Seguimiento de Tareas)
+Programa una reunión o sesión de trabajo remoto con el cliente.
+- **Parámetros:** `fecha` (YYYY-MM-DD), `hora` (HH:MM), `descripcion` (Opcional).
+
+---
+
+##### 6. Comando `/auditoria_hilos` (Verificación Administrativa)
+Ejecuta un barrido de consistencia entre los hilos existentes en los canales de atención y los registros indexados en `dory.dory_thread`, identificando hilos huérfanos o desfasados.
+
+---
+
+#### 3.3.3 Tickets Internos (`is_internal_request`) y Reglas de Exclusión de SLAs
+En la operativa diaria de ERP Consultores y Asociados C.A., surgen requerimientos que no corresponden a clientes externos sino a coordinaciones internas, mantenimiento de infraestructura propia, soporte de sistemas internos o investigación de desarrollo.
+
+Para gestionar estos casos sin distorsionar las métricas de atención a clientes:
+1. **Detección Automática por Canal:**
+   - La tabla `dory.dory_bot_settings` almacena el parámetro dinámico `internal_request_channel_id` (con caché en memoria de 5 minutos en el bot).
+   - Cuando se abre un hilo en dicho canal interno, el bot marca automáticamente el campo en base de datos:
+     ```sql
+     dory.dory_thread.is_internal_request = 'Y'
+     ```
+2. **Exclusión de Escalamientos y Recordatorios (*Idle Nudge*):**
+   - El subsistema de alarmas de inactividad (`idleNudgeHandler.ts`) y el monitor de escalamiento de SLAs en tiempo real (`realtimeEscalation.ts`) filtran expresamente estos casos:
+     ```sql
+     WHERE COALESCE(t.is_internal_request, 'N') <> 'Y'
+     ```
+   - De este modo, los tickets internos **no generan alertas automáticas de SLA ni nudges por falta de respuesta**, permitiendo una gestión flexible sin penalizar los índices de servicio a clientes.
 
 ---
 
@@ -401,115 +522,127 @@ flowchart TD
 
 ---
 
-### 3.6 Diagrama de Componentes y Despliegue
+### 3.6 Diagrama de Componentes y Despliegue de Infraestructura
+
+La arquitectura física y de contenedores desacopla la capa de presentación de la capa de orquestación de agentes y persistencia BaaS:
 
 ```mermaid
 graph TB
-    subgraph sub_Servidor_de_Producci_n_Contenedores_Docker ["Servidor de Producción / Contenedores Docker"]
-        subgraph sub_Red_DMZ_Ingress ["Red DMZ / Ingress"]
-            NGINX["Contenedor Nginx Proxy / Certbot SSL"]
+    subgraph sub_Servidor_Cloud_VPS ["Servidor Cloud VPS / Docker Host"]
+        subgraph sub_Red_Ingress_Web ["Red Ingress & Web (Vite + Nginx)"]
+            SPA["Contenedor NexoInt Web Console<br>React 18 + Vite + TailwindCSS"]
         end
 
-        subgraph sub_Red_Aplicaci_n_Backend_Bots ["Red Aplicación (Backend & Bots)"]
-            NEXO["Contenedor nexoint - Python/FastAPI o Node.js"]
-            BOT_C["Contenedor discord_bot + jarvis - Python/AsyncIO"]
-            APP_WEB["Contenedor Web App - SSR / Nginx SPA"]
-        end
-
-        subgraph sub_Red_Base_de_Datos_Segura_No_expuesta ["Red Base de Datos (Segura / No expuesta)"]
-            PG_C[("Contenedor PostgreSQL 16")]
-            RED_C[("Contenedor Redis 7")]
+        subgraph sub_Red_Automatizacion_IA ["Red Automatización & Bots (Node.js / Bun)"]
+            BOT_CORE["Contenedor discord_bot<br>Discord.js v14 + Supabase Client"]
+            JARVIS_API["Contenedor Jarvis Engine<br>AI Agent Orchestrator & Task Automation"]
         end
     end
 
-    Internet(("Internet / Usuarios")) -->|HTTPS / Port 443| NGINX
-    NGINX -->|Proxy Pass 8000| NEXO
-    NGINX -->|Proxy Pass 3000| APP_WEB
-    BOT_C -->|Internal Network| NEXO
-    NEXO --> PG_C
-    NEXO --> RED_C
-    BOT_C --> RED_C
+    subgraph sub_Plataforma_Supabase_Cloud ["Plataforma Supabase Cloud (Managed BaaS)"]
+        AUTH_ENGINE["Supabase Auth Engine<br>OAuth 2.0 (Google / Discord) + JWT"]
+        PG_DORY[("PostgreSQL 16 Engine<br>Esquema dory (Tablas, RLS, RPCs)")]
+        STORAGE["Supabase Object Storage<br>Adjuntos, Logs y Avatares"]
+    end
+
+    subgraph sub_Clientes_y_Consumidores ["Clientes y Consumidores"]
+        CLIENT_USER["Clientes Empresariales / Consultores<br>Discord App Desktop / Mobile"]
+        ADMIN_USER["Administradores y Consultores<br>Navegador Web (HTTPS)"]
+    end
+
+    CLIENT_USER <-->|Discord Gateway WSS| BOT_CORE
+    ADMIN_USER <-->|HTTPS / Port 443| SPA
+
+    SPA <-->|HTTPS / Supabase Client| AUTH_ENGINE
+    SPA <-->|PostgREST / PostGIS / RPC| PG_DORY
+    SPA <-->|HTTP REST| JARVIS_API
+
+    BOT_CORE <-->|PostgREST / Supabase Client| PG_DORY
+    BOT_CORE <-->|REST API + WebSockets| JARVIS_API
+    BOT_CORE -->|Upload Adjuntos| STORAGE
 ```
 
 ---
 
-### 3.7 Modelo de Datos Relacional y Esquema de Entidades
+### 3.7 Modelo de Datos Relacional y Esquema de Entidades (Esquema `dory`)
+
+El siguiente diagrama entidad-relación refleja con precisión las tablas transaccionales del esquema `dory` en Supabase, la correspondencia con Discord y el control de horas de soporte:
 
 ```mermaid
 erDiagram
-    EMPRESA ||--o{ CONTRATO : posee
-    EMPRESA ||--o{ USUARIO : tiene
-    CONTRATO ||--o{ TICKET : cubre
-    USUARIO ||--o{ TICKET : crea
-    USUARIO ||--o{ TICKET : asignado_a
-    TICKET ||--o{ REGISTRO_HORAS : contiene
-    TICKET ||--o{ COMENTARIO_TICKET : registra
-    USUARIO ||--o{ REGISTRO_HORAS : ejecuta
+    dory_client ||--o{ dory_channel : posee
+    dory_client ||--o{ dory_thread : solicita
+    dory_channel ||--o{ dory_thread : contiene
+    dory_client ||--o{ dory_service_contract : celebra
+    dory_topic ||--o{ dory_thread : clasifica
+    dory_typology ||--o{ dory_thread : categoriza
+    dory_thread_status ||--o{ dory_thread : estado_actual
+    dory_employee ||--o{ dory_thread : consultor_asignado
+    dory_thread ||--o{ dory_charge : imputa_horas
+    dory_service_contract ||--o{ dory_charge : debita_de
+    dory_employee ||--o{ dory_charge : registra_horas
 
-    EMPRESA {
-        uuid id PK
-        string rif UK
-        string razon_social
-        string direccion
-        string telefono
-        string estado
-        datetime created_at
+    dory_client {
+        bigint dory_client_id PK
+        string value UK
+        string name
+        string discord_server_id
+        boolean isactive
     }
 
-    CONTRATO {
-        uuid id PK
-        uuid empresa_id FK
-        string codigo_contrato UK
-        decimal horas_mensuales
-        decimal tarifa_hora
-        date fecha_inicio
-        date fecha_fin
-        string estado
+    dory_channel {
+        bigint dory_channel_id PK
+        bigint dory_client_id FK
+        string name
+        string discord_channel_id UK
+        boolean isactive
     }
 
-    USUARIO {
-        uuid id PK
-        uuid empresa_id FK
-        string username UK
-        string email UK
-        string password_hash
-        string discord_user_id
-        string rol
-        boolean is_active
+    dory_employee {
+        bigint dory_employee_id PK
+        string name
+        string email
+        string discord_user_id UK
+        boolean isactive
     }
 
-    TICKET {
-        uuid id PK
-        uuid contrato_id FK
-        uuid creador_id FK
-        uuid consultor_id FK
-        string codigo_ticket UK
-        string titulo
-        text descripcion
-        string prioridad
-        string estado
-        string discord_thread_id
-        datetime fecha_apertura
-        datetime fecha_cierre
+    dory_thread {
+        bigint dory_thread_id PK
+        string thread_id UK
+        string thread_name
+        bigint dory_client_id FK
+        bigint dory_channel_id FK
+        bigint dory_topic_id FK
+        bigint dory_typology_id FK
+        bigint dory_thread_status_id FK
+        bigint dory_employee_id FK
+        string discord_thread_id UK
+        string erp_version
+        string is_internal_request
+        datetime closed_at
+        boolean isactive
     }
 
-    REGISTRO_HORAS {
-        uuid id PK
-        uuid ticket_id FK
-        uuid consultor_id FK
-        decimal horas_consumidas
-        text actividad_realizada
-        date fecha_labor
-        datetime created_at
+    dory_service_contract {
+        bigint dory_service_contract_id PK
+        bigint dory_client_id FK
+        string name
+        date start_date
+        date end_date
+        decimal total_hours
+        decimal price_per_hour
+        boolean isactive
     }
 
-    COMENTARIO_TICKET {
-        uuid id PK
-        uuid ticket_id FK
-        uuid autor_id FK
-        text mensaje
-        string origen
-        datetime created_at
+    dory_charge {
+        bigint dory_charge_id PK
+        bigint dory_thread_id FK
+        bigint dory_service_contract_id FK
+        bigint dory_employee_id FK
+        decimal hours_spent
+        date charge_date
+        text description
+        boolean isactive
     }
 ```
 
