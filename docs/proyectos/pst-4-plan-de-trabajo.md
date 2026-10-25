@@ -3,11 +3,6 @@
 **Meta:** Transformar el documento actual (heredado de PST III) en el informe real de **PST IV**, corrigiendo inconsistencias, redactando los componentes faltantes y completando las 5 Fases exigidas por el **Esquema Oficial PNFI 2018**.  
 **Fecha Límite Improrrogable:** **Viernes 30 de Octubre de 2026** (5 días de ejecución).  
 
-> [!NOTE]  
-> **Aclaratoria de Roles Operativos:**  
-> **Jesús Albujas** es el **Desarrollador Principal / Arquitecto de Software** del proyecto (responsable del desarrollo de `nexoint`, backend, integraciones y repositorios en GitHub). Por tanto, **está exento de la redacción del informe escrito**. Su función se limita a proveer los diagramas, APIs y datos técnicos ya estructurados en el repositorio.  
-> La redacción académica integral del informe queda distribuida entre los **6 integrantes** del equipo.
-
 ---
 
 ## 👥 Asignación Nominal de Redacción (6 Integrantes)
