@@ -4,7 +4,7 @@
 > **Institución:** Universidad Politécnica Territorial del Estado Portuguesa "Juan de Jesús Montilla" (UPTEP JJ Montilla)  
 > **Programa:** Programa Nacional de Formación en Informática (PNFI)  
 > **Organización Beneficiaria:** ERP Consultores y Asociados C.A.  
-> **Ecosistema Tecnológico:** `nexoint` | `discord_bot` (y `jarvis`) | `NexoInt` (Frontend en desarrollo)  
+> **Ecosistema Tecnológico:** NexoInt Web | Dory/Jarvis en Discord | Supabase | App móvil NexoInt (en desarrollo)
 > **Referencia Metodológica:** [Esquemas de PST 2018 - Trayecto IV](../esquemas-pst-2018.md#4-proyecto-socio-tecnológico-iv-trayecto-iv)
 
 ---
@@ -272,17 +272,25 @@ El sistema aplica una matriz de permisos por rol y ventana; las reglas de UI y l
 
 #### 3.2.4 Módulos Operativos y Estado de Implementación en NexoInt
 
-Para reflejar con precisión la evolución del sistema y su hoja de ruta técnica, a continuación se desglosan los módulos actuales y su estado de desarrollo:
+El estado distingue la base funcional observada del alcance de continuidad descrito en la propuesta de octubre de 2026. Que exista una pantalla o una función parcial no significa que el entregable propuesto esté terminado. La propuesta define trabajo por ciclos y prioridades; cada ampliación permanece en desarrollo hasta que se complete y valide.
 
-1. **Calendario (En desarrollo; RF-06 no listo):** el requerimiento contempla actividades, guardias, días festivos y cumpleaños según permisos. No se declara terminado hasta completar y validar el flujo integral.
-2. **Tickets y solicitudes internas (Implementado):** entidades, vistas y filtros diferenciados para casos de clientes e internos.
-3. **Paneles de soporte y actividad de consultores (Implementado / en evolución):** indicadores filtrables, detalle de casos y contribuciones GitHub basadas en repositorios configurados.
-4. **Reportes y releases (Implementado / en evolución):** formatos de impresión/exportación y consulta de cambios por rango, con detección de XML y exclusión de releases candidatos.
-5. **Conversaciones y API de Dory (Implementado):** consulta de mensajes y archivos desde Discord y operaciones autorizadas. No se requiere guardar transcripciones duplicadas en `dory_thread`.
-6. **Tokens y RBAC (Implementado):** administración de tokens de integración y permisos por ventana/acción.
-7. **NexoKube (En desarrollo activo):** existe consola web para clústeres y recursos Kubernetes. Las operaciones de edición, escala, reinicio y acceso a manifiestos deben verificarse contra la versión desplegada y los permisos por rol.
-8. **Acceso de compañías (En desarrollo):** grupos, incorporación de usuarios externos y aislamiento de información por organización aún requieren completar y validar.
-9. **Aplicación móvil (En desarrollo):** no se encontró un repositorio móvil entre los dos proyectos revisados; el alcance y el avance deben documentarse con el equipo antes de describir funciones concretas.
+| Área | Base disponible | Estado del alcance de continuidad de octubre de 2026 |
+|---|---|---|
+| **Calendario y guardias** | Hay elementos de calendario en la aplicación. | **En desarrollo; RF-06 no está listo.** Completar y validar actividades, guardias, feriados, cumpleaños, permisos e impresión. |
+| **Tickets y solicitudes internas** | NexoInt diferencia ambos tipos de caso y ofrece vistas/filtros. | **En desarrollo.** Consolidar campos, búsquedas, vistas y reportes para evitar mezclar ambos flujos e indicadores. |
+| **Panel mensual de soporte** | Hay indicadores, filtros y detalle de casos. | **En desarrollo continuo.** Completar la ampliación por período y criterios de análisis establecidos en la propuesta. |
+| **Reportes e impresión** | Existen formatos y exportación/impresión. | **En desarrollo.** Alinear resultados de pantalla, CSV/XLS/XLSX y PDF, conservar filtros y enlaces de navegación. |
+| **Dory: seguimiento y cierre** | El bot gestiona seguimientos y flujos de cierre. | **En desarrollo.** Mejorar contexto, identificación de la próxima acción, confirmaciones y prevención de mensajes repetidos o improcedentes. |
+| **Catálogos y políticas de atención** | NexoInt dispone de catálogos que consume el bot. | **En desarrollo.** Consolidar su administración y validar que Dory use los valores vigentes sin alterar decisiones asignadas al equipo. |
+| **Conversaciones y adjuntos** | La API permite consultar conversación de Discord. | **En desarrollo.** Completar y validar autores, fechas, respuestas, reacciones, embeds, adjuntos, rangos y exportación, sin duplicar el historial en la base de datos. |
+| **Tokens e integraciones** | Hay gestión de tokens y permisos por rol/ventana. | **En desarrollo.** Completar permisos diferenciados de lectura, exportación y escritura y verificar autorización en cada endpoint. |
+| **Jarvis: releases** | Hay automatización y generación de notas de releases. | **En desarrollo.** Mejorar trazabilidad entre ZK, Swing, Patch y bibliotecas; redactar notas funcionales sin duplicados y hacer recuperables las publicaciones fallidas. |
+| **NexoKube** | Existe una consola web para consultar recursos Kubernetes. | **En desarrollo activo.** Validar clústeres y recursos disponibles, salud, logs y acciones mutables bajo permisos explícitos por rol. |
+| **Acceso de compañías** | Existen grupos y registros de compañías/canales para uso interno. | **En desarrollo.** Construir ingreso de usuarios externos, asignación de acceso y aislamiento verificable por compañía y sucursal. |
+| **Aplicación móvil** | No se confirmó una aplicación móvil terminada en el material revisado. | **En desarrollo.** No atribuirle pantallas ni capacidades no confirmadas por el equipo. |
+| **Calidad, seguridad y rendimiento** | Se realizan correcciones y ajustes durante la evolución del sistema. | **Trabajo continuo/en desarrollo.** Reproducir y corregir errores; revisar consultas, rendimiento, reintentos, idempotencia, seguridad y observabilidad, documentando evidencia de validación. |
+
+La propuesta es una fuente de alcance, no evidencia de que una entrega ya se haya completado. Por eso, las capacidades base se describen como existentes y sus ampliaciones como trabajo en desarrollo, sin etiquetar el paquete completo como «implementado».
 
 **Fuera del alcance actual:** gestión de contratos de servicio, bolsas de horas, recibos/facturación y dispositivos de marcaje. El registro de tiempo consumido por caso se conserva como dato operativo, sin asociarlo a débitos contractuales.
 

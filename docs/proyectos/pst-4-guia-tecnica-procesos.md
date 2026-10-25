@@ -13,6 +13,8 @@ Documento de consulta para redactar los requerimientos, casos de uso y flujos t�
 | **Supabase (esquema `dory`)** | Identidad de la aplicación y persistencia de casos, catálogos, permisos, reportes y configuración. | El diccionario local es una referencia; tipos y políticas deben verificarse contra migraciones y ambiente vigente. |
 | **App móvil y acceso de compañías** | Líneas planificadas/en desarrollo. | No describirlas como entregadas ni inventar pantallas o funciones sin aprobación. |
 
+La propuesta de continuidad de octubre de 2026 define ampliaciones, no certifica entregas. Para documentar el estado, separar la base funcional ya disponible de las mejoras todavía en desarrollo y de las capacidades pendientes de validar en el despliegue.
+
 ## 2. Ciclo de vida de un ticket o solicitud interna
 
 1. El cliente o consultor inicia el caso en Discord mediante el flujo habilitado.
@@ -56,15 +58,23 @@ Referencia de proceso: [API de Dory: conversaciones y mensajes](./referencias-te
 5. La IA redacta un borrador funcional y enlaces relacionados. No debe agregar texto de relleno sobre “actualización de componente” ni atribuir cambios a una persona sin evidencia.
 6. La publicación en GitHub Actions registra el tag y el resultado real de los jobs de publicación; una notificación exitosa no sustituye validar que el artefacto fue publicado.
 
+La propuesta de octubre mantiene en desarrollo la trazabilidad de cambios heredados entre ZK, Swing, Patch y bibliotecas, la mejora de notas funcionales sin duplicados y la recuperación de publicaciones fallidas. La existencia del gestor de releases no significa que ese alcance completo esté terminado.
+
 Referencias: [proceso de releases de Jarvis](./referencias-tecnicas/jarvis-releases.md) y [uso de IA en Dory y Jarvis](./referencias-tecnicas/ia-dory-jarvis.md).
 
 ## 6. NexoInt: permisos, calendario, reportes e indicadores
 
 - **Permisos:** el rol determina acceso por ventana y acciones. La UI no debe ser la única barrera: las escrituras también requieren políticas/autorización de API. Requisitos y casos de uso deben documentar escenarios permitidos y denegados.
 - **Calendario — RF-06 en desarrollo:** el modelo contempla actividades, guardias, feriados y cumpleaños, pero el requerimiento completo todavía no está listo. No presentarlo como implementado ni asumir que todos esos flujos están disponibles hasta que el equipo termine y valide permisos, visibilidad y comportamiento.
-- **Indicadores:** el Panel de Soporte y Actividad de Consultores separan tickets de solicitudes internas y aplican filtros de compañía, canal, período, estado y consultor. El dato de consultor actual no reconstruye el histórico de asignaciones.
+- **Tickets e internas:** NexoInt ya dispone de separación básica. La consolidación de campos, vistas, búsquedas y reportes para impedir que se mezclen los seguimientos e indicadores es una ampliación en desarrollo según la propuesta.
+- **Indicadores:** el Panel de Soporte y Actividad de Consultores dispone de una base de filtros y detalle. La ampliación del análisis mensual y la consistencia de sus resultados quedan en desarrollo; el dato de consultor actual no reconstruye el histórico de asignaciones.
 - **Aportes GitHub:** se consultan solo para repositorios configurados. Son una dimensión complementaria de actividad, no una calificación automática de calidad individual.
-- **Reportes:** los filtros forman parte de la consulta y deben conservar su contexto al abrir un resultado o volver al reporte. Exportación/impresión debe respetar columnas, formato y enlaces disponibles.
+- **Reportes — ampliación en desarrollo:** la propuesta requiere que pantalla, CSV/XLS/XLSX y PDF mantengan columnas, filtros y enlaces coherentes. No presentar la exportación completa como terminada sin comprobar esos formatos.
+- **Conversaciones y adjuntos — ampliación en desarrollo:** la API ya permite consultar Discord; validar el alcance propuesto de autores, fechas, respuestas, reacciones, embeds, adjuntos, rangos y exportación JSON. No se duplica la transcripción en Supabase.
+- **Tokens — ampliación en desarrollo:** completar y validar permisos diferenciados para leer, exportar y escribir, además de autenticar y autorizar cada endpoint.
+- **Acceso de compañías — en desarrollo:** los registros de compañías/canales existentes sirven a la operación interna; el ingreso de usuarios externos y el aislamiento por compañía/sucursal no deben describirse como terminados.
+- **Aplicación móvil — en desarrollo:** no atribuir pantallas, plataformas ni funciones sin confirmación del equipo.
+- **Calidad, seguridad y rendimiento — trabajo continuo:** la propuesta incluye detección y corrección de errores, revisión de consultas/APIs, protección de reintentos e idempotencia, y diagnóstico de fallos. Registrar validaciones realizadas; no atribuir métricas o auditorías no ejecutadas.
 
 ## 7. Consola NexoKube
 
