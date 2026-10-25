@@ -310,6 +310,28 @@ El sistema abandona los roles estáticos cableados en código y adopta una matri
   - `can_export`: Descarga de reportes en Excel / PDF.
   - `only_own_records`: Restricción estricta de visibilidad exclusivamente a los registros creados o asignados al usuario actual.
 
+#### 3.2.4 Módulos Operativos y Estado de Implementación en NexoInt
+
+Para reflejar con precisión la evolución del sistema y su hoja de ruta técnica, a continuación se desglosan los módulos actuales y su estado de desarrollo:
+
+1. **Gestión de Calendario y Guardias de Soporte (En Desarrollo):**
+   - Módulo en español para coordinar turnos de guardia, asignaciones técnicas por rango de fechas, colores por tipo de actividad y prevención algorítmica de guardias superpuestas. Incluye aviso automático al consultor asignado e historial imprimible.
+2. **Separación de Tickets y Solicitudes Internas (Implementado / En Consolidación):**
+   - Espacio segregado para requerimientos internos (`is_internal_request = 'Y'`) y tickets de clientes corporativos, garantizando que los SLAs y métricas externas no se contaminen.
+3. **Panel Mensual de Soporte y Analítica (Implementado):**
+   - Vista por período, compañía, canal de atención, consultor y estado. Gráficos interactivos, cálculo de horas consumidas y enlace bidireccional directo al hilo en Discord.
+4. **Exportación e Impresión de Reportes (Implementado):**
+   - Descarga de tablas y reportes en formatos CSV, XLS, XLSX y generación de resúmenes en PDF conservando los filtros aplicados en pantalla.
+5. **Consulta de Versiones y Descarga de XMLs de Migración (Implementado):**
+   - Módulo para inspeccionar notas de versión acumuladas por rango de releases (ZK y Swing), detección de scripts XML de migración de base de datos aplicables y empaquetado automático en ZIP.
+6. **Visor Integral de Conversaciones y Adjuntos (Implementado):**
+   - Integración directa con el API de Dory para leer el historial completo de mensajes, adjuntos, reacciones y embeds en tiempo real desde Discord sin sobrecargar la base de datos local.
+7. **Gestión de Tokens de Integración Dory API (Implementado):**
+   - Emisión, rotación y revocación de tokens personales (`dory_pat_...`) con alcances diferenciados (`tickets:read`, `tickets:export`, `tickets:write`).
+8. **Módulo de Acceso de Compañías y Estructura Organizativa (En Desarrollo):**
+   - *Estado:* En fase activa de modelado e implementación.
+   - *Alcance:* Jerarquización de grupos empresariales y sucursales (canales), alta de usuarios externos vinculados exclusivamente a su organización, y políticas estrictas de privacidad y aislamiento de datos multitenant para impedir que una empresa acceda a la información de otra.
+
 ---
 
 ### 3.3 Pilar 2: `discord_bot` y `jarvis` (Automatización Inteligente y Soporte Cognitivo)
@@ -317,9 +339,16 @@ El sistema abandona los roles estáticos cableados en código y adopta una matri
 Este componente conforma el **subsistema conversacional y de automatización inteligente**, brindando una interfaz ágil en tiempo real para clientes y consultores conectada a la API de **Jarvis** (`http://app-server-4.erpcya.com:3000/api`).
 
 #### 3.3.1 Orquestador de Inteligencia Artificial `jarvis`:
-- **Generación Automatizada de Notas de Versión (*Release Notes*):** Orquestación de releases de software (`dory_jarvis_release_run`) analizando commits y PRs con plantillas estructuradas de prompt para repositorios Swing y ZK.
-- **Asistencia Cognitiva en Casos de Soporte:** Sugiere diagnósticos y categorización de incidencias mediante embeddings y clasificación NLP.
-- **Monitoreo de Políticas de Seguimiento (`dory_follow_up_policy`):** Alertas preventivas cuando un caso de soporte permanece inactivo sin respuesta de consultor.
+- **Generación Automatizada de Notas de Versión (*Release Notes*):** Orquestación de releases de software (`dory_jarvis_release_run`) analizando commits y PRs con plantillas estructuradas de prompt para repositorios Swing y ZK, explicando beneficios en español y detectando scripts XML de migración aplicables sin duplicar metadatos internos.
+- **Trazabilidad de Cambios entre Proyectos:** Análisis secuencial de dependencias (ZK, Swing, Patch) para reflejar los cambios heredados efectivos entregados al cliente.
+- **Asistencia Cognitiva y Seguimientos Contextuales:**
+  - El bot analiza el historial de la conversación antes de redactar nudges (*Idle Nudges*). Identifica a quién le toca responder (cliente vs. consultor), pide datos concretos si faltan y guarda silencio cuando no existe una acción constructiva requerida.
+  - Análisis contextual de compromisos de tiempo y fechas límites en el chat.
+- **Detección Automática de Cierres de Tickets:**
+  - Identificación de intenciones de cierre o solución confirmada por el usuario, marcando el caso como pendiente de cierre y notificando al rol responsable sin saturar el canal.
+- **Monitoreo de Políticas de Seguimiento (`dory_follow_up_policy`):**
+  - Consulta en tiempo real de políticas y catálogos de estado definidos en NexoInt para asegurar que el bot no altere campos sin supervisión humana.
+  - Alertas escalonadas (L1 y L2) exclusivamente en días y horas hábiles de **Caracas (UTC-4: 08:00 AM - 05:00 PM)**.
 
 ```mermaid
 flowchart LR
@@ -446,21 +475,24 @@ Para gestionar estos casos sin distorsionar las métricas de atención a cliente
 
 ---
 
-### 3.4 Pilar 3: `NexoInt` (Cliente Web y Móvil Multiplataforma - En Desarrollo)
+### 3.4 Pilar 3: `NexoInt Mobile` (Aplicación Móvil Multiplataforma — En Desarrollo)
 
-`NexoInt` es la interfaz gráfica moderna para usuarios finales, clientes corporativos y administradores, diseñada para complementar y expandir los canales de chat.
+La aplicación móvil de NexoInt constituye la extensión nativa y reactiva (iOS y Android) para clientes corporativos y consultores en movilidad, diseñada para ofrecer autoservicio y seguimiento de guardia sin depender de una estación de trabajo de escritorio.
 
-#### Módulos de `NexoInt`:
-1. **Portal de Autoservicio del Cliente:**
-   - Visualización de incidencias activas e históricas con línea de tiempo (*timeline*) de actividades.
-   - Gráfico de barras y dona con el consumo mensual de horas frente al total contratado.
-   - Creación de tickets con adjuntos multimedia y solicitud de ampliación de horas.
-2. **Panel de Control del Consultor:**
-   - Bandeja Kanban de tareas y tickets asignados (To Do, In Progress, In Review, Done).
-   - Temporizador de trabajo (*timer*) para imputación precisa de tiempo de soporte.
-3. **Consola de Administración y Gerencia:**
-   - Métricas en tiempo real de rendimiento del equipo, tiempos de primera respuesta y satisfacción de clientes.
-   - Administración de empresas clientes, contratos y tarifas.
+> [!NOTE]
+> **Estado de Madurez:** Actualmente **En Desarrollo Activo**. Los módulos descritos a continuación representan los entregables de la fase móvil en curso:
+
+#### Módulos Proyectados en la App Móvil:
+1. **Portal de Autoservicio del Cliente (Móvil):**
+   - Visualización ágil de incidencias activas e históricas con línea de tiempo (*timeline*) simplificada.
+   - Gráfico de dona y barras con el consumo mensual de horas frente a la bolsa contratada.
+   - Creación rápida de tickets con captura y adjunto de fotografías directas desde la cámara del dispositivo móvil.
+2. **Panel de Guardia y Consultor en Movilidad:**
+   - Consulta del calendario personal de turnos de guardia y alertas de soporte push en tiempo real.
+   - Bandeja simplificada de tickets asignados (To Do, In Progress, In Review, Done).
+   - Temporizador de trabajo (*timer*) móvil para imputación de tiempo en sesiones remotas o visitas en sitio.
+3. **Aislamiento Multitenant en Dispositivos:**
+   - La app móvil consumirá los endpoints autenticados de NexoInt aplicando los mismos filtros de privacidad estricta por compañía para asegurar que ningún usuario externo visualice tickets de otras organizaciones.
 
 ---
 
