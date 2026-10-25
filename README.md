@@ -27,7 +27,7 @@
 
 **Control PST** es el repositorio central que consolida la infraestructura técnica, el despliegue de microservicios contenerizados y la memoria histórica de los **Proyectos Socio Tecnológicos (PST I, II, III y IV)** desarrollados a lo largo del Programa Nacional de Formación en Informática (PNFI).
 
-El proyecto integra soluciones de gestión empresarial (ERP), automatización con bots de soporte interactivo, analítica de datos en tiempo real y la nueva arquitectura modular orientada a microservicios e inteligencia aplicada (`nexoint`, `discord_bot`/`jarvis` y `la app`).
+El proyecto integra soluciones de gestión empresarial (ERP), automatización con bots de soporte interactivo, analítica de datos en tiempo real y la nueva arquitectura modular orientada a microservicios e inteligencia aplicada (`nexoint`, `discord_bot`/`jarvis` y `NexoInt`).
 
 ---
 
@@ -43,7 +43,7 @@ Toda la documentación técnica, esquemas normativos del PNFI y desgloses por tr
 | 🏫 **Trayecto I (PST I)** | [**Ver Proyecto**](./docs/proyectos/pst-1.md) | Alfabetización y soporte técnico en Software Libre (U.E.C. Fe y Alegría). |
 | 🏢 **Trayecto II (PST II)** | [**Ver Proyecto**](./docs/proyectos/pst-2.md) | Implementación de módulo de Activos Fijos en ADempiere ERP (ERP Consultores C.A.). |
 | 🌐 **Trayecto III (PST III)** | [**Ver Proyecto**](./docs/proyectos/pst-3.md) | Sistema Web de Servicios, Bot Dory (Discord) y Superset BI (ERP Consultores C.A.). |
-| 🚀 **Trayecto IV (PST IV - Actual)** | [**Ver Arquitectura**](./docs/proyectos/pst-4-arquitectura.md) | Nueva arquitectura: `nexoint` (API Core), `discord_bot` (`jarvis`) y `la app`. |
+| 🚀 **Trayecto IV (PST IV - Actual)** | [**Ver Arquitectura**](./docs/proyectos/pst-4-arquitectura.md) | Nueva arquitectura: `nexoint` (API Core), `discord_bot` (`jarvis`) y `NexoInt`. |
 | 🗄️ **Modelo de Base de Datos Relacional** | [**Ver Modelo de BD**](./docs/database/README.md) | Esquema `dory` en Supabase (PostgreSQL 16), diagramas ER, RBAC y diccionario. |
 
 ---
@@ -76,7 +76,7 @@ flowchart LR
 
     subgraph T4["Trayecto IV (Actual)"]
         D1["nexoint (Core API Gateway)"] <--> D2["discord_bot & jarvis (IA)"]
-        D1 <--> D3["la app (Web / Mobile Client)"]
+        D1 <--> D3["NexoInt (Web / Mobile Client)"]
     end
 
     T1 --> T2 --> T3 --> T4

@@ -37,7 +37,7 @@ timeline
     section Trayecto IV (Actual)
       ERP Consultores C.A. : Ecosistema nexoint
                            : discord_bot & jarvis (IA)
-                           : la app (Web / Mobile)
+                           : NexoInt (Web / Mobile)
 ```
 
 ---
@@ -56,7 +56,7 @@ docs/
     ├── pst-1.md                  <- Trayecto I: Alfabetización y Soporte en Fe y Alegría
     ├── pst-2.md                  <- Trayecto II: ADempiere ERP Activos Fijos
     ├── pst-3.md                  <- Trayecto III: Sistema Web, Bot Dory y Superset BI
-    ├── pst-4-arquitectura.md     <- Trayecto IV: nexoint, discord_bot (jarvis) y la app
+    ├── pst-4-arquitectura.md     <- Trayecto IV: nexoint, discord_bot (jarvis) y NexoInt
     └── pst-4-plan-de-trabajo.md  <- Trayecto IV: Plan de Trabajo y Cronograma de Urgencia (Equipo)
 ```
 
@@ -85,7 +85,7 @@ docs/
    - **Alcance:** Nueva Arquitectura Modular y Distribuida desglosada en:
      - **`nexoint`**: API Gateway, Core Backend, gestión de contratos, tarifas, tickets y reglas de negocio.
      - **`discord_bot` (y `jarvis`)**: Agentes conversacionales y asistente de automatización cognitiva e integración en tiempo real.
-     - **`la app` (en desarrollo)**: Aplicación frontend web y móvil para autoservicio de clientes y control operativo.
+     - **`NexoInt` (en desarrollo)**: Aplicación frontend web y móvil para autoservicio de clientes y control operativo.
    - **Alineación:** Fase I (Modelo de Negocio, Procesos, Casos de Uso del Negocio), Fase II (Microservicios, Diagramas C4/UML/ER), Fase III (Pruebas y Auditoría), Fase IV (Topología de Red y Riesgos) y Fase V (Manuales y Políticas de Seguridad).
 
 ---

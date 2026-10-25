@@ -4,7 +4,7 @@
 > **Institución:** Universidad Politécnica Territorial del Estado Portuguesa "Juan de Jesús Montilla" (UPTEP JJ Montilla)  
 > **Programa:** Programa Nacional de Formación en Informática (PNFI)  
 > **Organización Beneficiaria:** ERP Consultores y Asociados C.A.  
-> **Ecosistema Tecnológico:** `nexoint` | `discord_bot` (y `jarvis`) | `la app` (Frontend en desarrollo)  
+> **Ecosistema Tecnológico:** `nexoint` | `discord_bot` (y `jarvis`) | `NexoInt` (Frontend en desarrollo)  
 > **Referencia Metodológica:** [Esquemas de PST 2018 - Trayecto IV](../esquemas-pst-2018.md#4-proyecto-socio-tecnológico-iv-trayecto-iv)
 
 ---
@@ -24,7 +24,7 @@
     - [3.1 Visión Arquitectónica General](#31-visión-arquitectónica-general)
     - [3.2 Pilar 1: `nexoint` (Core Backend \& Integration Gateway)](#32-pilar-1-nexoint-core-backend--integration-gateway)
     - [3.3 Pilar 2: `discord_bot` y `jarvis` (Automatización Inteligente y Soporte Cognitivo)](#33-pilar-2-discord_bot-y-jarvis-automatización-inteligente-y-soporte-cognitivo)
-    - [3.4 Pilar 3: `la app` (Cliente Web y Móvil Multiplataforma - En Desarrollo)](#34-pilar-3-la-app-cliente-web-y-móvil-multiplataforma---en-desarrollo)
+    - [3.4 Pilar 3: `NexoInt` (Cliente Web y Móvil Multiplataforma - En Desarrollo)](#34-pilar-3-la-app-cliente-web-y-móvil-multiplataforma---en-desarrollo)
     - [3.5 Diagrama de Interacción y Flujo de Datos Global](#35-diagrama-de-interacción-y-flujo-de-datos-global)
     - [3.6 Diagrama de Componentes y Despliegue](#36-diagrama-de-componentes-y-despliegue)
     - [3.7 Modelo de Datos Relacional y Esquema de Entidades](#37-modelo-de-datos-relacional-y-esquema-de-entidades)
@@ -50,7 +50,7 @@ flowchart TD
     subgraph sub_Ecosistema_PST_IV ["Ecosistema PST IV"]
         A["1. nexoint<br>Core Backend, API Gateway, Hub de Integración y Reglas de Negocio"]
         B["2. discord_bot & jarvis<br>Agentes Conversacionales, Asistencia Cognitiva y Automatización en Tiempo Real"]
-        C["3. la app (En Desarrollo)<br>Frontend Web y Móvil Reactivo para Autoservicio y Gestión de Clientes"]
+        C["3. NexoInt (En Desarrollo)<br>Frontend Web y Móvil Reactivo para Autoservicio y Gestión de Clientes"]
     end
 
     B <-->|REST API / WebSockets / JWT| A
@@ -68,7 +68,7 @@ flowchart TD
 - **Diagnóstico Técnico-Operativo:** Tras los avances logrados en los trayectos anteriores (PST II: Activos Fijos y PST III: Sistema SGI / Bot Dory inicial), la empresa experimentó una expansión en su volumen de clientes. Esto evidenció la necesidad de:
   1. Centralizar la lógica transaccional y de autenticación en una plataforma unificada (`nexoint`).
   2. Integrar inteligencia y flujos automáticos más robustos mediante agentes inteligentes (`jarvis` y `discord_bot`).
-  3. Proveer a los clientes de una aplicación moderna (`la app`) con interfaces intuitivas accesibles desde navegadores y dispositivos móviles.
+  3. Proveer a los clientes de una aplicación moderna (`NexoInt`) con interfaces intuitivas accesibles desde navegadores y dispositivos móviles.
 
 ### 2.2 Modelo de Negocio y Reglas Operativas de ERP Consultores y Asociados C.A.
 
@@ -78,7 +78,7 @@ El modelo de negocio de la empresa se sustenta en la prestación de servicios de
 | :--- | :--- |
 | **Propuesta de Valor** | Plataforma integral de gestión de servicios con soporte reactivo y proactivo asistido por IA, visibilidad 24/7 de horas consumidas y SLAs garantizados. |
 | **Segmento de Clientes** | Empresas medianas y grandes que utilizan sistemas ERP (ADempiere, Odoo u homólogos) y requieren mantenimiento, consultoría y soporte especializado. |
-| **Canales de Interacción** | • `discord_bot`: Canal ágil de soporte técnico y chats dedicados por cliente.<br>• `la app`: Portal web y móvil para autoservicio, dashboard financiero y ticketing.<br>• `jarvis`: Asistencia proactiva interna para el equipo de consultores. |
+| **Canales de Interacción** | • `discord_bot`: Canal ágil de soporte técnico y chats dedicados por cliente.<br>• `NexoInt`: Portal web y móvil para autoservicio, dashboard financiero y ticketing.<br>• `jarvis`: Asistencia proactiva interna para el equipo de consultores. |
 | **Relación con Clientes** | Automatizada y personalizada, con trazabilidad milimétrica de casos, tiempos de respuesta y reportes de desempeño. |
 | **Fuentes de Ingresos** | Venta de planes mensuales de soporte técnico, horas de consultoría certificada, desarrollo de extensiones ERP e implementaciones. |
 | **Actividades Clave** | Desarrollo continuo de microservicios, soporte técnico nivel 1, 2 y 3, monitoreo de infraestructura, análisis de datos de servicio. |
@@ -218,7 +218,7 @@ La arquitectura del ecosistema PST IV se fundamenta en un patrón **Modular / Mi
 ```mermaid
 graph TB
     subgraph sub_Clientes_y_Consumidores ["Clientes y Consumidores"]
-        APP["📱 la app (Frontend Web / Mobile)<br>React / Flutter / Next.js"]
+        APP["📱 NexoInt (Frontend Web / Mobile)<br>React / Flutter / Next.js"]
         DISC["💬 Discord Client / Canales de Soporte<br>Comunidad y Clientes"]
         EXT["🌐 Servicios Externos / Webhooks ERP"]
     end
@@ -446,11 +446,11 @@ Para gestionar estos casos sin distorsionar las métricas de atención a cliente
 
 ---
 
-### 3.4 Pilar 3: `la app` (Cliente Web y Móvil Multiplataforma - En Desarrollo)
+### 3.4 Pilar 3: `NexoInt` (Cliente Web y Móvil Multiplataforma - En Desarrollo)
 
-`la app` es la interfaz gráfica moderna para usuarios finales, clientes corporativos y administradores, diseñada para complementar y expandir los canales de chat.
+`NexoInt` es la interfaz gráfica moderna para usuarios finales, clientes corporativos y administradores, diseñada para complementar y expandir los canales de chat.
 
-#### Módulos de `la app`:
+#### Módulos de `NexoInt`:
 1. **Portal de Autoservicio del Cliente:**
    - Visualización de incidencias activas e históricas con línea de tiempo (*timeline*) de actividades.
    - Gráfico de barras y dona con el consumo mensual de horas frente al total contratado.
@@ -469,7 +469,7 @@ Para gestionar estos casos sin distorsionar las métricas de atención a cliente
 ```mermaid
 flowchart TD
     subgraph sub_FRONTENDS_CANALES ["FRONTENDS & CANALES"]
-        A1["Cliente en Móvil/Web - La App"]
+        A1["Cliente en Móvil/Web - NexoInt"]
         A2["Cliente en Servidor de Discord"]
         A3["Consultor en Consola Web"]
     end
@@ -655,7 +655,7 @@ erDiagram
 | Nivel de Prueba | Alcance y Herramientas | Criterio de Éxito |
 | :--- | :--- | :--- |
 | **Pruebas Unitarias** | Validación de funciones de negocio de `nexoint`, cálculo de horas y endpoints individuales con `pytest` / `jest`. | Cobertura de código superior al 85%. |
-| **Pruebas de Integración** | Simulación del ciclo completo: Mensaje en Discord -> `discord_bot` -> `nexoint` -> PostgreSQL -> Actualización en `la app`. | 100% de coherencia en estados y persistencia sin pérdidas de datos. |
+| **Pruebas de Integración** | Simulación del ciclo completo: Mensaje en Discord -> `discord_bot` -> `nexoint` -> PostgreSQL -> Actualización en `NexoInt`. | 100% de coherencia en estados y persistencia sin pérdidas de datos. |
 | **Pruebas de Carga y Rendimiento** | Pruebas de estrés a la API de `nexoint` simulando 500 solicitudes concurrentes con `Locust` o `K6`. | Tiempo de respuesta p95 < 250 ms con 0% de errores HTTP 5xx. |
 | **Pruebas de Aceptación (UAT)** | Validación directa con el personal de ERP Consultores y Asociados C.A. y clientes de prueba. | Firma de conformidad y usabilidad satisfactoria. |
 
@@ -708,7 +708,7 @@ flowchart LR
 
 | Factor de Riesgo | Tipo | Nivel | Estrategia de Mitigación / Plan de Contingencia |
 | :--- | :--- | :---: | :--- |
-| **Caídas en API de Discord** | Tecnológico / Externo | Medio | `la app` opera de forma autónoma con su propio chat y sistema de tickets directo con `nexoint`. |
+| **Caídas en API de Discord** | Tecnológico / Externo | Medio | `NexoInt` opera de forma autónoma con su propio chat y sistema de tickets directo con `nexoint`. |
 | **Pérdida de Fluido Eléctrico / Red Local** | Operativo / Físico | Alto | Despliegue de los servicios en Servidor Privado Virtual (VPS en la nube) con alta disponibilidad y UPS en sucursales locales. |
 | **Filtración de Datos de Contratos** | Seguridad / Legal | Crítico | Cifrado de datos en reposo y en tránsito (TLS 1.3), tokens firmados con claves asimétricas y auditoría de eventos. |
 | **Resistencia al Cambio de Usuarios** | Social / Humano | Bajo | Jornadas de capacitación programadas y diseño centrado en la experiencia de usuario (UI/UX) simplificada. |
@@ -719,7 +719,7 @@ flowchart LR
 ## 6. Fase V: Estructura de Manuales y Políticas de Seguridad
 
 De acuerdo con el esquema oficial de PST IV, el informe final debe incorporar:
-1. **Manual de Usuario:** Guía ilustrada para clientes (uso de `la app` y comandos de Discord) y consultores (atención, registro de horas).
+1. **Manual de Usuario:** Guía ilustrada para clientes (uso de `NexoInt` y comandos de Discord) y consultores (atención, registro de horas).
 2. **Manual de Sistemas:** Documentación técnica de arquitectura, endpoints Swagger/OpenAPI, diagramas E/R y contratos de microservicios.
 3. **Manual de Instalación:** Instrucciones paso a paso para desplegar el ecosistema mediante Docker Compose (`docker compose up -d`) y variables de entorno `.env`.
 4. **Manual de Normas y Procedimientos:** Procedimientos operativos estandarizados para alta de clientes, cierre de mes contable y resolución de incidencias.
@@ -771,12 +771,12 @@ flowchart TD
 ---
 
 #### 📝 Fase II: Requerimientos, Diseño y Desarrollo del Software
-- **Qué tienen listo como base:** La arquitectura modular (`nexoint`, `discord_bot`/`jarvis`, `la app`), los esquemas de bases de datos `dory`, el flujo de eventos, la seguridad OWASP/NIST y los logins externos.
+- **Qué tienen listo como base:** La arquitectura modular (`nexoint`, `discord_bot`/`jarvis`, `NexoInt`), los esquemas de bases de datos `dory`, el flujo de eventos, la seguridad OWASP/NIST y los logins externos.
 - **Qué debe redactar el equipo:**
   1. *Plantillas de Requerimientos Funcionales y No Funcionales:* Llenar cada ficha oficial del PNFI (ID, Nombre, Descripción detallada, Prioridad, Actor) para los módulos de Tickets, Contratos, Imputación de Horas, Seguridad y Releases.
   2. *Plantillas de Casos de Uso del Software (CUS):* Elaborar las planillas de especificación de casos de uso maestros (Gestión de Clientes, Contratos, Usuarios) y transaccionales (Apertura de Ticket por Discord, Imputación de Horas, Ejecución de Release con Jarvis).
   3. *Justificación Metodológica:* Redactar la justificación del uso de la metodología **MeRinde** combinada con prácticas ágiles y el estándar de calidad **RECLAMO**.
-  4. *Interfaces de Usuario:* Adjuntar capturas de pantalla de los formularios de `nexoint` y maquetas de `la app` con sus descripciones funcionales.
+  4. *Interfaces de Usuario:* Adjuntar capturas de pantalla de los formularios de `nexoint` y maquetas de `NexoInt` con sus descripciones funcionales.
 
 ---
 

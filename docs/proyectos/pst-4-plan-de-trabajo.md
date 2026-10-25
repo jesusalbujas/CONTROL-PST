@@ -67,7 +67,7 @@ Para avanzar de forma organizada y sin cuellos de botella, las tareas se dividen
 #### 👤 5. José Zúñiga (Ingeniería Técnica, Arquitectura y Modelo de Datos)
 * **Responsabilidad Principal:** Diagramas UML, modelo relacional y diseño técnico.
 * **Tareas a Ejecutar:**
-  1. **Arquitectura del Software (3 Pilares):** Describir `nexoint`, `discord_bot`/`jarvis` y `la app`.
+  1. **Arquitectura del Software (3 Pilares):** Describir `nexoint`, `discord_bot`/`jarvis` y `NexoInt`.
      - 📖 *¿Dónde consultar la información?* Ver [Sección 3.1 y 3.2 de pst-4-arquitectura.md](./pst-4-arquitectura.md#31-visión-arquitectónica-general).
   2. **Modelo E/R y Diccionario de Datos:** Transcribir el modelo del esquema `dory` (PostgreSQL 16 en Supabase) y la tabla de entidades.
      - 📖 *¿Dónde consultar la información?* Ver [Diccionario de Datos en database/README.md](../database/README.md).
