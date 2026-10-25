@@ -2,7 +2,7 @@
 
 > **Motor de Base de Datos:** PostgreSQL 16 (Alojado en Supabase BaaS)  
 > **Esquema Principal:** `dory`  
-> **Integración:** NexoInt Core Backend, Jarvis AI Engine & Discord Bot  
+> **Consumidores:** NexoInt Web, `discord_bot` (Dory/Jarvis) y los servicios externos configurados
 > **Convención y Estándar:** Compatible con iDempiere / ADempiere (`isactive`, nomenclatura snake_case, auditoría granular)  
 > **Enlace al Proyecto:** [PST IV Arquitectura](../proyectos/pst-4-arquitectura.md)
 
@@ -16,16 +16,13 @@
   - [2. Diagramas Entidad-Relación por Dominios](#2-diagramas-entidad-relación-por-dominios)
     - [2.1 Dominio 1: Seguridad, Identidad y Control de Acceso (RBAC)](#21-dominio-1-seguridad-identidad-y-control-de-acceso-rbac)
     - [2.2 Dominio 2: Mesa de Ayuda, Hilos y Gestión de Tickets](#22-dominio-2-mesa-de-ayuda-hilos-y-gestión-de-tickets)
-    - [2.3 Dominio 3: Contratos de Servicio, Bolsas de Horas y Facturación](#23-dominio-3-contratos-de-servicio-bolsas-de-horas-y-facturación)
+    - [2.3 Dominio 3: Esquema comercial legado (fuera del alcance vigente)](#23-dominio-3-esquema-comercial-legado-fuera-del-alcance-vigente)
     - [2.4 Dominio 4: Release Management, Repositorios e Integración con Jarvis AI](#24-dominio-4-release-management-repositorios-e-integración-con-jarvis-ai)
     - [2.5 Dominio 5: Motor de Reportes Dinámicos y Formatos de Impresión](#25-dominio-5-motor-de-reportes-dinámicos-y-formatos-de-impresión)
-  - [3. Diccionario de Datos Completo (Tablas y Atributos)](#3-diccionario-de-datos-completo-tablas-y-atributos)
+  - [3. Diccionario de Datos disponible (fichas por validar)](#3-diccionario-de-datos-disponible-fichas-por-validar)
     - [3.1 Tablas de Seguridad y Usuarios](#31-tablas-de-seguridad-y-usuarios)
     - [3.2 Tablas de Organización y Clientes](#32-tablas-de-organización-y-clientes)
     - [3.3 Tablas de Tickets y Operaciones de Soporte](#33-tablas-de-tickets-y-operaciones-de-soporte)
-    - [3.4 Tablas Comerciales y de Facturación](#34-tablas-comerciales-y-de-facturación)
-    - [3.5 Tablas de Release Management y Jarvis AI](#35-tablas-de-release-management-y-jarvis-ai)
-    - [3.6 Tablas de Reportes y Print Formats](#36-tablas-de-reportes-y-print-formats)
   - [4. Funciones RPC y Procedimientos Almacenados Clave](#4-funciones-rpc-y-procedimientos-almacenados-clave)
   - [5. Políticas de Seguridad RLS y Aislamiento de Esquema](#5-políticas-de-seguridad-rls-y-aislamiento-de-esquema)
 
@@ -33,14 +30,16 @@
 
 ## 1. Visión General y Dominios del Modelo
 
-El modelo de datos de **NexoInt** está encapsulado dentro del esquema PostgreSQL `dory` en Supabase. Cuenta con **61 migraciones estructuradas** y agrupa más de 25 entidades relacionales diseñadas para alta concurrencia, auditoría exhaustiva y soporte de operaciones en tiempo real.
+Este documento es un inventario técnico del esquema `dory` de Supabase, no una declaración de que cada tabla sea parte del alcance funcional vigente. Los diagramas y atributos deben contrastarse con las migraciones y el esquema desplegado antes de usarse como contrato. NexoInt Web consume Supabase Auth/PostgREST y la API de Dory; no se presupone un backend propio de NexoInt.
+
+> **Alcance PST IV:** los objetos de contratos de servicio, bolsas de horas, cargos comerciales y recibos se conservan aquí únicamente como inventario de esquema legado. La gestión de contratos, débitos de bolsas y facturación no forma parte de los requisitos ni entregables actuales. El tiempo consumido en un ticket es un dato operativo y no implica imputación contractual.
 
 ```mermaid
 flowchart TD
     subgraph sub_Ecosistema_de_Datos_NexoInt ["Ecosistema de Datos NexoInt"]
         D1["Dominio 1: Seguridad & RBAC"]
         D2["Dominio 2: Helpdesk & Discord Threads"]
-        D3["Dominio 3: Contratos & Facturación"]
+        D3["Dominio 3: Esquema comercial legado (fuera de alcance)"]
         D4["Dominio 4: Jarvis AI & Releases"]
         D5["Dominio 5: Dynamic Reports & Print"]
     end
@@ -139,24 +138,32 @@ erDiagram
     DORY_THREAD_STATUS ||--o{ DORY_THREAD : estado_actual
     DORY_PENDING_ON ||--o{ DORY_THREAD : bloqueado_por
     DORY_EMPLOYEE ||--o{ DORY_THREAD : consultor_principal
-    DORY_THREAD ||--o{ DORY_MESSAGE : contiene_mensajes
 
     DORY_THREAD {
         bigint dory_thread_id PK
-        string thread_id UK
-        string thread_name
+        string value
+        string title
         bigint dory_client_id FK
         bigint dory_channel_id FK
         bigint dory_topic_id FK
         bigint dory_typology_id FK
         bigint dory_thread_status_id FK
         bigint dory_pending_on_id FK
-        bigint dory_employee_id FK
+        bigint assigned_employee_id FK
+        bigint created_by_user_id FK
+        bigint closed_by_user_id FK
         string discord_thread_id
-        string erp_version
+        string affected_erp_version
+        string thread_status
         string is_internal_request
+        datetime created_at
         datetime first_erp_response_at
-        datetime closed_at
+        datetime date_finish
+        integer consumed_hours
+        integer consumed_minutes
+        boolean is_ready_to_close
+        string github_issue_url
+        string url
         boolean isactive
     }
 
@@ -165,7 +172,7 @@ erDiagram
         string value UK
         string name
         string description
-        string discord_server_id
+        string discord_id
         boolean isactive
     }
 
@@ -187,7 +194,9 @@ erDiagram
 
 ---
 
-### 2.3 Dominio 3: Contratos de Servicio, Bolsas de Horas y Facturación
+### 2.3 Dominio 3: Esquema comercial legado (fuera del alcance vigente)
+
+> Las siguientes relaciones se documentan para reconocer estructuras que permanecen en la base. No se consideran funcionalidades activas del PST IV ni se deben redactar como requisitos de desarrollo.
 
 ```mermaid
 erDiagram
@@ -306,7 +315,7 @@ erDiagram
 
 ---
 
-## 3. Diccionario de Datos Completo (Tablas y Atributos)
+## 3. Diccionario de Datos disponible (fichas por validar)
 
 ### 3.1 Tablas de Seguridad y Usuarios
 
@@ -349,19 +358,16 @@ erDiagram
 ### 3.2 Tablas de Organización y Clientes
 
 > [!NOTE]
-> **Regla de Integración con Discord (`allowCreate: false` en NexoInt):**  
-> Las empresas clientes (`dory_client`) y sus sucursales / canales de atención (`dory_channel`) **no se crean manualmente en la interfaz de NexoInt**. Se sincronizan de forma transparente desde el árbol de Discord:
-> - **Categoría de Discord** = Registro en `dory_client` (ejemplo: `NATULAC`).
-> - **Canal de Texto de Discord** = Registro en `dory_channel` (ejemplo: `maros-atencion`, `inalcon-atencion`, `anros-atencion`).
+> **Relación con Discord:** NexoInt permite administrar compañías y canales según los permisos del rol. La asociación debe basarse en `discord_id` cuando exista, no en el nombre visible; editar nombres no debe romper el vínculo. El guardado también depende de las políticas RLS/API del ambiente. No se debe asumir que Discord crea o sincroniza todos estos registros automáticamente.
 
 #### `dory.dory_client`
 | Columna | Tipo | Nulo | Descripción |
 | :--- | :--- | :---: | :--- |
 | `dory_client_id` | `bigint` | NO | Clave Primaria |
 | `value` | `text` | NO | Código o identificador fiscal (RIF) |
-| `name` | `text` | NO | Razón social de la empresa cliente (derivada de la categoría de Discord) |
+| `name` | `text` | NO | Razón social visible de la compañía |
 | `description` | `text` | SÍ | Información de contacto y notas |
-| `discord_server_id`| `text`| SÍ | ID del servidor de Discord asignado |
+| `discord_id`| `text`| SÍ | ID de Discord para mantener el vínculo independiente del nombre |
 | `isactive` | `boolean`| NO | Estado de cliente activo/inactivo |
 
 #### `dory.dory_channel`
@@ -370,7 +376,7 @@ erDiagram
 | `dory_channel_id`| `bigint` | NO | Clave Primaria |
 | `dory_client_id` | `bigint` | NO | FK a `dory.dory_client` (Empresa a la que pertenece) |
 | `name` | `text` | NO | Nombre del canal o sucursal de atención (ej: `maros-atencion`) |
-| `discord_channel_id`| `text`| SÍ | ID del canal de texto en Discord |
+| `discord_id`| `text`| SÍ | ID del canal de Discord para mantener el vínculo independiente del nombre |
 | `isactive` | `boolean`| NO | Estado activo/inactivo |
 
 #### `dory.dory_employee`
@@ -387,28 +393,36 @@ erDiagram
 
 ### 3.3 Tablas de Tickets y Operaciones de Soporte
 
+> **Precaución sobre este inventario:** aunque se actualizaron algunos nombres de campo con base en el código consultado, esta ficha no sustituye una extracción del esquema desplegado. Antes de construir consultas, migraciones o políticas, cotejar tipos, nulabilidad, claves y permisos con las migraciones actuales y Supabase.
+
 > [!NOTE]
-> **Creación Exclusiva de Tickets (`allowCreate: false` en NexoInt):**  
-> Los tickets de soporte (`dory_thread`) únicamente pueden ser originados en Discord (vía mensaje o `/abrir_hilo`). En la consola administrativa NexoInt, `allowCreate` está deshabilitado para preservar la integridad y el vínculo 1:1 con el hilo de Discord.
+> **Integridad de casos:** la apertura y sincronización deben validar que compañía y canal correspondan al hilo real de Discord antes de confirmar. Los flujos deben conservar el ID de Discord y la fecha original; no inferir la relación a partir del nombre ni sobrescribir un caso existente en un reintento.
 
 #### `dory.dory_thread`
 | Columna | Tipo | Nulo | Descripción |
 | :--- | :--- | :---: | :--- |
 | `dory_thread_id` | `bigint` | NO | Clave Primaria autoincremental |
-| `thread_id` | `text` | NO | Código alfanumérico del ticket (ej: `TKT-2026-001`) |
-| `thread_name` | `text` | NO | Asunto / Título de la incidencia |
+| `value` | `text` | SÍ | Identificador/código operativo del caso cuando esté disponible |
+| `title` | `text` | SÍ | Título del caso |
 | `dory_client_id` | `bigint` | NO | FK a `dory_client` (Empresa cliente) |
 | `dory_channel_id` | `bigint` | SÍ | FK a `dory_channel` (Sucursal / canal de atención) |
 | `dory_topic_id` | `bigint` | SÍ | FK a `dory_topic` (Área temática) |
 | `dory_typology_id` | `bigint` | SÍ | FK a `dory_typology` (Tipo de solicitud) |
 | `dory_thread_status_id`| `bigint`| NO | FK a `dory_thread_status` (Estado actual) |
 | `dory_pending_on_id`| `bigint`| SÍ | FK a `dory_pending_on` (Lado del bloqueo) |
-| `dory_employee_id` | `bigint` | SÍ | Consultor principal asignado |
+| `assigned_employee_id` | `bigint` | SÍ | Consultor actualmente asignado |
+| `created_by_user_id` | `bigint` | SÍ | Usuario creador, cuando está disponible |
+| `closed_by_user_id` | `bigint` | SÍ | Usuario que cerró el caso, cuando está disponible |
 | `discord_thread_id` | `text` | SÍ | ID del hilo en Discord |
-| `erp_version` | `text` | SÍ | Versión de ERP afectada (ZK / Swing / Core) |
+| `affected_erp_version` | `text` | SÍ | Versión de ERP afectada, cuando está disponible |
+| `thread_status` | `text` | SÍ | Estado abierto/cerrado del hilo |
 | `is_internal_request` | `text` | SÍ | Marca de ticket interno (`'Y'` / `'N'`). Los marcados con `'Y'` omiten los recordatorios y escalamientos de SLA |
+| `created_at` | `timestamp` | NO | Fecha/hora de creación del caso |
 | `first_erp_response_at`| `timestamp`| SÍ | Fecha/hora de primera respuesta técnica |
-| `closed_at` | `timestamp`| SÍ | Fecha/hora de resolución y cierre |
+| `date_finish` | `timestamp`| SÍ | Fecha/hora de cierre, cuando exista |
+| `consumed_hours` | `integer` | SÍ | Horas consumidas registradas como dato operativo |
+| `consumed_minutes` | `integer` | SÍ | Minutos consumidos registrados como dato operativo |
+| `is_ready_to_close` | `boolean` | SÍ | Indicador operativo de listo para cerrar |
 | `isactive` | `boolean` | NO | Estado del registro (Default: `true`) |
 
 ---

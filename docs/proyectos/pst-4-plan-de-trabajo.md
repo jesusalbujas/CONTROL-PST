@@ -17,8 +17,8 @@ Para avanzar de forma organizada y sin cuellos de botella, las tareas se dividen
 #### 👤 1. Jesús Hernández (Coordinación de Fase I, Metodología y Modelo de Negocio)
 * **Responsabilidad Principal:** Estructurar el nuevo modelo de negocio y la metodología.
 * **Tareas a Ejecutar:**
-  1. **Reescribir el Modelo de Negocio:** Eliminar cualquier mención a transcripción manual en Excel o Superset como núcleo. Describir el nuevo flujo tri-modular de PST IV: **Discord Bot $\leftrightarrow$ NexoInt Core $\leftrightarrow$ Base de Datos $\leftrightarrow$ Clientes**.
-  2. **Diagramas del Negocio:** Transcribir e incorporar el **Mapa de Procesos** y el **Diagrama de Casos de Uso del Negocio (CUN)**.
+  1. **Reescribir el Modelo de Negocio:** Eliminar cualquier mención a transcripción manual en Excel o Superset como núcleo. Describir el flujo real de PST IV: **clientes y consultores en Discord ↔ bot/API Dory-Jarvis; usuarios internos en NexoInt Web ↔ Supabase y API de Dory**. La aplicación móvil y el acceso de compañías se documentan aparte como líneas en desarrollo.
+  2. **Diagramas del Negocio:** Revisar e incorporar el **Mapa de Procesos** y el **Diagrama de Casos de Uso del Negocio (CUN)**, alineándolos con los flujos y componentes que realmente existen.
      - 📖 *¿Dónde consultar la información?* Ver [Sección 2.3 y 2.4 de pst-4-arquitectura.md](./pst-4-arquitectura.md#23-mapa-y-flujograma-de-procesos-de-negocio).
   3. **Metodología de Calidad RECLAMO (Fase II):** Redactar la justificación y aplicación del estándar venezolano de calidad RECLAMO (exigido en Trayecto IV).
   4. **Reflexión Crítica de la Fase I.**
@@ -42,7 +42,7 @@ Para avanzar de forma organizada y sin cuellos de botella, las tareas se dividen
 * **Tareas a Ejecutar:**
   1. **Matriz FODA:** Actualizar las Fortalezas, Oportunidades, Debilidades y Amenazas de ERP Consultores y Asociados C.A. enfocadas en la nueva arquitectura.
      - 📖 *¿Dónde consultar la información?* Ver [Sección 2.5 de pst-4-arquitectura.md](./pst-4-arquitectura.md#25-matriz-foda-y-árbol-del-problema).
-  2. **Tabla de Jerarquización de Problemas y Árbol del Problema:** Transcribir y explicar las causas raíz (dispersión de canales, falta de API unificada) y los efectos (retrasos en SLAs, fricción en facturación).
+  2. **Tabla de Jerarquización de Problemas y Árbol del Problema:** Sustentar causas y efectos con el diagnóstico vigente; no presentar como hechos la falta de API unificada, retrasos de SLA o fricción de facturación sin evidencia.
   3. **Estudio de Factibilidad:** Redactar la factibilidad técnica, económica, operativa y social del proyecto.
 * **Plazo de Entrega:** **Miércoles 28 de Octubre - 06:00 PM**
 
@@ -50,18 +50,28 @@ Para avanzar de forma organizada y sin cuellos de botella, las tareas se dividen
 
 ### ⚙️ EQUIPO FASE II — Requerimientos y Diseño Técnico (Software)
 
-#### 👤 4. Daniel Pérez (Requerimientos del Software y Casos de Uso CUS)
-* **Responsabilidad Principal:** Especificación formal con plantillas PNFI.
+#### 👤 4. Daniel Pérez (Especificación Técnica, Requerimientos y Casos de Uso)
+* **Responsabilidad Principal:** Redactar la sección técnica de la Fase II con las fichas PNFI y los casos de uso sustentados en la arquitectura y la documentación técnica proporcionada para el proyecto.
 * **Tareas a Ejecutar:**
-  1. **Requerimientos Funcionales (RF):** Llenar las fichas oficiales del PNFI para:
-     - `RF-01`: Autenticación OAuth 2.0 (Google y Discord).
-     - `RF-02`: Gestión y apertura de tickets en Discord (`/abrir_hilo`).
-     - `RF-03`: Cierre de hilos e imputación de horas (`/cerrar_hilo`).
-     - `RF-04`: Asignación de consultores con asistencia IA (`/asignar_consultor`).
-     - `RF-05`: Generación automatizada de Release Notes (`jarvis`).
-     - `RF-06`: Gestión de contratos de servicio y bolsas de horas en NexoInt.
-  2. **Requerimientos No Funcionales (RNF):** Fichas de Seguridad (NIST 800-63B / OWASP), Disponibilidad (24/7 en VPS), Rendimiento y Portabilidad.
-  3. **Casos de Uso del Software (CUS):** Redactar las plantillas de casos de uso (actores, precondiciones, flujo principal y excepciones).
+  1. **Sección técnica del informe:** Documentar componentes, límites entre NexoInt web, Supabase, API de Dory/Discord y Jarvis; flujo de datos, permisos y dependencias, tomando como fuente las guías técnicas entregadas. No se le asigna revisar código ni acceder a repositorios privados; tampoco debe describir un backend/API Gateway propio como parte del sistema.
+  2. **Documentación técnica de apoyo:** Usar primero la [Guía técnica de procesos PST IV](./pst-4-guia-tecnica-procesos.md), que describe los flujos de NexoInt, Dory/Jarvis, sincronización, reportes, permisos y estados de desarrollo. Complementar con [Arquitectura del PST IV](./pst-4-arquitectura.md) y el [índice de referencias técnicas del PST IV](./referencias-tecnicas/README.md), que organiza la API de conversaciones, releases, IA y NexoKube. Consultar también el [inventario conceptual de datos `dory`](../database/README.md), sin tomarlo como definición definitiva de columnas o políticas vigentes. Todo el material asignado está dentro de Control-PST y debe bastar para redactar esta sección; las dudas funcionales se consultan al equipo.
+  3. **Requerimientos Funcionales (RF):** Completar las fichas oficiales del PNFI para:
+     - `RF-01`: Autenticación y autorización por roles y permisos de ventana/acción en NexoInt.
+     - `RF-02`: Apertura, clasificación y sincronización de tickets de clientes y solicitudes internas desde Discord, validando compañía y canal.
+     - `RF-03`: Actualización y cierre de casos, asignación de consultor, estado de atención y registro del tiempo consumido.
+     - `RF-04`: Seguimiento contextual de Dory y detección de intención de cierre, con confirmación humana cuando corresponda.
+     - `RF-05`: Gestión de releases con Jarvis: evidencia de cambios entre versiones, enlaces relacionados y detección de XML aplicables.
+     - `RF-06`: Calendario de actividades y guardias, días festivos y cumpleaños visibles según permisos.
+     - `RF-07`: Indicadores de soporte y actividad de consultores, incluyendo la distinción entre tickets e internas y aportes de GitHub en repositorios configurados.
+     - `RF-08`: Reportes, filtros y exportación/impresión, conservando la selección y los enlaces a los casos.
+     - `RF-09`: API de conversación de Dory para consultar mensajes y adjuntos de Discord sin duplicar transcripciones en la base de datos.
+     - `RF-10`: Administración de tokens de integración con alcance y revocación.
+     - `RF-11`: Consola NexoKube para consultar clústeres, namespaces, pods, deployments/statefulsets, configuración, salud y logs; especificar edición de manifiestos/versiones, escala y reinicio como acciones protegidas por permisos de rol, y no marcarlas entregadas sin validación.
+     - `RF-12`: Acceso de compañías en desarrollo: grupos, compañías, usuarios externos, asignación de permisos y aislamiento de datos por organización.
+     - `RF-13`: Aplicación móvil NexoInt, en desarrollo; especificar solo las funciones confirmadas por el equipo y no presentarla como entregada.
+  4. **Requerimientos No Funcionales (RNF):** Especificar seguridad, privacidad por compañía, integridad de sincronización, manejo de errores, rendimiento, portabilidad y disponibilidad con criterios verificables. No atribuir certificaciones ni objetivos de SLA no acordados.
+  5. **Casos de Uso del Software (CUS):** Elaborar actores, precondiciones, flujo principal, excepciones y resultados para apertura/sincronización de casos, actualización/cierre, consulta de conversación, seguimiento, releases, reportes y administración de accesos.
+  6. **Trazabilidad de estado:** Identificar por cada requisito qué está implementado en el código actual, qué requiere validación de despliegue y qué continúa en desarrollo. Contratos/bolsas de horas, recibos/facturación y marcajes no forman parte de este alcance.
 * **Plazo de Entrega:** **Jueves 29 de Octubre - 06:00 PM**
 
 #### 👤 5. José Zúñiga (Ingeniería Técnica, Arquitectura y Modelo de Datos)
@@ -83,12 +93,12 @@ Para avanzar de forma organizada y sin cuellos de botella, las tareas se dividen
 #### 👤 6. Giovana Garrido (Pruebas del Sistema y Auditoría Informática)
 * **Responsabilidad Principal:** Casos de prueba actualizados y reporte formal de auditoría.
 * **Tareas a Ejecutar:**
-  1. **Actualizar Casos de Prueba:** Corregir las fechas de 2025 del documento viejo por pruebas de 2026. Agregar casos de prueba reales para la creación de tickets en Discord, cálculo de horas en `dory_charge` y login OAuth.
-  2. **Pruebas de Integración y Carga:** Simulación de concurrencia y latencias de respuesta (< 250ms).
+  1. **Actualizar Casos de Prueba:** Corregir fechas y flujos obsoletos. Definir y ejecutar pruebas verificables para apertura/sincronización de casos, permisos, OAuth, llamadas a Dory, calendario y publicación de releases; registrar resultados reales, sin asumir que existe una suite automatizada.
+  2. **Pruebas de Integración y Rendimiento:** Medir escenarios acordados y documentar resultados observados. No prometer latencias (< 250 ms), concurrencia o disponibilidad hasta tener mediciones y criterios aprobados.
   3. **Informe de Resultados de Auditoría Informática (Exigido en Trayecto IV):**
      - Análisis de vulnerabilidades SAST y DAST.
      - Auditoría de control de accesos (tokens JWT, RBAC dinámico por ventanas).
-     - Políticas de respaldo automatizado y recuperación (RPO < 2 horas, RTO < 30 minutos).
+     - Revisar políticas de respaldo y recuperación configuradas por los servicios; consignar RPO/RTO únicamente si están definidos y comprobados.
      - 📖 *¿Dónde consultar la información?* Ver [Sección 4 de pst-4-arquitectura.md](./pst-4-arquitectura.md#4-fase-iii-estrategias-de-implantación-pruebas-y-auditoría-informática).
   4. **Reflexión Crítica de la Fase III.**
 * **Plazo de Entrega:** **Viernes 30 de Octubre - 12:00 PM (Mediodía)**

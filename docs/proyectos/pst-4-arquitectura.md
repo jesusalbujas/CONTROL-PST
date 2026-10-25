@@ -22,9 +22,9 @@
     - [2.5 Matriz FODA y Árbol del Problema](#25-matriz-foda-y-árbol-del-problema)
   - [3. Fase II: Requerimientos, Diseño y Nueva Arquitectura de Software](#3-fase-ii-requerimientos-diseño-y-nueva-arquitectura-de-software)
     - [3.1 Visión Arquitectónica General](#31-visión-arquitectónica-general)
-    - [3.2 Pilar 1: `nexoint` (Core Backend \& Integration Gateway)](#32-pilar-1-nexoint-core-backend--integration-gateway)
-    - [3.3 Pilar 2: `discord_bot` y `jarvis` (Automatización Inteligente y Soporte Cognitivo)](#33-pilar-2-discord_bot-y-jarvis-automatización-inteligente-y-soporte-cognitivo)
-    - [3.4 Pilar 3: `NexoInt` (Cliente Web y Móvil Multiplataforma - En Desarrollo)](#34-pilar-3-la-app-cliente-web-y-móvil-multiplataforma---en-desarrollo)
+    - [3.2 Pilar 1: NexoInt Web](#32-pilar-1-nexoint-web-aplicación-administrativa)
+    - [3.3 Pilar 2: `discord_bot` (Dory y Jarvis)](#33-pilar-2-discord_bot-y-jarvis-automatización-inteligente-y-soporte-cognitivo)
+    - [3.4 Aplicación móvil NexoInt (En desarrollo)](#34-aplicación-móvil-nexoint-en-desarrollo)
     - [3.5 Diagrama de Interacción y Flujo de Datos Global](#35-diagrama-de-interacción-y-flujo-de-datos-global)
     - [3.6 Diagrama de Componentes y Despliegue](#36-diagrama-de-componentes-y-despliegue)
     - [3.7 Modelo de Datos Relacional y Esquema de Entidades](#37-modelo-de-datos-relacional-y-esquema-de-entidades)
@@ -43,19 +43,25 @@
 
 El **Trayecto IV del Programa Nacional de Formación en Informática (PNFI)** representa la cúspide académica y técnica del perfil de Ingeniería en Informática. En este trayecto, el proyecto evoluciona desde sistemas aislados o de soporte básico hacia un **Ecosistema Digital Modular, Distribuido e Inteligente**, capaz de gestionar la totalidad de las operaciones de servicios tecnológicos de la empresa **ERP Consultores y Asociados C.A.**
 
-El proyecto actual aborda la concepción, diseño, implementación y despliegue de una plataforma modular desacoplada en tres componentes sinérgicos:
+El sistema vigente se organiza alrededor de la aplicación web NexoInt, el bot de Discord Dory/Jarvis y Supabase. La aplicación móvil y el acceso de compañías continúan en desarrollo. El código se revisó en los repositorios disponibles; la presencia de una función en el árbol de trabajo no confirma por sí sola que esté publicada en producción.
 
 ```mermaid
 flowchart TD
     subgraph sub_Ecosistema_PST_IV ["Ecosistema PST IV"]
-        A["1. nexoint<br>Core Backend, API Gateway, Hub de Integración y Reglas de Negocio"]
-        B["2. discord_bot & jarvis<br>Agentes Conversacionales, Asistencia Cognitiva y Automatización en Tiempo Real"]
-        C["3. NexoInt (En Desarrollo)<br>Frontend Web y Móvil Reactivo para Autoservicio y Gestión de Clientes"]
+        A["NexoInt Web<br>Aplicación React / TypeScript"]
+        B["discord_bot<br>Dory y Jarvis"]
+        C["App móvil NexoInt<br>En desarrollo"]
+        D["Supabase<br>Auth y PostgreSQL / esquema dory"]
+        E["API de Dory<br>Conversaciones, archivos y operaciones autorizadas"]
     end
 
-    B <-->|REST API / WebSockets / JWT| A
-    C <-->|REST API / GraphQL / JWT| A
-    A <--> DB[("PostgreSQL + Redis Storage")]
+    A -->|Supabase client| D
+    A -->|API REST mediante proxy| E
+    B <-->|Discord Gateway| Discord["Discord"]
+    B -->|Supabase client| D
+    B --> E
+    B <-->|GitHub API / Actions| GH["Repositorios configurados"]
+    C -.->|Integración prevista| A
 ```
 
 ---
@@ -68,62 +74,43 @@ flowchart TD
 - **Diagnóstico Técnico-Operativo:** Tras los avances logrados en los trayectos anteriores (PST II: Activos Fijos y PST III: Sistema SGI / Bot Dory inicial), la empresa experimentó una expansión en su volumen de clientes. Esto evidenció la necesidad de:
   1. Centralizar la lógica transaccional y de autenticación en una plataforma unificada (`nexoint`).
   2. Integrar inteligencia y flujos automáticos más robustos mediante agentes inteligentes (`jarvis` y `discord_bot`).
-  3. Proveer a los clientes de una aplicación moderna (`NexoInt`) con interfaces intuitivas accesibles desde navegadores y dispositivos móviles.
+  3. Proveer a los usuarios internos una aplicación web administrativa; la aplicación móvil y el acceso directo de compañías continúan en desarrollo.
 
 ### 2.2 Modelo de Negocio y Reglas Operativas de ERP Consultores y Asociados C.A.
 
-El modelo de negocio de la empresa se sustenta en la prestación de servicios de software bajo esquemas de suscripción, bolsas de horas de consultoría y proyectos de desarrollo a medida.
+Para este proyecto, el foco es organizar la atención de soporte y las solicitudes internas, mejorar su trazabilidad y automatizar tareas de operación y publicación de software. Los contratos, las bolsas de horas y la facturación no forman parte del alcance funcional acordado.
 
 | Bloque del Modelo | Descripción Aplicada al Proyecto |
 | :--- | :--- |
-| **Propuesta de Valor** | Plataforma integral de gestión de servicios con soporte reactivo y proactivo asistido por IA, visibilidad 24/7 de horas consumidas y SLAs garantizados. |
+| **Propuesta de Valor** | Herramientas para centralizar casos, registrar su seguimiento, generar indicadores y apoyar la operación de consultores con automatización. |
 | **Segmento de Clientes** | Empresas medianas y grandes que utilizan sistemas ERP (ADempiere, Odoo u homólogos) y requieren mantenimiento, consultoría y soporte especializado. |
-| **Canales de Interacción** | • `discord_bot`: Canal ágil de soporte técnico y chats dedicados por cliente.<br>• `NexoInt`: Portal web y móvil para autoservicio, dashboard financiero y ticketing.<br>• `jarvis`: Asistencia proactiva interna para el equipo de consultores. |
-| **Relación con Clientes** | Automatizada y personalizada, con trazabilidad milimétrica de casos, tiempos de respuesta y reportes de desempeño. |
-| **Fuentes de Ingresos** | Venta de planes mensuales de soporte técnico, horas de consultoría certificada, desarrollo de extensiones ERP e implementaciones. |
-| **Actividades Clave** | Desarrollo continuo de microservicios, soporte técnico nivel 1, 2 y 3, monitoreo de infraestructura, análisis de datos de servicio. |
+| **Canales de Interacción** | • `discord_bot`: Atención y coordinación de casos en Discord.<br>• NexoInt Web: administración, consultas, reportes y operación interna.<br>• App móvil: en desarrollo, alcance por confirmar.<br>• Jarvis: apoyo a documentación y automatización de releases. |
+| **Relación con Clientes** | Atención coordinada por caso, con historial, asignación y reportes operativos. |
+| **Fuentes de Ingresos** | La empresa puede prestar soporte, consultoría e implementación; la gestión de contratos, tarifas, bolsas y facturación no está incluida en las funciones de este proyecto. |
+| **Actividades Clave** | Atención y seguimiento de casos, administración de la plataforma, análisis de indicadores y automatización de tareas de soporte y releases. |
 | **Recursos Clave** | Infraestructura en la nube / contenedores Docker, bases de datos PostgreSQL en Supabase, APIs de comunicación, equipo humano de desarrollo y consultoría. |
 | **Socios Clave** | Comunidades de Software Libre, proveedores de infraestructura cloud, proveedores de modelos de lenguaje / IA. |
 | **Estructura de Costos** | Alojamiento en servidores, ancho de banda, licencias de APIs externas, nómina de consultores y costos operativos de mantenimiento. |
 
 #### Reglas de Negocio Clave en el Ecosistema Operativo (Discord ↔ NexoInt ↔ Jarvis):
 
-1. **Jerarquía Organizacional Derivada de Discord:**
-   - La maestra de compañías (`dory.dory_client`) y sus sucursales o canales de atención (`dory.dory_channel`) **no se crean de manera manual en NexoInt** (`allowCreate: false` en las entidades del frontend).
-   - Estas entidades provienen directamente del árbol de servidores de Discord:
-     - **Categoría de Discord** = **Empresa / Cliente** (por ejemplo: `NATULAC`).
-     - **Canales de Texto bajo la Categoría** = **Sucursales o Canales de Atención** (por ejemplo: `maros-atencion`, `inalcon-atencion`, `anros-atencion`).
-   - El bot de Discord resuelve o registra automáticamente en Supabase la compañía (`client_name`) y la sucursal (`org_name`) al interactuar o crear hilos.
+1. **Relación entre compañías, canales y Discord:** los registros de compañía y canal se vinculan con identificadores de Discord además de sus nombres. La incorporación de usuarios externos y el aislamiento por compañía siguen en desarrollo; no se debe asumir que el portal de cliente ya está terminado.
 
-2. **Creación Exclusiva de Tickets / Hilos desde Discord:**
-   - Los hilos de soporte (`dory.dory_thread`) **se crean exclusivamente desde Discord** mediante la interacción del cliente o el comando interactivo `/abrir_hilo`.
-   - En la interfaz de NexoInt (`ThreadEntity`), la creación manual está deshabilitada (`allowCreate: false`) para garantizar la correspondencia 1:1 entre el hilo de chat y el registro en base de datos.
+2. **Creación y sincronización de casos:** los casos se originan en Discord y se sincronizan con NexoInt. La asociación de compañía y canal debe validarse antes de confirmar la creación; NexoInt permite gestionar los registros existentes de acuerdo con los permisos asignados.
 
 3. **Integridad Categorial Estricta (`validateCategoryMatch`):**
    - Un ticket (`dory_thread`) **jamás puede pertenecer a un canal cuya categoría en base de datos difiera del cliente asignado**.
    - Si un usuario o proceso intenta vincular un ticket con una empresa cliente A y un canal perteneciente a la empresa cliente B, el sistema detiene la transacción y emite una excepción de coherencia referencial (`ThreadEntity`).
 
-4. **Protección Contra Eliminación de Tickets Enlazados:**
-   - Queda prohibida la eliminación física de cualquier ticket que posea trazabilidad activa con Discord (`url`, `discord_identifier`, `dory_thread_status_id` asignado o código mayor a 10 dígitos). El sistema preserva la inmutabilidad histórica y solo admite cambios de estado o archivo lógico.
+4. **Acciones destructivas sobre casos:** deben estar protegidas por permisos y confirmación; si se elimina un caso enlazado, el flujo debe informar y coordinar el cambio con Discord. La auditoría debe permitir identificar el resultado de la operación.
 
-5. **Alternancia Automática de Turno (`pending_on`) y Sellado de Primera Respuesta:**
-   - Cada mensaje dentro de un hilo en Discord recalcula en tiempo real el estado y turno del caso:
-     - **Mensaje del Cliente:** Cambia a `pending_on = 'erp'` (requiere atención del equipo consultor) y estatus `ERCYA`.
-     - **Mensaje del Consultor:** Se valida la pertenencia al equipo (por rol Discord o registro en `dory_employee`), asignando `pending_on = 'client'` (espera respuesta del cliente) y estatus `ER`.
-     - **Sellado Inmutable de Primera Respuesta:** Al responder el consultor por primera vez, se graba `first_erp_response_at = NOW()` para auditoría de SLAs.
+5. **Responsabilidad y asignación:** un mensaje de una persona en el hilo no debe asignar automáticamente el caso a esa persona. La asignación se gestiona mediante las acciones previstas para consultores y administradores; los estados de atención y `Pendiente por` se mantienen separados del estado abierto/cerrado.
 
-6. **Políticas de Nudge, Escalamiento Escalonado (L1 / L2) y Horario Hábil:**
-   - Los monitores de escalamiento solo operan en días hábiles (Lunes a Viernes) y horario de oficina en huso horario **Caracas (UTC-4: 08:00 AM a 05:00 PM)**.
-   - Si un ticket permanece sin respuesta del consultor, el bot dispara alertas escalonadas L1 y L2 con marcadores Unicode invisibles (`\u200B...`) y bloqueo en memoria para impedir nudges duplicados.
+6. **Seguimientos de Dory:** los recordatorios deben considerar el historial del hilo, a quién le corresponde responder, el calendario laboral y los festivos configurados. La hora local, la frecuencia y la prevención de duplicados deben verificarse en ejecución; no se documentan como garantías sin esa comprobación.
 
-7. **Modalidades de Contratos de Servicio y Generación de Recibos:**
-   - Soporte para modelos de facturación por **Bolsas de Horas (`HOURS`)**, **Iguala Mensual (`MONTHLY`)**, **Proyectos (`PROJECT`)** y **Días (`DAYS`)**.
-   - Los recibos de servicio (`dory_receipt`) se generan inicialmente en estado Borrador (`DR`); los campos de totales de horas y minutos son de solo lectura agregados a partir de las imputaciones en `dory_charge`.
+7. **Tiempo consumido:** se pueden registrar horas y minutos asociados a un caso como dato operativo. Esto no implica descontar saldo contractual ni emitir recibos; esos procesos están fuera del alcance actual.
 
-8. **Integridad Referencial en Estructura de Cargos:**
-   - Un perfil de cargo (`dory_charge` como clasificador de puesto) no puede eliminarse si existen consultores o empleados (`dory_employee`) vinculados a él.
-
-9. **Supervisión Humana Obligatoria en Asistencia Cognitiva (`Jarvis`):**
+8. **Supervisión humana en publicaciones (`Jarvis`):**
    - Los borradores de notas de versión y documentación técnica sugeridos por IA (`dory_jarvis_release_run`) no pueden emitirse como oficiales ni generar artefactos PDF sin la aprobación y cambio explícito de estado por parte de un ingeniero responsable.
 
 ### 2.3 Mapa y Flujograma de Procesos de Negocio
@@ -142,14 +129,14 @@ sequenceDiagram
     Cliente->>Discord: Reporta requerimiento o abre hilo (/abrir_hilo)
     Discord->>Bot: Evento ThreadCreate / Interacción Slash
     Bot->>DB: Sincroniza dory_client (NATULAC) y dory_channel (maros-atencion)
-    Bot->>DB: Registra nuevo dory_thread (allowCreate=false en NexoInt)
+    Bot->>DB: Registra el caso asociado al hilo de Discord
     Bot-->>Discord: Confirma apertura de ticket con mención a consultores
     Soporte->>Discord: Atiende incidencia e interactúa en el hilo
     Soporte->>Discord: Ejecuta comando /cerrar_hilo (horas, tópico, tipología)
     Discord->>Bot: Procesa validaciones de cierre
-    Bot->>DB: Registra dory_charge (horas consumidas) y actualiza dory_thread (closed_at)
+    Bot->>DB: Registra tiempo consumido y actualiza el caso
     Bot-->>Discord: Publica resumen de cierre y embed informativo
-    Nexo->>DB: Consulta métricas consolidadas, bolsas de horas y auditoría
+    Nexo->>DB: Consulta los casos, el seguimiento y las métricas operativas
 ```
 
 ### 2.4 Diagrama de Casos de Uso del Negocio (CUN)
@@ -165,11 +152,10 @@ flowchart LR
 
     subgraph sub_Casos_de_Uso_del_Negocio_CUN ["Casos de Uso del Negocio (CUN)"]
         CUN1(("CUN-01: Solicitar Soporte Técnico"))
-        CUN2(("CUN-02: Consultar Estado de Servicios y Saldo de Horas"))
+        CUN2(("CUN-02: Consultar el seguimiento operativo de casos"))
         CUN3(("CUN-03: Atender y Resolver Incidencia Técnica"))
-        CUN4(("CUN-04: Imputar Horas de Consultoría"))
-        CUN5(("CUN-05: Gestionar Contratos y Tarifas"))
-        CUN6(("CUN-06: Generar Auditoría y Analítica de Servicios"))
+        CUN4(("CUN-04: Registrar tiempo consumido"))
+        CUN5(("CUN-05: Consultar indicadores y reportes"))
     end
 
     C --> CUN1
@@ -177,7 +163,6 @@ flowchart LR
     K --> CUN3
     K --> CUN4
     G --> CUN5
-    G --> CUN6
     ADM --> CUN5
 ```
 
@@ -187,16 +172,16 @@ flowchart LR
 graph TD
     subgraph sub_Consecuencias_y_Efectos ["Consecuencias y Efectos"]
         E1["Fricción en la atención al cliente y tiempos de espera"]
-        E2["Discrepancias en la facturación de servicios y horas"]
+        E2["Falta de visibilidad sobre seguimiento y tiempos de atención"]
         E3["Falta de una experiencia de usuario unificada y multiplataforma"]
     end
 
     P["PROBLEMA CENTRAL: Fragmentación de canales de servicio y carencia de un núcleo central de integración automatizado en ERP Consultores y Asociados C.A."]
 
     subgraph sub_Causas_Ra_z ["Causas Raíz"]
-        C1["Inexistencia de un API Gateway centralizado que unifique la lógica"]
-        C2["Dependencia exclusiva de un bot de chat sin app cliente nativa"]
-        C3["Falta de asistencia inteligente para la categorización y resolución de incidencias"]
+        C1["Información y seguimiento de casos distribuidos entre canales y herramientas"]
+        C2["Visibilidad limitada para comparar carga, antigüedad y resultados de casos"]
+        C3["Tareas repetitivas de seguimiento y publicación que requieren coordinación"]
     end
 
     C1 --> P
@@ -213,73 +198,52 @@ graph TD
 
 ### 3.1 Visión Arquitectónica General
 
-La arquitectura del ecosistema PST IV se fundamenta en un patrón **Modular / Microservicios con API Gateway**, donde cada componente cumple un rol especializado y se comunica mediante protocolos estándar (HTTP/REST, WebSockets y gRPC):
+La arquitectura que se observa en los repositorios es una aplicación web SPA, una base administrada en Supabase y un bot/API de Discord. No se encontró un backend propio de NexoInt organizado como microservicios ni un Redis del proyecto; por ello, el diagrama refleja las integraciones presentes y no propone esos componentes como implementados.
 
 ```mermaid
 graph TB
     subgraph sub_Clientes_y_Consumidores ["Clientes y Consumidores"]
-        APP["📱 NexoInt (Frontend Web / Mobile)<br>React / Flutter / Next.js"]
+        APP["NexoInt Web<br>React 19 / TypeScript / Vite"]
         DISC["💬 Discord Client / Canales de Soporte<br>Comunidad y Clientes"]
-        EXT["🌐 Servicios Externos / Webhooks ERP"]
+        MOBILE["App móvil NexoInt<br>En desarrollo"]
     end
 
-    subgraph sub_Capa_de_Seguridad_y_Ruteo ["Capa de Seguridad y Ruteo"]
-        PROXY["🛡️ Reverse Proxy (Nginx / Traefik)<br>SSL / TLS, Rate Limiting"]
+    subgraph sub_Aplicacion ["Aplicación y servicios"]
+        SPA["NexoInt Web<br>Build Vite servido por Nginx"]
+        BOT["discord_bot<br>Dory + Jarvis API"]
+        DORY["API de Dory<br>Conversaciones y acciones de tickets"]
     end
 
-    subgraph sub_Plataforma_Central_nexoint ["Plataforma Central (nexoint)"]
-        GW["🚪 nexoint API Gateway & Router"]
-        AUTH_SRV["🔐 Auth & Security Service (JWT / RBAC)"]
-        CORE_SRV["⚙️ Business Logic Service (Tickets, Clientes, Horas)"]
-        NOTIF_SRV["🔔 Notification & Event Dispatcher"]
-        INT_SRV["🔌 Integration & Webhook Handler"]
-    end
+    sub_Supabase["Supabase Cloud<br>Auth + PostgreSQL (esquema dory) + Storage"]
+    GH["GitHub<br>Repositorios y Actions"]
+    PROXY["Nginx / proxy de despliegue"]
 
-    subgraph sub_Capa_de_Automatizaci_n_e_IA ["Capa de Automatización e IA"]
-        BOT["🤖 discord_bot (Dory/Bot Core)"]
-        JARVIS["🧠 jarvis (AI Agent Orchestrator & Task Automation)"]
-    end
-
-    subgraph sub_Capa_de_Persistencia_y_Cach ["Capa de Persistencia y Caché"]
-        DB[("🐘 PostgreSQL DB - Transaccional")]
-        REDIS[("⚡ Redis Cache & Task Queue")]
-    end
-
-    APP -->|HTTPS / JSON| PROXY
-    DISC <-->|Discord Gateway API| BOT
-    EXT -->|HTTPS / Webhooks| PROXY
-    PROXY --> GW
-
-    GW --> AUTH_SRV
-    GW --> CORE_SRV
-    GW --> NOTIF_SRV
-    GW --> INT_SRV
-
-    BOT <-->|REST API + Token Auth| GW
-    JARVIS <-->|REST API + WebSockets| GW
-    JARVIS <--> BOT
-
-    CORE_SRV --> DB
-    AUTH_SRV --> DB
-    CORE_SRV --> REDIS
-    NOTIF_SRV --> REDIS
+    APP --> PROXY
+    PROXY --> SPA
+    SPA -->|Supabase client| sub_Supabase
+    SPA -->|REST same-origin| DORY
+    DISC <-->|Discord Gateway| BOT
+    BOT -->|Supabase client| sub_Supabase
+    BOT --> DORY
+    BOT <-->|GitHub API / Actions callbacks| GH
+    MOBILE -.->|Integración futura| SPA
 ```
 
 ---
 
-### 3.2 Pilar 1: `nexoint` (Core Backend, Seguridad & Hub de Integración)
+### 3.2 Pilar 1: NexoInt Web (aplicación administrativa)
 
-`nexoint` constituye el **cerebro y núcleo de operaciones** de todo el ecosistema. Es la plataforma integral de backend y administración construida con React, TypeScript, TailwindCSS y conectada al motor de base de datos en la nube **Supabase (PostgreSQL 16 en el esquema `dory`)**, encargada de orquestar la persistencia de datos, garantizar las reglas de negocio, validar la seguridad y proveer servicios a las aplicaciones satélites.
+El repositorio `nexoint` contiene una aplicación web SPA construida con React, TypeScript, Vite y Tailwind CSS. Se sirve como contenido estático detrás de Nginx y consume Supabase Auth/PostgREST y la API de Dory para las operaciones que requieren acceso a Discord. No equivale a un backend propio ni a un API Gateway; los permisos de interfaz deben complementarse con las políticas de base de datos y los controles de cada API.
 
 #### 3.2.1 Arquitectura de Autenticación y Logins Externos
 NexoInt integra un sistema de identidad federada multi-proveedor gestionado a través de Supabase Auth:
-1. **Google OAuth 2.0 (`GoogleAuthService`):** Inicio de sesión corporativo rápido y seguro con cuentas autorizadas de Google Workspace.
-2. **Discord OAuth 2.0 (`DiscordAuthService`):** Vinculación nativa con cuentas de Discord para sincronizar automáticamente el `discord_user_id` de clientes y consultores con su perfil en la base de datos (`dory.dory_user` y `dory.dory_employee`).
-3. **Credenciales Clásicas (Email/Password) y Magic Links:** Autenticación por correo y contraseña con requisitos de complejidad, restablecimiento administrativo y políticas de cambio forzado tras primer inicio de sesión.
+1. **Proveedores OAuth configurados:** inicio de sesión federado a través de Supabase Auth. Los dominios, redirect URIs y proveedores efectivos se deben documentar desde la configuración del ambiente.
+2. **Vínculo con Discord:** la identidad de Discord puede asociarse al usuario/empleado para resolver menciones y asignaciones; no asumir que iniciar sesión por Discord completa automáticamente todos los vínculos de perfil.
+3. **Credenciales clásicas:** inicio de sesión por correo y contraseña, recuperación y flujos de cambio de contraseña gestionados por Supabase Auth.
 
 ```mermaid
 flowchart TD
-    User(["Usuario / Consultor / Cliente"]) --> AuthChoice{"Método de Login"}
+    User(["Usuario interno / Consultor"]) --> AuthChoice{"Método de Login"}
     AuthChoice -->|Google OAuth| GAuth["GoogleAuthService.signIn"]
     AuthChoice -->|Discord OAuth| DAuth["DiscordAuthService.signIn"]
     AuthChoice -->|Email / Password| PwdAuth["Supabase Auth signInWithPassword"]
@@ -288,49 +252,39 @@ flowchart TD
     DAuth --> SupaAuth
     PwdAuth --> SupaAuth
 
-    SupaAuth --> SessionSec["SessionSecurityService: NIST 800-63B / OWASP ASVS"]
-    SessionSec --> TokenGen["JWT Session Token + Refresh Token"]
+    SupaAuth --> SessionSec["Gestión de sesión y autorización"]
+    SessionSec --> TokenGen["Sesión de Supabase"]
     TokenGen --> AppInit["Inicialización de Contextos: AuthContext, TabContext, SidebarContext"]
 ```
 
 #### 3.2.2 Lógicas de Seguridad Avanzada y Gestión de Sesión (`SessionSecurityService`)
-La plataforma implementa estándares de seguridad de nivel bancario basados en las guías **NIST 800-63B** y **OWASP ASVS**:
-- **Timeout de Inactividad (30 Minutos):** Monitor de eventos de usuario (teclado, ratón, toques táctiles) con *throttling* a 15 segundos que cierra automáticamente la sesión tras 30 minutos de inactividad.
-- **Tiempo de Vida Absoluto de Sesión (12 Horas):** Límite estricto de vigencia de sesión que obliga a reautenticación tras 12 horas consecutivas, evitando sesiones zombies.
-- **Sincronización Multi-Pestaña (*Cross-Tab Sync*):** Mediante eventos de `StorageEvent`, cuando un usuario cierra sesión o expira su sesión en una pestaña, todas las demás pestañas abiertas del navegador se desautentican y limpian la memoria instantáneamente.
-- **Validación en Arranque en Frío (*Cold-Start Validation*):** Al recargar la aplicación o abrirla tras hibernación, se valida la frescura del token y la vigencia temporal antes de permitir renderizar interfaces privadas.
+La aplicación gestiona la sesión de Supabase y contempla renovación, expiración por inactividad, cierre de sesión y validación al restaurar la aplicación. La duración efectiva depende de la configuración de Supabase y de la implementación desplegada; no se atribuyen certificaciones NIST/OWASP ni límites temporales que no estén verificados.
 
 #### 3.2.3 Control de Acceso Basado en Roles (RBAC Dinámico)
-El sistema abandona los roles estáticos cableados en código y adopta una matriz de permisos granular por ventanas:
-- **Catálogo de Ventanas (`dory.dory_window`):** Cada módulo (Tickets, Empleados, Clientes, Contratos, Imputación de Horas, Repositorios) posee un identificador único (*slug*).
+El sistema aplica una matriz de permisos por rol y ventana; las reglas de UI y las políticas de datos deben mantenerse alineadas:
+- **Catálogo de Ventanas (`dory.dory_window`):** Cada módulo de la aplicación posee un identificador único (*slug*).
 - **Matriz de Permisos (`dory.dory_role_permissions`):** Asignación por rol de permisos booleanos independientes:
   - `can_read`: Lectura / Visualización.
   - `can_write`: Creación y Actualización.
   - `can_delete`: Eliminación física o lógica.
   - `can_export`: Descarga de reportes en Excel / PDF.
-  - `only_own_records`: Restricción estricta de visibilidad exclusivamente a los registros creados o asignados al usuario actual.
+  - `only_own_records`: Restricción a registros propios cuando esa opción está habilitada para la ventana.
 
 #### 3.2.4 Módulos Operativos y Estado de Implementación en NexoInt
 
 Para reflejar con precisión la evolución del sistema y su hoja de ruta técnica, a continuación se desglosan los módulos actuales y su estado de desarrollo:
 
-1. **Gestión de Calendario y Guardias de Soporte (En Desarrollo):**
-   - Módulo en español para coordinar turnos de guardia, asignaciones técnicas por rango de fechas, colores por tipo de actividad y prevención algorítmica de guardias superpuestas. Incluye aviso automático al consultor asignado e historial imprimible.
-2. **Separación de Tickets y Solicitudes Internas (Implementado / En Consolidación):**
-   - Espacio segregado para requerimientos internos (`is_internal_request = 'Y'`) y tickets de clientes corporativos, garantizando que los SLAs y métricas externas no se contaminen.
-3. **Panel Mensual de Soporte y Analítica (Implementado):**
-   - Vista por período, compañía, canal de atención, consultor y estado. Gráficos interactivos, cálculo de horas consumidas y enlace bidireccional directo al hilo en Discord.
-4. **Exportación e Impresión de Reportes (Implementado):**
-   - Descarga de tablas y reportes en formatos CSV, XLS, XLSX y generación de resúmenes en PDF conservando los filtros aplicados en pantalla.
-5. **Consulta de Versiones y Descarga de XMLs de Migración (Implementado):**
-   - Módulo para inspeccionar notas de versión acumuladas por rango de releases (ZK y Swing), detección de scripts XML de migración de base de datos aplicables y empaquetado automático en ZIP.
-6. **Visor Integral de Conversaciones y Adjuntos (Implementado):**
-   - Integración directa con el API de Dory para leer el historial completo de mensajes, adjuntos, reacciones y embeds en tiempo real desde Discord sin sobrecargar la base de datos local.
-7. **Gestión de Tokens de Integración Dory API (Implementado):**
-   - Emisión, rotación y revocación de tokens personales (`dory_pat_...`) con alcances diferenciados (`tickets:read`, `tickets:export`, `tickets:write`).
-8. **Módulo de Acceso de Compañías y Estructura Organizativa (En Desarrollo):**
-   - *Estado:* En fase activa de modelado e implementación.
-   - *Alcance:* Jerarquización de grupos empresariales y sucursales (canales), alta de usuarios externos vinculados exclusivamente a su organización, y políticas estrictas de privacidad y aislamiento de datos multitenant para impedir que una empresa acceda a la información de otra.
+1. **Calendario (Implementado):** actividades, guardias, días festivos y cumpleaños según permisos; algunas reglas y comportamientos siguen sujetos a validación operativa.
+2. **Tickets y solicitudes internas (Implementado):** entidades, vistas y filtros diferenciados para casos de clientes e internos.
+3. **Paneles de soporte y actividad de consultores (Implementado / en evolución):** indicadores filtrables, detalle de casos y contribuciones GitHub basadas en repositorios configurados.
+4. **Reportes y releases (Implementado / en evolución):** formatos de impresión/exportación y consulta de cambios por rango, con detección de XML y exclusión de releases candidatos.
+5. **Conversaciones y API de Dory (Implementado):** consulta de mensajes y archivos desde Discord y operaciones autorizadas. No se requiere guardar transcripciones duplicadas en `dory_thread`.
+6. **Tokens y RBAC (Implementado):** administración de tokens de integración y permisos por ventana/acción.
+7. **NexoKube (En desarrollo activo):** existe consola web para clústeres y recursos Kubernetes. Las operaciones de edición, escala, reinicio y acceso a manifiestos deben verificarse contra la versión desplegada y los permisos por rol.
+8. **Acceso de compañías (En desarrollo):** grupos, incorporación de usuarios externos y aislamiento de información por organización aún requieren completar y validar.
+9. **Aplicación móvil (En desarrollo):** no se encontró un repositorio móvil entre los dos proyectos revisados; el alcance y el avance deben documentarse con el equipo antes de describir funciones concretas.
+
+**Fuera del alcance actual:** gestión de contratos de servicio, bolsas de horas, recibos/facturación y dispositivos de marcaje. El registro de tiempo consumido por caso se conserva como dato operativo, sin asociarlo a débitos contractuales.
 
 ---
 
@@ -343,7 +297,7 @@ flowchart TD
     subgraph Dory_Subsystem ["🤖 1. discord_bot (Dory Core) — Soporte y Asistencia al Cliente"]
         D1["Atención en Discord en Tiempo Real"]
         D2["Ciclo de Vida de Tickets (/abrir_hilo, /cerrar_hilo, /actualizar_hilo)"]
-        D3["Seguimientos Contextuales Inteligentes (Nudges L1/L2)"]
+        D3["Mensajes contextuales de seguimiento"]
         D4["Detección Automática de Intención de Cierre"]
         D5["Sincronización de Estados y Catálogos con NexoInt"]
     end
@@ -367,12 +321,12 @@ flowchart TD
 - **Trazabilidad de Cambios entre Proyectos:** Análisis secuencial de dependencias (ZK, Swing, Patch y bibliotecas ERP) para reflejar los cambios heredados efectivos entregados al cliente, incluso cuando se publican entre dos versiones del proyecto principal.
 - **Automatización y Recuperación de Publicaciones:** Gestión y propagación de releases entre repositorios de GitHub, control de pre-releases, reporte de resultados de builds y capacidad de reintentar pasos fallidos sin duplicar entregas.
 
-#### 3.3.2 `discord_bot` (Dory): Soporte, Asistencia al Cliente y Gestión de Incidencias
+#### 3.3.2 `discord_bot` (Dory): Soporte y Gestión de Casos
 `Dory` es el bot interactivo que opera directamente en los canales y servidores de Discord atendiendo a clientes y consultores:
-- **Seguimientos Contextuales y Respetuosos (Nudges):** Analiza el historial antes de redactar mensajes de seguimiento. Identifica a quién corresponde responder (cliente vs. consultor), pide datos específicos solo si faltan y guarda silencio cuando no existe una acción constructiva que solicitar.
-- **Detección Automática de Cierres de Tickets:** Identifica confirmaciones de resolución por parte del usuario, marca el caso como pendiente de cierre y notifica al rol responsable sin saturar el canal con mensajes innecesarios.
-- **Monitoreo de Políticas de Seguimiento (`dory_follow_up_policy`):** Consulta en tiempo real desde NexoInt los estados de atención y políticas de seguimiento para no modificar campos sin supervisión humana. Alertas escalonadas (L1 y L2) exclusivamente en horario de oficina de **Caracas (UTC-4: 08:00 AM - 05:00 PM)**.
-- **Segregación de Solicitudes Internas (`is_internal_request`):** Exclusión estricta de alertas automáticas para hilos de desarrollo o infraestructura interna.
+- **Seguimientos asistidos por IA:** existen componentes para seleccionar contexto y redactar mensajes contextuales de seguimiento (a veces llamados *nudges*); su pertinencia, horario y tratamiento de frases de cierre continúan en afinación.
+- **Detección de intención de cierre:** lógica separada del monitor de inactividad; la decisión final debe respetar el estado del caso y las reglas operativas.
+- **Estados configurables:** el bot consume catálogos de atención y políticas; los estados de abierto/cerrado, atención y `Pendiente por` no deben confundirse.
+- **Solicitudes internas:** se identifican por separado y se consideran de manera diferenciada en seguimientos e indicadores.
 
 ```mermaid
 flowchart LR
@@ -397,126 +351,33 @@ flowchart LR
 
 ---
 
-### 3.4 Modelo de Datos Relacional y Esquema `dory`
+#### 3.3.4 Referencia al Modelo de Datos `dory`
 
 > [!IMPORTANT]
-> El modelo de datos completo, diccionario de más de 25 entidades relacionales, diagramas ER por subdominios y funciones RPC se encuentran documentados exhaustivamente en:  
+> El inventario del esquema y sus diagramas se encuentran en:
 > 🔗 [**Documentación del Modelo de Base de Datos NexoInt (Esquema `dory`)**](../database/README.md)
 
-#### 3.3.2 Funcionalidades y Comandos Slash de `discord_bot`
+#### 3.3.2 Operación de casos en `discord_bot`
 
-El bot implementa un conjunto de comandos slash (`/`) fuertemente tipados y auditados que se ejecutan directamente en los hilos o canales de soporte de Discord para gestionar el ciclo de vida de los casos y la imputación de horas:
+El bot mantiene comandos y eventos para abrir, actualizar, sincronizar, auditar y cerrar hilos; asignar consultores; y publicar respuestas o archivos en Discord. La apertura valida la resolución de compañía y canal antes de confirmar el registro. Las solicitudes internas se identifican separadamente para que puedan filtrarse en pantallas, reportes y reglas de seguimiento.
 
-##### 1. Comando `/cerrar_hilo` (Cierre Operativo e Imputación de Horas)
-Es el comando central utilizado por los consultores para formalizar la solución de una incidencia y debitar las horas trabajadas del contrato de soporte correspondiente.
-- **Canal de Ejecución:** Debe ejecutarse **dentro del hilo de soporte activo** en Discord.
-- **Parámetros:**
+El estado de abierto/cerrado, el estado de atención y el valor de `Pendiente por` son conceptos distintos. El cierre registra el resultado de la atención y el tiempo consumido, sin facturar ni descontar contratos. Para evitar desincronización, la sincronización debe conservar la fecha real de creación del hilo y no sobrescribir un registro ya existente de forma inadvertida.
 
-| Parámetro | Tipo | Requerido | Descripción / Opciones |
-| :--- | :--- | :---: | :--- |
-| `solicitante` | Usuario (Discord User) | **SÍ** | Usuario cliente que levantó la incidencia técnica. |
-| `topico` | String (Autocomplete) | **SÍ** | Área temática o funcional (ej: `Facturación`, `Ventas`, `Inventario`, `Contabilidad`, `Bancos`, `Nómina`, `Configuración`). |
-| `tipologia` | String (Autocomplete) | **SÍ** | Naturaleza técnica del ticket (ej: `CONSULTORIA`, `ERROR_SISTEMA`, `DESARROLLO`, `CAPACITACION`, `CONFIGURACION`). |
-| `horas` | Entero (0 - 100) | **SÍ** | Cantidad de horas dedicadas a la resolución. |
-| `minutos` | Entero (Choices) | **SÍ** | Fracción de minutos consumidos: opciones fijas `0`, `20` o `30` minutos. |
-| `consultor` | Usuario (Discord User) | **SÍ** | Consultor responsable que ejecutó las labores técnicas. |
-| `version_erp_afectada` | String (Max 120) | NO | Versión del ERP en la que se presentó el caso (ej: `ZK 11`, `Swing 3.9`). |
-| `estatus` | String (Choices) | NO | Estado final de cierre: `PC` (Pendiente Cliente), `PI` (Pendiente Interno), `PR` (Pendiente Release), `PZ` (Pendiente ZK), `PA` (Pendiente Actualización), `ERCYA` (En Revisión CYA), `ER` (En Espera Release), `DP` (Desarrollo Pendiente), `TP` (Testing Pendiente), `CL` (Cerrado - Default). |
-| `descripcion` | String (Max 255) | NO | Resumen técnico o justificación de las actividades realizadas. |
-| `fecha_cierre` | String (YYYY-MM-DD) | NO | Fecha efectiva de imputación (por defecto, fecha actual). |
+La API de Dory permite consultar conversaciones y adjuntos directamente desde Discord y admite publicar contenido autorizado. El proceso, los controles y las consideraciones de privacidad se describen en la [referencia interna de la API de conversaciones](./referencias-tecnicas/api-dory-conversaciones.md); las rutas y parámetros exactos se verifican contra la versión desplegada, porque pueden cambiar.
 
-> **Ejemplo de Ejecución de `/cerrar_hilo`:**
-> ```bash
-> /cerrar_hilo solicitante:@carlos_gonzalez topico:Facturación tipologia:CONSULTORIA horas:1 minutos:30 consultor:@jesus_albujas version_erp_afectada:ZK 11 estatus:CL descripcion:Ajuste de correlativo fiscal y validación de libro de ventas fecha_cierre:2026-09-25
-> ```
-> **Resultado en Base de Datos:**
-> - Se actualiza `dory.dory_thread` fijando `closed_at = NOW()`, `dory_thread_status_id` correspondiente a `CL`, `erp_version = 'ZK 11'`.
-> - Se inserta un registro en `dory.dory_charge` con `hours_spent = 1.5`, vinculado al contrato activo de la empresa cliente (`NATULAC`), descontando el saldo disponible.
-> - Se emite un mensaje enriquecido (*Embed*) en el hilo resumiendo el cargo y archivando el hilo.
+#### 3.3.3 Integridad y confiabilidad de las operaciones
+
+- Validar compañía, canal e identificadores de Discord antes de confirmar una apertura o sincronización.
+- Hacer idempotentes los reintentos y reportar resultado/error sin duplicar registros ni avisos.
+- En comandos de Discord, responder o diferir la interacción dentro de su plazo; si expiró, registrar el fallo sin intentar una segunda respuesta.
+- Generar mensajes contextuales de seguimiento con destinatario y horario local correctos. La detección de intención de cierre y la generación de estos recordatorios son responsabilidades distintas y deben permanecer separadas.
+- Confirmar el comportamiento de días hábiles, festivos y recordatorios con el código desplegado; no asumir que todos los monitores aplican idéntico horario.
 
 ---
 
-##### 2. Comando `/abrir_hilo` (Apertura Formal de Incidencia)
-Permite a los usuarios o consultores iniciar un ticket de manera guiada y categorizada.
-- **Flujo Interactivo:**
-  1. El usuario ejecuta `/abrir_hilo`.
-  2. El bot despliega un selector interactivo para definir la visibilidad: **Público** (visible para todo el canal de la sucursal) o **Privado** (hilo privado restringido a consultores y solicitante).
-  3. Despliega un formulario modal donde se ingresa el **Título del Requerimiento** y el **Solicitante**.
-  4. Opcionalmente permite adjuntar el enlace o ID de un mensaje previo del canal para conservar el contexto.
-- **Acción en Base de Datos:**
-  - Resuelve la empresa (`dory_client`) mediante la categoría del canal de Discord (ej: `NATULAC`).
-  - Resuelve la sucursal (`dory_channel`) mediante el nombre del canal (ej: `maros-atencion`).
-  - Inserta el ticket en `dory.dory_thread` con estado inicial `ABIERTO` y asigna el `discord_thread_id`.
+### 3.4 Aplicación móvil NexoInt (En desarrollo)
 
----
-
-##### 3. Comando `/actualizar_hilo` (Modificación de Estado en Curso)
-Permite cambiar el estado de avance de un ticket sin cerrarlo ni imputar horas definitivas.
-- **Canal de Ejecución:** Dentro del hilo activo.
-- **Parámetros:**
-  - `estatus` (**Requerido** - Autocomplete): Nuevo estado operativo (ej: `PC`, `PI`, `PR`, `DP`, `TP`).
-  - Parámetros opcionales: `titulo`, `solicitante`, `topico`, `tipologia`, `horas`, `minutos`, `descripcion`, `consultor`, `pendiente_por` (`CLIENTE` o `CONSULTOR`), `issue` (enlace al ticket de Jira / GitHub).
-
----
-
-##### 4. Comando `/asignar_consultor` (Derivación y Notificación Inteligente)
-Asigna el ticket a un consultor técnico específico del equipo.
-- **Parámetros:**
-  - `consultor` (**Requerido** - Autocomplete): Selecciona al consultor de la lista activa de `dory.dory_employee`.
-- **Efecto Operativo:**
-  - Actualiza `dory.dory_thread.dory_employee_id`.
-  - El bot invoca al motor cognitivo (`DeepSeek` o plantilla de Jarvis) para redactar una notificación cordial y técnica dentro del hilo, informando al cliente sobre la asignación del especialista.
-
----
-
-##### 5. Comando `/agendar` (Compromisos y Seguimiento de Tareas)
-Programa una reunión o sesión de trabajo remoto con el cliente.
-- **Parámetros:** `fecha` (YYYY-MM-DD), `hora` (HH:MM), `descripcion` (Opcional).
-
----
-
-##### 6. Comando `/auditoria_hilos` (Verificación Administrativa)
-Ejecuta un barrido de consistencia entre los hilos existentes en los canales de atención y los registros indexados en `dory.dory_thread`, identificando hilos huérfanos o desfasados.
-
----
-
-#### 3.3.3 Tickets Internos (`is_internal_request`) y Reglas de Exclusión de SLAs
-En la operativa diaria de ERP Consultores y Asociados C.A., surgen requerimientos que no corresponden a clientes externos sino a coordinaciones internas, mantenimiento de infraestructura propia, soporte de sistemas internos o investigación de desarrollo.
-
-Para gestionar estos casos sin distorsionar las métricas de atención a clientes:
-1. **Detección Automática por Canal:**
-   - La tabla `dory.dory_bot_settings` almacena el parámetro dinámico `internal_request_channel_id` (con caché en memoria de 5 minutos en el bot).
-   - Cuando se abre un hilo en dicho canal interno, el bot marca automáticamente el campo en base de datos:
-     ```sql
-     dory.dory_thread.is_internal_request = 'Y'
-     ```
-2. **Exclusión de Escalamientos y Recordatorios (*Idle Nudge*):**
-   - El subsistema de alarmas de inactividad (`idleNudgeHandler.ts`) y el monitor de escalamiento de SLAs en tiempo real (`realtimeEscalation.ts`) filtran expresamente estos casos:
-     ```sql
-     WHERE COALESCE(t.is_internal_request, 'N') <> 'Y'
-     ```
-   - De este modo, los tickets internos **no generan alertas automáticas de SLA ni nudges por falta de respuesta**, permitiendo una gestión flexible sin penalizar los índices de servicio a clientes.
-
----
-
-### 3.4 Pilar 3: `NexoInt Mobile` (Aplicación Móvil Multiplataforma — En Desarrollo)
-
-La aplicación móvil de NexoInt constituye la extensión nativa y reactiva (iOS y Android) para clientes corporativos y consultores en movilidad, diseñada para ofrecer autoservicio y seguimiento de guardia sin depender de una estación de trabajo de escritorio.
-
-> [!NOTE]
-> **Estado de Madurez:** Actualmente **En Desarrollo Activo**. Los módulos descritos a continuación representan los entregables de la fase móvil en curso:
-
-#### Módulos Proyectados en la App Móvil:
-1. **Portal de Autoservicio del Cliente (Móvil):**
-   - Visualización ágil de incidencias activas e históricas con línea de tiempo (*timeline*) simplificada.
-   - Gráfico de dona y barras con el consumo mensual de horas frente a la bolsa contratada.
-   - Creación rápida de tickets con captura y adjunto de fotografías directas desde la cámara del dispositivo móvil.
-2. **Panel de Guardia y Consultor en Movilidad:**
-   - Consulta del calendario personal de turnos de guardia y alertas de soporte push en tiempo real.
-   - Bandeja simplificada de tickets asignados (To Do, In Progress, In Review, Done).
-   - Temporizador de trabajo (*timer*) móvil para imputación de tiempo en sesiones remotas o visitas en sitio.
-3. **Aislamiento Multitenant en Dispositivos:**
-   - La app móvil consumirá los endpoints autenticados de NexoInt aplicando los mismos filtros de privacidad estricta por compañía para asegurar que ningún usuario externo visualice tickets de otras organizaciones.
+La aplicación móvil se mantiene como una línea de trabajo en desarrollo. No se encontró su código en los repositorios `nexoint` web ni `discord_bot` revisados en esta actualización. Por tanto, aquí se registra únicamente su estado; pantallas, plataformas objetivo, funciones y fecha de entrega deben completarse con evidencia del equipo móvil antes de presentarse como requisitos confirmados.
 
 ---
 
@@ -524,81 +385,39 @@ La aplicación móvil de NexoInt constituye la extensión nativa y reactiva (iOS
 
 ```mermaid
 flowchart TD
-    subgraph sub_FRONTENDS_CANALES ["FRONTENDS & CANALES"]
-        A1["Cliente en Móvil/Web - NexoInt"]
-        A2["Cliente en Servidor de Discord"]
-        A3["Consultor en Consola Web"]
-    end
-
-    subgraph sub_API_GATEWAY_ROUTING ["API GATEWAY & ROUTING"]
-        GW["nexoint API Gateway"]
-    end
-
-    subgraph sub_SERVICIOS_INTERNOS_nexoint ["SERVICIOS INTERNOS (nexoint)"]
-        S1["Servicio de Autenticación"]
-        S2["Servicio de Gestión de Clientes y Contratos"]
-        S3["Servicio de Tickets e Incidencias"]
-        S4["Servicio de Imputación de Horas"]
-        S5["Servicio de Analítica e Informes"]
-    end
-
-    subgraph sub_AGENTES_ASISTENTES ["AGENTES & ASISTENTES"]
-        B1["discord_bot"]
-        B2["jarvis Assistant Engine"]
-    end
-
-    subgraph sub_PERSISTENCIA ["PERSISTENCIA"]
-        DB[("PostgreSQL")]
-        Cache[("Redis Cache")]
-    end
-
-    A1 -->|REST / WebSockets| GW
-    A2 <-->|Discord Events| B1
-    A3 -->|REST / WebSockets| GW
-
-    B1 <--> B2
-    B1 -->|REST API| GW
-    B2 -->|REST API| GW
-
-    GW --> S1
-    GW --> S2
-    GW --> S3
-    GW --> S4
-    GW --> S5
-
-    S1 --> DB
-    S2 --> DB
-    S3 --> DB
-    S4 --> DB
-    S5 --> DB
-
-    S3 --> Cache
-    S4 --> Cache
+    User["Consultor / administrador"] --> Web["NexoInt Web SPA"]
+    DiscordUser["Cliente / consultor en Discord"] <-->|Mensajes e interacciones| Bot["discord_bot: Dory"]
+    Web -->|Supabase Auth y PostgREST| Supabase[("Supabase: esquema dory")]
+    Bot -->|Supabase client| Supabase
+    Web -->|API REST autorizada| DoryAPI["API de Dory"]
+    Bot --> DoryAPI
+    DoryAPI -->|lee/publica según permisos| DiscordAPI["Discord API"]
+    Bot -->|GitHub API y callbacks de Actions| GitHub["Repositorios configurados en Jarvis"]
+    Mobile["App móvil: en desarrollo"] -.->|Integración por definir| Web
 ```
 
 ---
 
 ### 3.6 Diagrama de Componentes y Despliegue de Infraestructura
 
-La arquitectura física y de contenedores desacopla la capa de presentación de la capa de orquestación de agentes y persistencia BaaS:
+El código revisado contempla una imagen estática de NexoInt servida por Nginx y el servicio Node.js de `discord_bot`, que reúne Dory/Jarvis y sus endpoints. Supabase, Discord y GitHub son servicios externos. Los nombres de red, dominios, variables y topología de cada ambiente se documentan en los archivos de despliegue; este diagrama es lógico y no afirma que los componentes estén en una misma red o VPS.
 
 ```mermaid
 graph TB
     subgraph sub_Servidor_Cloud_VPS ["Servidor Cloud VPS / Docker Host"]
         subgraph sub_Red_Ingress_Web ["Red Ingress & Web (Vite + Nginx)"]
-            SPA["Contenedor NexoInt Web Console<br>React 18 + Vite + TailwindCSS"]
+            SPA["NexoInt Web<br>React + TypeScript + Vite"]
         end
 
-        subgraph sub_Red_Automatizacion_IA ["Red Automatización & Bots (Node.js / Bun)"]
-            BOT_CORE["Contenedor discord_bot<br>Discord.js v14 + Supabase Client"]
-            JARVIS_API["Contenedor Jarvis Engine<br>AI Agent Orchestrator & Task Automation"]
+        subgraph sub_Red_Automatizacion_IA ["Servicio de automatización (Node.js)"]
+            BOT_CORE["Contenedor discord_bot<br>Dory + Jarvis API"]
         end
     end
 
     subgraph sub_Plataforma_Supabase_Cloud ["Plataforma Supabase Cloud (Managed BaaS)"]
-        AUTH_ENGINE["Supabase Auth Engine<br>OAuth 2.0 (Google / Discord) + JWT"]
-        PG_DORY[("PostgreSQL 16 Engine<br>Esquema dory (Tablas, RLS, RPCs)")]
-        STORAGE["Supabase Object Storage<br>Adjuntos, Logs y Avatares"]
+        AUTH_ENGINE["Supabase Auth<br>sesión y proveedores configurados"]
+        PG_DORY[("PostgreSQL<br>Esquema dory")]
+        STORAGE["Supabase Storage"]
     end
 
     subgraph sub_Clientes_y_Consumidores ["Clientes y Consumidores"]
@@ -610,11 +429,10 @@ graph TB
     ADMIN_USER <-->|HTTPS / Port 443| SPA
 
     SPA <-->|HTTPS / Supabase Client| AUTH_ENGINE
-    SPA <-->|PostgREST / PostGIS / RPC| PG_DORY
-    SPA <-->|HTTP REST| JARVIS_API
-
+    SPA <-->|PostgREST / RPC| PG_DORY
     BOT_CORE <-->|PostgREST / Supabase Client| PG_DORY
-    BOT_CORE <-->|REST API + WebSockets| JARVIS_API
+    SPA <-->|API REST de Dory| BOT_CORE
+    BOT_CORE <-->|GitHub API / callbacks| GH["GitHub"]
     BOT_CORE -->|Upload Adjuntos| STORAGE
 ```
 
@@ -622,27 +440,23 @@ graph TB
 
 ### 3.7 Modelo de Datos Relacional y Esquema de Entidades (Esquema `dory`)
 
-El siguiente diagrama entidad-relación refleja con precisión las tablas transaccionales del esquema `dory` en Supabase, la correspondencia con Discord y el control de horas de soporte:
+El siguiente diagrama es una vista conceptual de relaciones principales identificadas en el código y el inventario de datos. No sustituye al esquema desplegado ni al diccionario vigente. Se excluyen aquí las tablas comerciales heredadas, que están fuera del alcance funcional actual.
 
 ```mermaid
 erDiagram
     dory_client ||--o{ dory_channel : posee
     dory_client ||--o{ dory_thread : solicita
     dory_channel ||--o{ dory_thread : contiene
-    dory_client ||--o{ dory_service_contract : celebra
     dory_topic ||--o{ dory_thread : clasifica
     dory_typology ||--o{ dory_thread : categoriza
     dory_thread_status ||--o{ dory_thread : estado_actual
     dory_employee ||--o{ dory_thread : consultor_asignado
-    dory_thread ||--o{ dory_charge : imputa_horas
-    dory_service_contract ||--o{ dory_charge : debita_de
-    dory_employee ||--o{ dory_charge : registra_horas
 
     dory_client {
         bigint dory_client_id PK
         string value UK
         string name
-        string discord_server_id
+        string discord_id
         boolean isactive
     }
 
@@ -650,7 +464,7 @@ erDiagram
         bigint dory_channel_id PK
         bigint dory_client_id FK
         string name
-        string discord_channel_id UK
+        string discord_id UK
         boolean isactive
     }
 
@@ -664,42 +478,28 @@ erDiagram
 
     dory_thread {
         bigint dory_thread_id PK
-        string thread_id UK
-        string thread_name
+        string value
+        string title
         bigint dory_client_id FK
         bigint dory_channel_id FK
         bigint dory_topic_id FK
         bigint dory_typology_id FK
         bigint dory_thread_status_id FK
-        bigint dory_employee_id FK
+        bigint assigned_employee_id FK
+        bigint created_by_user_id FK
+        bigint closed_by_user_id FK
         string discord_thread_id UK
-        string erp_version
+        string affected_erp_version
+        string thread_status
         string is_internal_request
-        datetime closed_at
+        datetime created_at
+        datetime date_finish
+        integer consumed_hours
+        integer consumed_minutes
+        boolean is_ready_to_close
         boolean isactive
     }
 
-    dory_service_contract {
-        bigint dory_service_contract_id PK
-        bigint dory_client_id FK
-        string name
-        date start_date
-        date end_date
-        decimal total_hours
-        decimal price_per_hour
-        boolean isactive
-    }
-
-    dory_charge {
-        bigint dory_charge_id PK
-        bigint dory_thread_id FK
-        bigint dory_service_contract_id FK
-        bigint dory_employee_id FK
-        decimal hours_spent
-        date charge_date
-        text description
-        boolean isactive
-    }
 ```
 
 ---
@@ -710,16 +510,16 @@ erDiagram
 
 | Nivel de Prueba | Alcance y Herramientas | Criterio de Éxito |
 | :--- | :--- | :--- |
-| **Pruebas Unitarias** | Validación de funciones de negocio de `nexoint`, cálculo de horas y endpoints individuales con `pytest` / `jest`. | Cobertura de código superior al 85%. |
-| **Pruebas de Integración** | Simulación del ciclo completo: Mensaje en Discord -> `discord_bot` -> `nexoint` -> PostgreSQL -> Actualización en `NexoInt`. | 100% de coherencia en estados y persistencia sin pérdidas de datos. |
-| **Pruebas de Carga y Rendimiento** | Pruebas de estrés a la API de `nexoint` simulando 500 solicitudes concurrentes con `Locust` o `K6`. | Tiempo de respuesta p95 < 250 ms con 0% de errores HTTP 5xx. |
+| **Pruebas funcionales** | Casos reproducibles para autenticación, permisos, alta/sincronización/cierre de casos, calendario, reportes y releases. | Resultado observado y evidencia registrados por escenario. |
+| **Pruebas de integración** | Flujo Discord → `discord_bot`/API de Dory → Supabase → visualización en NexoInt Web. | Estados, vínculos y permisos consistentes en los escenarios acordados. |
+| **Pruebas de rendimiento** | Medición de operaciones críticas con un volumen de carga acordado antes de ejecutar. | Reportar medidas reales; no fijar umbrales sin aprobación y línea base. |
 | **Pruebas de Aceptación (UAT)** | Validación directa con el personal de ERP Consultores y Asociados C.A. y clientes de prueba. | Firma de conformidad y usabilidad satisfactoria. |
 
 ### 4.2 Plan de Auditoría Informática y Seguridad
 De acuerdo con el esquema PST IV 2018, se debe incluir un **Informe de Resultados de Auditoría Informática**:
-1. **Análisis de Vulnerabilidades:** Evaluación con herramientas estáticas (SAST: SonarQube, Bandit) y dinámicas (DAST: OWASP ZAP).
-2. **Auditoría de Control de Accesos:** Verificación de integridad de tokens JWT, expiración forzada y validación estricta de roles RBAC.
-3. **Auditoría de Base de Datos:** Verificación de políticas de respaldo automatizado diario (`pg_dump` con cifrado) y planes de recuperación ante desastres (RPO < 2 horas, RTO < 30 minutos).
+1. **Revisión de seguridad:** definir herramientas y alcance antes del análisis; registrar hallazgos reproducibles, severidad y correcciones. No declarar auditorías SAST/DAST ejecutadas sin evidencia.
+2. **Control de acceso:** comprobar roles, permisos de ventana/acción, RLS y alcance de tokens en la configuración desplegada, incluidos intentos permitidos y denegados.
+3. **Respaldo y continuidad:** documentar la política realmente configurada por Supabase y los servicios de despliegue. Acordar y medir RPO/RTO antes de incluir objetivos numéricos.
 
 ---
 
@@ -730,55 +530,46 @@ De acuerdo con el esquema PST IV 2018, se debe incluir un **Informe de Resultado
 ```mermaid
 flowchart LR
     subgraph sub_Red_Externa_WAN ["Red Externa (WAN)"]
-        USR_CLI["Dispositivos de Clientes"]
-        USR_CON["Dispositivos de Consultores"]
-        DISC_CLOUD["Nube de Discord API Gateway"]
+        USR_CLI["Clientes y consultores"]
+        USR_CON["Usuarios internos"]
+        DISC_CLOUD["Discord API / Gateway"]
+        GH["GitHub API / Actions"]
+        SUPA["Supabase administrado"]
     end
 
-    subgraph sub_Per_metro_de_Seguridad_Cloud_VPS_On_Premise ["Perímetro de Seguridad (Cloud VPS / On-Premise)"]
-        FW["Firewall / UFW - Puertos 80, 443, 22 SSH Restringido"]
-        REV_PROXY["Nginx Ingress Proxy + SSL Let's Encrypt"]
+    subgraph sub_Despliegue ["Servicios desplegables (topología por ambiente)"]
+        WEB["NexoInt Web estática<br>servida por Nginx"]
+        BOT["discord_bot<br>Dory + Jarvis + API"]
     end
 
-    subgraph sub_Red_L_gica_Interna_de_Contenedores_Docker_Bridge_172_20_0_0_16 ["Red Lógica Interna de Contenedores (Docker Bridge: 172.20.0.0/16)"]
-        API_CTR["Contenedor: nexoint-api :8000"]
-        BOT_CTR["Contenedor: discord-bot-jarvis"]
-        APP_CTR["Contenedor: frontend-app :3000"]
-        DB_CTR[("Contenedor: postgres-db :5432")]
-        RED_CTR[("Contenedor: redis-cache :6379")]
-    end
-
-    USR_CLI -->|HTTPS 443| FW
-    USR_CON -->|HTTPS 443| FW
-    DISC_CLOUD <-->|WSS / HTTPS| BOT_CTR
-
-    FW --> REV_PROXY
-    REV_PROXY -->|HTTP| API_CTR
-    REV_PROXY -->|HTTP| APP_CTR
-    BOT_CTR --> API_CTR
-    API_CTR --> DB_CTR
-    API_CTR --> RED_CTR
+    USR_CLI <-->|Discord| DISC_CLOUD
+    DISC_CLOUD <-->|Gateway / API| BOT
+    USR_CON -->|HTTPS| WEB
+    WEB <-->|Auth / PostgREST| SUPA
+    BOT <-->|datos permitidos| SUPA
+    WEB <-->|API de Dory| BOT
+    BOT <-->|releases y workflows| GH
 ```
 
 ### 5.2 Matriz de Factores y Evaluación de Riesgos
 
 | Factor de Riesgo | Tipo | Nivel | Estrategia de Mitigación / Plan de Contingencia |
 | :--- | :--- | :---: | :--- |
-| **Caídas en API de Discord** | Tecnológico / Externo | Medio | `NexoInt` opera de forma autónoma con su propio chat y sistema de tickets directo con `nexoint`. |
-| **Pérdida de Fluido Eléctrico / Red Local** | Operativo / Físico | Alto | Despliegue de los servicios en Servidor Privado Virtual (VPS en la nube) con alta disponibilidad y UPS en sucursales locales. |
-| **Filtración de Datos de Contratos** | Seguridad / Legal | Crítico | Cifrado de datos en reposo y en tránsito (TLS 1.3), tokens firmados con claves asimétricas y auditoría de eventos. |
-| **Resistencia al Cambio de Usuarios** | Social / Humano | Bajo | Jornadas de capacitación programadas y diseño centrado en la experiencia de usuario (UI/UX) simplificada. |
-| **Variación de Costos de Infraestructura** | Financiero | Bajo | Utilización de software 100% de código abierto (PostgreSQL, Docker, Linux, Python/JS) sin licenciamiento privativo. |
+| **Interrupción de Discord o de la API de Dory** | Tecnológico / Externo | Por evaluar | Mostrar el fallo con claridad, preservar los datos confirmados y permitir reintentar sin duplicar operaciones cuando corresponda. |
+| **Indisponibilidad de Supabase** | Tecnológico / Externo | Por evaluar | Identificar operaciones afectadas y validar la recuperación con las capacidades y el plan contratado del servicio. |
+| **Acceso indebido entre compañías** | Seguridad / Privacidad | Por evaluar | Completar el modelo de acceso externo en desarrollo y verificar aislamiento en RLS/API antes de habilitar usuarios de compañías. |
+| **Permisos desactualizados o excesivos** | Seguridad | Por evaluar | Revisar roles, privilegio mínimo, políticas de base de datos y controles del servidor; la interfaz no es una frontera de seguridad suficiente. |
+| **Dependencia de integraciones externas** | Operativo | Por evaluar | Documentar disponibilidad, límites y credenciales de Discord, GitHub, Supabase y servicios de IA; revisar alertas y procedimiento de contingencia. |
 
 ---
 
 ## 6. Fase V: Estructura de Manuales y Políticas de Seguridad
 
 De acuerdo con el esquema oficial de PST IV, el informe final debe incorporar:
-1. **Manual de Usuario:** Guía ilustrada para clientes (uso de `NexoInt` y comandos de Discord) y consultores (atención, registro de horas).
-2. **Manual de Sistemas:** Documentación técnica de arquitectura, endpoints Swagger/OpenAPI, diagramas E/R y contratos de microservicios.
+1. **Manual de Usuario:** Guía ilustrada para consultores y administradores de NexoInt Web y para clientes/consultores que interactúan con Dory en Discord. No presentar el portal de compañías como disponible mientras siga en desarrollo.
+2. **Manual de Sistemas:** Documentación técnica de arquitectura, endpoints disponibles de la API de Dory, variables de entorno sin secretos y diagramas del esquema contrastados con migraciones vigentes. No inventar microservicios ni endpoints Swagger/OpenAPI que no estén en el proyecto.
 3. **Manual de Instalación:** Instrucciones paso a paso para desplegar el ecosistema mediante Docker Compose (`docker compose up -d`) y variables de entorno `.env`.
-4. **Manual de Normas y Procedimientos:** Procedimientos operativos estandarizados para alta de clientes, cierre de mes contable y resolución de incidencias.
+4. **Manual de Normas y Procedimientos:** Procedimientos operativos para configuración de compañías/canales, atención y cierre de casos, guardias y releases, distinguiendo los flujos ya habilitados de los que siguen en desarrollo.
 5. **Políticas y Estándares de Seguridad Informática:**
    - *Seguridad Física:* Control de acceso a servidores locales y terminales de trabajo.
    - *Seguridad Lógica:* Política de contraseñas robustas, rotación periódica de tokens y llaves API, y política de copias de seguridad redundantes.
@@ -827,17 +618,17 @@ flowchart TD
 ---
 
 #### 📝 Fase II: Requerimientos, Diseño y Desarrollo del Software
-- **Qué tienen listo como base:** La arquitectura modular (`nexoint`, `discord_bot`/`jarvis`, `NexoInt`), los esquemas de bases de datos `dory`, el flujo de eventos, la seguridad OWASP/NIST y los logins externos.
+- **Qué tienen listo como base:** La arquitectura observada de NexoInt Web, `discord_bot` (Dory/Jarvis), Supabase y sus integraciones; además, el inventario de datos y los flujos identificados. La revisión no constituye auditoría certificada ni confirma configuración de producción.
 - **Qué debe redactar el equipo:**
-  1. *Plantillas de Requerimientos Funcionales y No Funcionales:* Llenar cada ficha oficial del PNFI (ID, Nombre, Descripción detallada, Prioridad, Actor) para los módulos de Tickets, Contratos, Imputación de Horas, Seguridad y Releases.
-  2. *Plantillas de Casos de Uso del Software (CUS):* Elaborar las planillas de especificación de casos de uso maestros (Gestión de Clientes, Contratos, Usuarios) y transaccionales (Apertura de Ticket por Discord, Imputación de Horas, Ejecución de Release con Jarvis).
+  1. *Plantillas de Requerimientos Funcionales y No Funcionales:* Llenar cada ficha oficial del PNFI (ID, Nombre, Descripción detallada, Prioridad, Actor) para tickets y solicitudes internas, seguridad, calendario, reportes, releases, NexoKube, integración de conversación y líneas en desarrollo. Excluir contratos, bolsas de horas, recibos/facturación y marcajes.
+  2. *Plantillas de Casos de Uso del Software (CUS):* Elaborar casos para apertura/sincronización y actualización de casos, consulta de conversación, calendario, reportes, releases y administración de accesos. El registro de tiempo es operativo, no un débito contractual.
   3. *Justificación Metodológica:* Redactar la justificación del uso de la metodología **MeRinde** combinada con prácticas ágiles y el estándar de calidad **RECLAMO**.
   4. *Interfaces de Usuario:* Adjuntar capturas de pantalla de los formularios de `nexoint` y maquetas de `NexoInt` con sus descripciones funcionales.
 
 ---
 
 #### 📝 Fase III: Implantación, Pruebas y Auditoría Informática
-- **Qué tienen listo como base:** El plan de pruebas unitarias, de integración, rendimiento y el alcance de auditoría informática.
+- **Qué tienen listo como base:** Una propuesta de escenarios funcionales y de integración; el equipo debe ejecutar las pruebas, guardar evidencia e informar resultados medidos. No se declara una suite automatizada en el código revisado.
 - **Qué debe redactar el equipo:**
   1. *Casos de Prueba Detallados:* Llenar las tablas de casos de prueba con: Entrada de datos, Pasos de ejecución, Resultado esperado y Resultado obtenido (con capturas de pantalla de logs o respuestas de la API).
   2. *Informe de Auditoría Informática:* Redactar el informe formal de auditoría explicando las herramientas utilizadas (SAST, DAST, análisis de endpoints, revisión de base de datos) y emitiendo el dictamen y recomendaciones.
@@ -846,7 +637,7 @@ flowchart TD
 ---
 
 #### 📝 Fase IV: Resultados y Logros del Proyecto
-- **Qué tienen listo como base:** El diagrama lógico/físico de red, la topología de contenedores Docker/Supabase y la matriz de factores de riesgo.
+- **Qué tienen listo como base:** Un diagrama lógico de componentes y una matriz inicial de riesgos, pendientes de validación contra cada ambiente desplegado.
 - **Qué debe redactar el equipo:**
   1. *Descripción del Producto:* Redactar la memoria descriptiva final explicando cómo el ecosistema resuelve la problemática diagnosticada en la Fase I y mejora el desempeño de la empresa.
   2. *Plan de Contingencia de Riesgos:* Desarrollar los párrafos explicativos de cada factor de riesgo (financiero, técnico, ambiental, legal) y su protocolo de mitigación.
@@ -856,8 +647,8 @@ flowchart TD
 #### 📝 Fase V: Manuales y Normativas
 - **Qué tienen listo como base:** El índice y estructura de contenidos requeridos por el esquema 2018.
 - **Qué debe redactar el equipo:**
-  1. *Manual de Usuario:* Redactar la guía ilustrada paso a paso con capturas para el cliente (cómo abrir tickets por Discord / Web) y para el consultor (cómo registrar horas y cerrar tickets).
-  2. *Manual de Sistemas:* Compilar los contratos de endpoints OpenAPI/Swagger, variables de entorno y diagramas de bases de datos.
+  1. *Manual de Usuario:* Redactar la guía ilustrada para interacción de clientes por Discord y operación interna en NexoInt Web. Señalar como pendiente el acceso de compañías y la aplicación móvil.
+  2. *Manual de Sistemas:* Compilar endpoints existentes de Dory, variables de entorno (sin valores secretos) y diagramas de base validados.
   3. *Manual de Instalación:* Guía de despliegue paso a paso para desarrolladores (`pnpm install`, `.env`, conexión a Supabase y Docker Compose).
   4. *Manual de Normas y Procedimientos:* Protocolos operativos internos de soporte y atención.
   5. *Políticas de Seguridad Informática:* Documento formal con las políticas de contraseñas, control de accesos RBAC y respaldo de información.
