@@ -48,43 +48,11 @@ Toda la documentación técnica, esquemas normativos del PNFI y desgloses por tr
 
 ---
 
-## 📅 Plan de Ejecución y Cronograma Operativo del Informe PST IV
+## 📅 Plan de Ejecución del Informe PST IV
 
-> [!IMPORTANT]
-> **Fecha de Inicio Oficial:** **Lunes 21 de Septiembre de 2026**  
-> **Meta:** Completar la redacción integral, validación técnica, compilación de manuales y entrega del tomo final del informe de **Proyecto Socio Tecnológico IV** cumpliendo al 100% con el [Esquema PNFI 2018](./docs/esquemas-pst-2018.md).
+Para consultar la planificación de trabajo y distribución de tareas del equipo para la entrega del informe final, consulte:
 
-```mermaid
-flowchart TD
-    S1["Semana 1 (21 - 27 Sep)<br>Fase I: Diagnóstico, Legal y Modelo de Negocio"] --> S2["Semana 2 (28 Sep - 04 Oct)<br>Fase II (Parte A): Requerimientos y Casos de Uso"]
-    S2 --> S3["Semana 3 (05 - 11 Oct)<br>Fase II (Parte B): Arquitectura, DB dory y UI"]
-    S3 --> S4["Semana 4 (12 - 18 Oct)<br>Fase III: Bitácora de Pruebas y Auditoría"]
-    S4 --> S5["Semana 5 (19 - 25 Oct)<br>Fase IV: Topología de Red y Matriz de Riesgos"]
-    S5 --> S6["Semana 6 (26 Oct - 01 Nov)<br>Fase V: Compilación de los 5 Manuales y Políticas"]
-    S6 --> S7["Semana 7 (02 - 08 Nov)<br>Revisión con Tutores y Correcciones"]
-    S7 --> S8["Semana 8 (09 - 15 Nov)<br>Tomo Final y Preparación de Defensa"]
-```
-
-### 🗓️ Cronograma Detallado de Actividades por Semanas
-
-| Semana / Fechas | Fase / Capítulo a Redactar | Tareas Específicas a Ejecutar por el Equipo | Entregable Semanal |
-| :--- | :--- | :--- | :--- |
-| **Semana 1**<br>*(21/09 al 27/09/2026)* | **Fase I:** Planificación, Diagnóstico y Modelo de Negocio | • Redactar reseña histórica y organigrama de ERP Consultores y Asociados C.A.<br>• Desarrollar fundamentación legal (CRBV Art. 110, Ley de Infogobierno, Plan de la Patria).<br>• Redactar narrativa de factibilidad (técnica, económica, social, operativa).<br>• Transcribir y redactar el Modelo de Negocio Canvas, FODA y Árbol de Problemas basado en [`pst-4-arquitectura.md`](./docs/proyectos/pst-4-arquitectura.md#2-fase-i-planificación-diagnóstico-y-modelo-de-negocio). | **Borrador Completo de Fase I** listo para revisión. |
-| **Semana 2**<br>*(28/09 al 04/10/2026)* | **Fase II (Parte A):** Requerimientos del Software | • Llenar plantillas oficiales de Requerimientos Funcionales (RF) y No Funcionales (RNF).<br>• Elaborar diagramas de Casos de Uso del Software (CUS) maestros y transaccionales.<br>• Redactar planillas de especificación de casos de uso (apertura de tickets por Discord, imputación de horas, releases con Jarvis). | **Fichas de Requerimientos y Casos de Uso (CUS)** terminadas. |
-| **Semana 3**<br>*(05/10 al 11/10/2026)* | **Fase II (Parte B):** Diseño y Desarrollo del Software | • Justificar la metodología de desarrollo (**MeRinde**) y estándar de calidad (**RECLAMO**).<br>• Documentar la arquitectura de microservicios y seguridad (OWASP/NIST, Google/Discord OAuth).<br>• Incorporar el modelo Entidad-Relación y diccionario del esquema `dory` desde [`docs/database/README.md`](./docs/database/README.md).<br>• Adjuntar capturas de pantallas y formularios de `nexoint` y maquetas de `la app`. | **Borrador Completo de Fase II** integrado con diagramas. |
-| **Semana 4**<br>*(12/10 al 18/10/2026)* | **Fase III:** Implantación, Pruebas y Auditoría | • Ejecutar y registrar las bitácoras de casos de prueba (unitarias, integración y UAT).<br>• Documentar pruebas de carga y tiempos de respuesta de la API.<br>• Redactar el **Informe de Auditoría Informática** (técnicas SAST/DAST, control de accesos, planes de backup).<br>• Elaborar el análisis e interpretación de métricas de calidad de software. | **Borrador Completo de Fase III** con evidencias y reporte de auditoría. |
-| **Semana 5**<br>*(19/10 al 25/10/2026)* | **Fase IV:** Resultados, Red y Evaluación de Riesgos | • Redactar la descripción general del producto y proceso de optimización operativa.<br>• Documentar y explicar los diagramas lógicos y físicos de la arquitectura de red (Docker / VPS / Supabase).<br>• Desarrollar el análisis descriptivo y planes de mitigación de la **Matriz de Riesgos** (técnico, financiero, social, legal). | **Borrador Completo de Fase IV** consolidado. |
-| **Semana 6**<br>*(26/10 al 01/11/2026)* | **Fase V:** Manuales y Políticas de Seguridad | • Redactar el **Manual de Usuario** (ilustrado con capturas de Discord y la app web).<br>• Redactar el **Manual de Sistemas** (endpoints Swagger/OpenAPI y contratos de datos).<br>• Redactar el **Manual de Instalación** (guía paso a paso con Docker Compose y variables `.env`).<br>• Redactar el **Manual de Normas y Procedimientos**.<br>• Redactar las **Políticas y Estándares de Seguridad Informática** (físicas y lógicas). | **Los 5 Manuales Técnicos y de Usuario** finalizados. |
-| **Semana 7**<br>*(02/11 al 08/11/2026)* | **Revisión General y Ajustes de Tutores** | • Unificar los capítulos en un solo tomo maestro siguiendo las normas de presentación de la UPTEP.<br>• Sesión de revisión con la Tutora Académica y el Tutor Comunitario.<br>• Aplicar correcciones de estilo, bibliografía (normas APA) y anexos. | **Tomo Preliminar Validado** por tutores. |
-| **Semana 8**<br>*(09/11 al 15/11/2026)* | **Entrega Formal y Preparación de Defensa** | • Encuadernación y entrega formal del informe a la coordinación del PNFI.<br>• Elaboración de diapositivas y guion de presentación para la defensa pública de grado.<br>• Pruebas de demostración en vivo (*live demo*) del ecosistema funcionando. | **Entrega Definitiva y Socialización Exitosa del PST IV.** |
-
----
-
-### 📌 Pautas de Seguimiento y Trabajo en Equipo
-
-1. **Punto de Partida Obligatorio:** Todos los redactores deben consultar [`docs/proyectos/pst-4-arquitectura.md`](./docs/proyectos/pst-4-arquitectura.md) y [`docs/database/README.md`](./docs/database/README.md) antes de redactar cada sección técnica.
-2. **Reuniones Semanales de Sincronización:** Cada viernes se revisará el porcentaje de avance de la fase correspondiente a la semana.
-3. **Control de Versiones en Git:** Cada sección redactada se subirá a ramas de trabajo documentadas para evitar pérdidas de información.
+👉 **[Ver Plan de Trabajo y Cronograma de Ejecución (PST IV)](./docs/proyectos/pst-4-plan-de-trabajo.md)**
 
 ---
 
