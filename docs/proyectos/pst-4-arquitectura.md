@@ -334,21 +334,45 @@ Para reflejar con precisión la evolución del sistema y su hoja de ruta técnic
 
 ---
 
-### 3.3 Pilar 2: `discord_bot` y `jarvis` (Automatización Inteligente y Soporte Cognitivo)
+### 3.3 Pilar 2: `discord_bot` (Dory) y `jarvis` (Separación de Responsabilidades: Soporte vs. Releases)
 
-Este componente conforma el **subsistema conversacional y de automatización inteligente**, brindando una interfaz ágil en tiempo real para clientes y consultores conectada a la API de **Jarvis** (`http://app-server-4.erpcya.com:3000/api`).
+Este pilar está compuesto por dos subsistemas claramente diferenciados por su ámbito de acción y propósito operativo:
 
-#### 3.3.1 Orquestador de Inteligencia Artificial `jarvis`:
-- **Generación Automatizada de Notas de Versión (*Release Notes*):** Orquestación de releases de software (`dory_jarvis_release_run`) analizando commits y PRs con plantillas estructuradas de prompt para repositorios Swing y ZK, explicando beneficios en español y detectando scripts XML de migración aplicables sin duplicar metadatos internos.
-- **Trazabilidad de Cambios entre Proyectos:** Análisis secuencial de dependencias (ZK, Swing, Patch) para reflejar los cambios heredados efectivos entregados al cliente.
-- **Asistencia Cognitiva y Seguimientos Contextuales:**
-  - El bot analiza el historial de la conversación antes de redactar nudges (*Idle Nudges*). Identifica a quién le toca responder (cliente vs. consultor), pide datos concretos si faltan y guarda silencio cuando no existe una acción constructiva requerida.
-  - Análisis contextual de compromisos de tiempo y fechas límites en el chat.
-- **Detección Automática de Cierres de Tickets:**
-  - Identificación de intenciones de cierre o solución confirmada por el usuario, marcando el caso como pendiente de cierre y notificando al rol responsable sin saturar el canal.
-- **Monitoreo de Políticas de Seguimiento (`dory_follow_up_policy`):**
-  - Consulta en tiempo real de políticas y catálogos de estado definidos en NexoInt para asegurar que el bot no altere campos sin supervisión humana.
-  - Alertas escalonadas (L1 y L2) exclusivamente en días y horas hábiles de **Caracas (UTC-4: 08:00 AM - 05:00 PM)**.
+```mermaid
+flowchart TD
+    subgraph Dory_Subsystem ["🤖 1. discord_bot (Dory Core) — Soporte y Asistencia al Cliente"]
+        D1["Atención en Discord en Tiempo Real"]
+        D2["Ciclo de Vida de Tickets (/abrir_hilo, /cerrar_hilo, /actualizar_hilo)"]
+        D3["Seguimientos Contextuales Inteligentes (Nudges L1/L2)"]
+        D4["Detección Automática de Intención de Cierre"]
+        D5["Sincronización de Estados y Catálogos con NexoInt"]
+    end
+
+    subgraph Jarvis_Subsystem ["🧠 2. jarvis Engine — GitHub, Releases & Automatización CI/CD"]
+        J1["Orquestación de Releases (dory_jarvis_release_run)"]
+        J2["Trazabilidad de Commits, PRs y Dependencias Multi-Proyecto"]
+        J3["Generación de Release Notes Funcionales en Español"]
+        J4["Detección y Empaquetado de XMLs de Migración de Base de Datos"]
+        J5["Automatización de Webhooks y Publicación Git"]
+    end
+
+    Dory_Subsystem <-->|Eventos / Asistencia Cognitiva| Jarvis_Subsystem
+    Dory_Subsystem <-->|REST API + Supabase Client| DB[("PostgreSQL (Esquema dory)")]
+    Jarvis_Subsystem <-->|GitHub API / Git Webhooks| GH["GitHub Repositories (ZK, Swing, Patch)"]
+```
+
+#### 3.3.1 `jarvis`: Orquestador de Releases, GitHub y Automatización CI/CD
+`jarvis` es el motor técnico especializado en el ciclo de vida del software, repositorios de GitHub y publicaciones:
+- **Generación Automatizada de Notas de Versión (*Release Notes*):** Orquestación de releases de software (`dory_jarvis_release_run`) analizando commits y PRs con plantillas estructuradas de prompt para repositorios Swing y ZK, explicando beneficios funcionales en español y detectando scripts XML de migración aplicables sin duplicar metadatos internos.
+- **Trazabilidad de Cambios entre Proyectos:** Análisis secuencial de dependencias (ZK, Swing, Patch y bibliotecas ERP) para reflejar los cambios heredados efectivos entregados al cliente, incluso cuando se publican entre dos versiones del proyecto principal.
+- **Automatización y Recuperación de Publicaciones:** Gestión y propagación de releases entre repositorios de GitHub, control de pre-releases, reporte de resultados de builds y capacidad de reintentar pasos fallidos sin duplicar entregas.
+
+#### 3.3.2 `discord_bot` (Dory): Soporte, Asistencia al Cliente y Gestión de Incidencias
+`Dory` es el bot interactivo que opera directamente en los canales y servidores de Discord atendiendo a clientes y consultores:
+- **Seguimientos Contextuales y Respetuosos (Nudges):** Analiza el historial antes de redactar mensajes de seguimiento. Identifica a quién corresponde responder (cliente vs. consultor), pide datos específicos solo si faltan y guarda silencio cuando no existe una acción constructiva que solicitar.
+- **Detección Automática de Cierres de Tickets:** Identifica confirmaciones de resolución por parte del usuario, marca el caso como pendiente de cierre y notifica al rol responsable sin saturar el canal con mensajes innecesarios.
+- **Monitoreo de Políticas de Seguimiento (`dory_follow_up_policy`):** Consulta en tiempo real desde NexoInt los estados de atención y políticas de seguimiento para no modificar campos sin supervisión humana. Alertas escalonadas (L1 y L2) exclusivamente en horario de oficina de **Caracas (UTC-4: 08:00 AM - 05:00 PM)**.
+- **Segregación de Solicitudes Internas (`is_internal_request`):** Exclusión estricta de alertas automáticas para hilos de desarrollo o infraestructura interna.
 
 ```mermaid
 flowchart LR
