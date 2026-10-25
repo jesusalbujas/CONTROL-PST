@@ -56,7 +56,8 @@ docs/
     ├── pst-1.md                  <- Trayecto I: Alfabetización y Soporte en Fe y Alegría
     ├── pst-2.md                  <- Trayecto II: ADempiere ERP Activos Fijos
     ├── pst-3.md                  <- Trayecto III: Sistema Web, Bot Dory y Superset BI
-    └── pst-4-arquitectura.md     <- Trayecto IV: nexoint, discord_bot (jarvis) y la app
+    ├── pst-4-arquitectura.md     <- Trayecto IV: nexoint, discord_bot (jarvis) y la app
+    └── pst-4-plan-de-trabajo.md  <- Trayecto IV: Plan de Trabajo y Cronograma de Urgencia (Equipo)
 ```
 
 ### 🗄️ Modelo de Base de Datos y Persistencia:
