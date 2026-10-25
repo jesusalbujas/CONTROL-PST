@@ -167,27 +167,6 @@ docker compose up -d
 
 ---
 
-## 🔐 Configuración de Seguridad en Keycloak
-
-Para entornos de desarrollo local donde no se utilice SSL/HTTPS, desactive el requerimiento de SSL en el Realm master ejecutando:
-
-```bash
-docker exec -it <nombre_contenedor_keycloak> /opt/keycloak/bin/kcadm.sh config credentials \
-  --server "http://localhost:3333" \
-  --realm master \
-  --user admin \
-  --password admin && \
-docker exec -it <nombre_contenedor_keycloak> /opt/keycloak/bin/kcadm.sh update realms/master -s sslRequired=NONE
-```
-
----
-
-## 📊 Demostración de ADempiere ERP
-
-![ADempiere Demo](./docs/ADempiere_demo.gif)
-
----
-
 ## 👥 Equipo de Autores y Créditos
 
 - **Jesús Albujas** ([@jesusalbujas](https://github.com/jesusalbujas))
