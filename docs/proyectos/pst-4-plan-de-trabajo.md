@@ -7,7 +7,7 @@
 
 ## 👥 Asignación Nominal de Redacción (6 Integrantes)
 
-Cada integrante redactará su sección directamente en el Google Doc, apoyándose en los insumos ya preparados en el repositorio local [`/opt/development/github/control-pst`](file:///opt/development/github/control-pst):
+Cada integrante redactará su sección directamente en el Google Doc, apoyándose en los insumos ya preparados en este repositorio:
 
 ---
 
@@ -16,7 +16,7 @@ Cada integrante redactará su sección directamente en el Google Doc, apoyándos
 * **Tareas Específicas a Redactar:**
   1. **Actualizar el Organigrama y Reseña de ERP Consultores:** Asegurar que refleje el año 2026 y la estructura operativa real.
   2. **Reemplazar el Modelo de Negocio:** Eliminar menciones viejas a Superset/Excel y redactar el nuevo flujo (Discord $\leftrightarrow$ NexoInt $\leftrightarrow$ Base de Datos $\leftrightarrow$ Clientes).
-  3. **Incorporar Diagrama CUN y Mapa de Procesos:** Transcribir los diagramas ya generados en [`docs/proyectos/pst-4-arquitectura.md`](file:///opt/development/github/control-pst/docs/proyectos/pst-4-arquitectura.md#23-mapa-y-flujograma-de-procesos-de-negocio).
+  3. **Incorporar Diagrama CUN y Mapa de Procesos:** Transcribir los diagramas ya generados en [pst-4-arquitectura.md](./pst-4-arquitectura.md#23-mapa-y-flujograma-de-procesos-de-negocio).
   4. **Metodología de Calidad RECLAMO (Fase II):** Redactar la sección obligatoria de RECLAMO que actualmente no existe en el documento.
   5. **Reflexiones Críticas:** Redactar la Reflexión Crítica de Fase I y Fase II.
 * **Plazo de Entrega:** **Martes 27 de Octubre - 06:00 PM**
@@ -26,8 +26,8 @@ Cada integrante redactará su sección directamente en el Google Doc, apoyándos
 ### 👤 2. José Zúñiga (Fase II y IV — Ingeniería Técnica, Arquitectura, Base de Datos y Red)
 * **Objetivo:** Como responsable técnico del informe, plasmar la arquitectura del sistema, diagramas de ingeniería y topología de red (tomando todo el material ya resuelto en el repositorio).
 * **Tareas Específicas a Redactar:**
-  1. **Modelo E/R y Diccionario de Datos (Fase II):** Transcribir el diagrama Entidad-Relación oficial del esquema `dory` y la tabla de entidades desde [`docs/database/README.md`](file:///opt/development/github/control-pst/docs/database/README.md).
-  2. **Diagramas de Ingeniería UML (Fase II):** Diagrama de Componentes, Diagrama de Despliegue y Diagrama de Secuencia global (disponibles en [`docs/proyectos/pst-4-arquitectura.md`](file:///opt/development/github/control-pst/docs/proyectos/pst-4-arquitectura.md)).
+  1. **Modelo E/R y Diccionario de Datos (Fase II):** Transcribir el diagrama Entidad-Relación oficial del esquema `dory` y la tabla de entidades desde el [Modelo de Base de Datos](../database/README.md).
+  2. **Diagramas de Ingeniería UML (Fase II):** Diagrama de Componentes, Diagrama de Despliegue y Diagrama de Secuencia global (disponibles en [pst-4-arquitectura.md](./pst-4-arquitectura.md)).
   3. **Diagrama Físico y Lógico de Red (Fase IV - Punto 2):** Completar la sección que está en blanco con la topología de servidores (Cloud VPS, Docker Bridge `172.20.0.0/16`, Nginx SSL Ingress, Discord Gateway).
   4. **Matriz Integral de Riesgos (Fase IV - Punto 3):** Tabular la matriz completa de riesgos (tecnológicos, operativos, legales, financieros) con sus planes de mitigación.
   5. **Reflexión Crítica de la Fase IV.**
