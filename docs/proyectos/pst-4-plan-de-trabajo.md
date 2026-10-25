@@ -61,7 +61,7 @@ Para avanzar de forma organizada y sin cuellos de botella, las tareas se dividen
      - `RF-03`: Actualización y cierre de casos, asignación de consultor, estado de atención y registro del tiempo consumido.
      - `RF-04`: Seguimiento contextual de Dory y detección de intención de cierre, con confirmación humana cuando corresponda.
      - `RF-05`: Gestión de releases con Jarvis: evidencia de cambios entre versiones, enlaces relacionados y detección de XML aplicables.
-     - `RF-06`: Calendario de actividades y guardias, días festivos y cumpleaños visibles según permisos.
+     - `RF-06` (**en desarrollo; no listo para declararse implementado**): Completar y validar el calendario de actividades, guardias, días festivos y cumpleaños visibles según permisos.
      - `RF-07`: Indicadores de soporte y actividad de consultores, incluyendo la distinción entre tickets e internas y aportes de GitHub en repositorios configurados.
      - `RF-08`: Reportes, filtros y exportación/impresión, conservando la selección y los enlaces a los casos.
      - `RF-09`: API de conversación de Dory para consultar mensajes y adjuntos de Discord sin duplicar transcripciones en la base de datos.

@@ -6,6 +6,8 @@
 > **Convención y Estándar:** Compatible con iDempiere / ADempiere (`isactive`, nomenclatura snake_case, auditoría granular)  
 > **Enlace al Proyecto:** [PST IV Arquitectura](../proyectos/pst-4-arquitectura.md)
 
+> **Inventario de uso actual:** consulte el [inventario de tablas usadas por NexoInt, Dory y Jarvis](./INVENTARIO_TABLAS.md). Está basado en referencias de código y migraciones locales; no sustituye una introspección de la base desplegada.
+
 ---
 
 ## Tabla de Contenidos

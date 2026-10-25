@@ -8,6 +8,6 @@ Material de apoyo redactado y mantenido dentro de Control-PST. Estas páginas do
 - [Proceso de releases de Jarvis](./jarvis-releases.md)
 - [Uso de IA en Dory y Jarvis](./ia-dory-jarvis.md)
 - [Consola NexoKube](./nexokube.md)
-- [Inventario conceptual de datos](../../database/README.md)
+- [Modelo de datos](../../database/README.md) y [catálogo de todas las tablas referenciadas por las aplicaciones](../../database/INVENTARIO_TABLAS.md)
 
 Los nombres de rutas, variables, permisos y límites se presentan como referencia técnica. No se incluyen credenciales ni información privada de infraestructura. Verificar los valores desplegados antes de convertirlos en criterios de aceptación.

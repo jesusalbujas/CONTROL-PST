@@ -61,7 +61,7 @@ Referencias: [proceso de releases de Jarvis](./referencias-tecnicas/jarvis-relea
 ## 6. NexoInt: permisos, calendario, reportes e indicadores
 
 - **Permisos:** el rol determina acceso por ventana y acciones. La UI no debe ser la única barrera: las escrituras también requieren políticas/autorización de API. Requisitos y casos de uso deben documentar escenarios permitidos y denegados.
-- **Calendario:** agrupa actividades, guardias, feriados y cumpleaños. La visibilidad de cumpleaños depende del acceso a Empleados; el estado de un evento vencido puede limitar edición según sus reglas.
+- **Calendario — RF-06 en desarrollo:** el modelo contempla actividades, guardias, feriados y cumpleaños, pero el requerimiento completo todavía no está listo. No presentarlo como implementado ni asumir que todos esos flujos están disponibles hasta que el equipo termine y valide permisos, visibilidad y comportamiento.
 - **Indicadores:** el Panel de Soporte y Actividad de Consultores separan tickets de solicitudes internas y aplican filtros de compañía, canal, período, estado y consultor. El dato de consultor actual no reconstruye el histórico de asignaciones.
 - **Aportes GitHub:** se consultan solo para repositorios configurados. Son una dimensión complementaria de actividad, no una calificación automática de calidad individual.
 - **Reportes:** los filtros forman parte de la consulta y deben conservar su contexto al abrir un resultado o volver al reporte. Exportación/impresión debe respetar columnas, formato y enlaces disponibles.

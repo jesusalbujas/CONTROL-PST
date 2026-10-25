@@ -274,7 +274,7 @@ El sistema aplica una matriz de permisos por rol y ventana; las reglas de UI y l
 
 Para reflejar con precisión la evolución del sistema y su hoja de ruta técnica, a continuación se desglosan los módulos actuales y su estado de desarrollo:
 
-1. **Calendario (Implementado):** actividades, guardias, días festivos y cumpleaños según permisos; algunas reglas y comportamientos siguen sujetos a validación operativa.
+1. **Calendario (En desarrollo; RF-06 no listo):** el requerimiento contempla actividades, guardias, días festivos y cumpleaños según permisos. No se declara terminado hasta completar y validar el flujo integral.
 2. **Tickets y solicitudes internas (Implementado):** entidades, vistas y filtros diferenciados para casos de clientes e internos.
 3. **Paneles de soporte y actividad de consultores (Implementado / en evolución):** indicadores filtrables, detalle de casos y contribuciones GitHub basadas en repositorios configurados.
 4. **Reportes y releases (Implementado / en evolución):** formatos de impresión/exportación y consulta de cambios por rango, con detección de XML y exclusión de releases candidatos.

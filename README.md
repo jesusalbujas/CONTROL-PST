@@ -45,7 +45,7 @@ Toda la documentación técnica, esquemas normativos del PNFI y desgloses por tr
 | 🌐 **Trayecto III (PST III)** | [**Ver Proyecto**](./docs/proyectos/pst-3.md) | Sistema Web de Servicios, Bot Dory (Discord) y Superset BI (ERP Consultores C.A.). |
 | 🚀 **Trayecto IV (PST IV - Actual)** | [**Ver Arquitectura**](./docs/proyectos/pst-4-arquitectura.md) | Nueva arquitectura: `nexoint` (API Core), `discord_bot` (`jarvis`) y `NexoInt`. |
 | 🧭 **Guía técnica de procesos PST IV** | [**Ver Guía y referencias**](./docs/proyectos/pst-4-guia-tecnica-procesos.md) · [**Índice de referencias internas**](./docs/proyectos/referencias-tecnicas/README.md) | Flujos de casos, API de conversaciones, releases de Jarvis, IA y consola NexoKube; documentación disponible dentro de este repositorio. |
-| 🗄️ **Modelo de Base de Datos Relacional** | [**Ver Modelo de BD**](./docs/database/README.md) | Esquema `dory` en Supabase (PostgreSQL 16), diagramas ER, RBAC y diccionario. |
+| 🗄️ **Modelo e inventario de Base de Datos** | [**Ver Modelo de BD**](./docs/database/README.md) · [**Ver inventario de tablas usadas**](./docs/database/INVENTARIO_TABLAS.md) | Esquema `dory`, diagramas ER e inventario de tablas consultadas por NexoInt, Dory y Jarvis. |
 
 ---
 
