@@ -82,6 +82,7 @@ docs/
 
 4. [**Proyecto Socio Tecnológico IV (Trayecto IV - Proyecto Actual)**](./proyectos/pst-4-arquitectura.md)
    - **Organización:** ERP Consultores y Asociados C.A.
+   - **Guía Metodológica de Fase I:** [Guía de Fase I (Criterio Eglée, Factibilidad y FODA)](./proyectos/pst-4-fase-1-guia-metodologica.md)
    - **Alcance:** Nueva Arquitectura Modular y Distribuida desglosada en:
      - **`nexoint`**: API Gateway, Core Backend, gestión de contratos, tarifas, tickets y reglas de negocio.
      - **`discord_bot` (y `jarvis`)**: Agentes conversacionales y asistente de automatización cognitiva e integración en tiempo real.
