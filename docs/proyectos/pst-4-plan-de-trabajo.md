@@ -15,22 +15,22 @@ Para avanzar de forma organizada y sin cuellos de botella, las tareas se dividen
 La Fase I documenta el contexto y el modelo correspondientes al período estudiado. Se conservará el contenido histórico aprobado y no se incorporarán retrospectivamente a esa sección las funciones actuales de NexoInt, Dory o Jarvis. Las correcciones se limitarán a errores comprobables; cualquier evolución posterior se explicará en la sección del proyecto que corresponda.
 
 #### 👤 1. Jesús Hernández (Coordinación de Fase I, Metodología y Procesos)
-* **Responsabilidad Principal:** Coordinar los diagramas y la metodología de calidad de la Fase I, respetando el alcance temporal del diagnóstico original.
-* **Tareas a Ejecutar:**
-  1. **Alcance del modelo de negocio:** No reescribir la descripción histórica de la Fase I ni sustituirla por la arquitectura o las funcionalidades posteriores de PST IV. Si se requiere explicar el funcionamiento actual, ubicarlo en la sección de evolución/solución propuesta y diferenciarlo del diagnóstico histórico.
-  2. **Diagramas del Negocio:** Revisar el **Mapa de Procesos** y el **Diagrama de Casos de Uso del Negocio (CUN)** según el alcance y los actores descritos en la Fase I. No añadir a esos diagramas procesos o módulos posteriores sin aprobación expresa.
-     - 📖 *¿Dónde consultar la información?* Ver [Sección 2.3 y 2.4 de pst-4-arquitectura.md](./pst-4-arquitectura.md#23-mapa-y-flujograma-de-procesos-de-negocio).
-  3. **Metodología de Calidad RECLAMO:** Redactar la justificación y aplicación requerida para el proyecto, sin modificar hechos del diagnóstico original.
-  4. **Reflexión Crítica de la Fase I:** mantenerla vinculada con el período y los resultados documentados en esa fase.
-* **Plazo de Entrega:** **Miércoles 28 de Octubre - 06:00 PM**
+* **Responsabilidad Principal:** Coordinar la estructuración del Modelo de Negocio (Sección III) y la metodología de calidad RECLAMO, trabajando en conjunto con **Albany Reyes** (reasignada para apoyarlo en la redacción y vaciado de tablas).
+* **Guía de Apoyo Metodológico:** 📖 Consultar [Guía de Fase I (Diagnóstico, Factibilidad y FODA)](./pst-4-fase-1-guia-metodologica.md) y [Sección 2 de pst-4-arquitectura.md](./pst-4-arquitectura.md#2-fase-i-planificación-diagnóstico-y-modelo-de-negocio).
+* **Tareas a Ejecutar en Conjunto con Albany Reyes:**
+  1. **Llenar las 4 Plantillas CUN (Cuadros N° 11, 12, 13 y 14):** Las tablas 6, 7, 8 y 9 actualmente están vacías en el Google Docs. Deben vaciar los flujos de eventos para: Solicitar Soporte (Cliente), Atender Caso (Consultor), Registrar Tiempo (Consultor/Bot) y Consultar Indicadores (Gerencia).
+  2. **Diagramas del Negocio:** Diseñar e insertar el **Diagrama de Casos de Uso del Negocio (CUN)** (Párrafo 222) y el **Diagrama de Actividad** (Párrafo 241), usando los actores reales (Cliente, Consultor, Gerencia, Administrador) y componentes (Discord ↔ Dory ↔ Supabase ↔ NexoInt).
+  3. **Metodología de Calidad RECLAMO:** Redactar la justificación y aplicación del estándar venezolano de calidad exigido en Trayecto IV.
+  4. **Reflexión Crítica de la Fase I:** Mantenerla enfocada en la necesidad de integración y auditoría de soporte de 2026 (sin mencionar cobros ni planillas manuales).
+* **Plazo de Entrega:** **Miércoles 28 de Octubre - 10:00 PM**
 
 ---
 
-#### 👤 2. Albany Reyes (Contexto Empresarial, Organigrama y Fundamentación Legal)
+#### 👤 2. Albany Reyes (Contexto Empresarial, Organigrama y Apoyo en Modelo de Negocio)
 
-> **Estado:** **🔄 EN CORRECCIÓN / REASIGNACIÓN DE APOYO A FASE I**  
-> **Guía de Correcciones y Tareas Asignada:** 📖 Consultar [Auditoría y Guía de Tareas - Albany Reyes](./pst-4-auditoria-albany-fase-1.md) para el detalle de la jerarquía empresarial y las plantillas a completar en el Google Docs.
-> **Responsabilidad Principal:** Actualizar el organigrama estructural 2026 con la jerarquía real de la empresa y apoyar activamente a **Jesús Hernández** en el vaciado del Modelo de Negocio (Plantillas CUN y Diagramas de Actividad).
+> **Estado:** **🔄 EN CORRECCIÓN / REASIGNADA A APOYO DIRECTO DE JESÚS HERNÁNDEZ**  
+> **Guía de Correcciones y Tareas Asignada:** 📖 Consultar [Auditoría y Guía de Tareas - Albany Reyes](./pst-4-auditoria-albany-fase-1.md) para el detalle de la jerarquía empresarial y las plantillas a completar en el Google Docs.  
+> **Responsabilidad Principal:** Corregir el organigrama estructural 2026 de la empresa y **apoyar activamente a Jesús Hernández en la redacción y vaciado de las tablas y diagramas del Modelo de Negocio (Sección III)**.
 
 > [!WARNING]
 > **Detalle Crítico en el Organigrama Actual (Imagen N° 2 en Google Docs):**  
@@ -48,8 +48,8 @@ La Fase I documenta el contexto y el modelo correspondientes al período estudia
 <br>
 
 * **Tareas a Ejecutar:**
-  1. **Corregir Imagen N° 2 (Organigrama):** Reemplazar la imagen actual en el Google Docs por el organigrama con las 3 ramas independientes (Funcional, Técnica y Administrativa).
-  2. **Apoyo Inmediato a Jesús Hernández en la Sección III (Modelo de Negocio):**  
+  1. **Corregir Imagen N° 2 (Organigrama):** Reemplazar la imagen actual en el Google Docs por el organigrama con las 3 ramas independientes (Funcional, Técnica y Proyectos con José Uzcátegui).
+  2. **Vaciado y Redacción Conjunta con Jesús Hernández (Sección III - Modelo de Negocio):**  
      Al estar el contexto histórico y la fundamentación legal ya redactados, Albany debe apoyar a Jesús Hernández en el vaciado de los elementos que están en blanco:
      - Completar las **Plantillas de Especificación de Casos de Uso del Negocio (Cuadros N° 11, 12, 13 y 14)** que actualmente están vacías.
      - Diseñar e insertar el **Diagrama de Casos de Uso del Negocio (CUN)** y los **Diagramas de Actividad** faltantes.
