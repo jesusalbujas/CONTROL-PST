@@ -1,11 +1,10 @@
 # 📋 Guía Metodológica de Fase I — Diagnóstico, Factibilidad y Modelo Operativo
 > **Proyecto Socio Tecnológico IV (Trayecto IV) — PNFI**  
 > **Comunidad / Empresa Beneficiada:** ERP Consultores y Asociados C.A.  
-> **Docente de Proyecto:** Profa. Elizabeth Panza | **Tutora Académica:** Profa. Eglée Rivas  
 
 ---
 
-## 🎯 1. Criterio Académico Oficial (Validado con la Tutora Profa. Eglée Rivas)
+## 🎯 1. Criterio Académico Oficial (Normativa PNFI)
 
 En el PNFI, **Trayecto IV no repite el diagnóstico en cero de años anteriores** como si la empresa no contara con ningún tipo de automatización o siguiera dependiendo de hojas de cálculo / cuadernos manuales.
 

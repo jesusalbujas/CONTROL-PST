@@ -8,7 +8,7 @@
 
 ## 📌 Resumen de Hallazgos en el Documento Actual (Google Docs)
 
-Tras la revisión del documento oficial de Google Docs (`Proyecto Socio-tecnológico IV`), se identificaron avances importantes en la estructura, pero también inconsistencias metodológicas críticas que deben corregirse para cumplir con el esquema oficial PNFI 2018 y las directrices dadas por la tutora académica Profa. Eglée Rivas.
+Tras la revisión del documento oficial de Google Docs (`Proyecto Socio-tecnológico IV`), se identificaron avances importantes en la estructura, pero también inconsistencias metodológicas críticas que deben corregirse para cumplir con el esquema oficial PNFI 2018 y las directrices metodológicas del proyecto.
 
 ---
 
@@ -38,8 +38,8 @@ Tras la revisión del documento oficial de Google Docs (`Proyecto Socio-tecnoló
   - *"proceder con la facturación formal"*
   - *"inexactitud contable y financiera"*
   - *"garantizando exactitud en la facturación"*
-- **Riesgo Académico:**  
-  La profesora Eglée Rivas fue enfática en que **el alcance del sistema NO incluye módulos contables, tarifas, bolsas de horas comerciales ni facturación**. Si el informe promete "facturación y contabilidad", el jurado evaluador exigirá la demostración de dichos módulos en la defensa.
+- **Riesgo Metodológico:**  
+  **El alcance del sistema NO incluye módulos contables, tarifas, bolsas de horas comerciales ni facturación**. Si el informe promete "facturación y contabilidad", se exigirá la demostración de dichos módulos en la evaluación y entrega formal.
 - **Acción Requerida:**  
   Reemplazar toda referencia a cobros/facturación por términos de **control operativo e ingeniería**:
   - Sustituir *"contabilidad de horas facturables / facturación formal"* por:  
@@ -52,7 +52,7 @@ Tras la revisión del documento oficial de Google Docs (`Proyecto Socio-tecnoló
 ## 3. ⚠️ Árbol del Problema: Ajuste de Causas, Problema Central y Consecuencias
 - **Estado Actual en el Docs (Imagen N°20 y esquema):**  
   Se describe el soporte como un proceso realizado *"a través de planillas de cálculo y mensajes, sin tecnología"*.
-- **Riesgo Académico:**  
+- **Riesgo Metodológico:**  
   En Trayecto III ya se aprobó el bot Dory en Discord y la base de datos de tickets. Afirmar que la empresa está *"sin tecnología"* contradice la aprobación de PST III y desvirtúa la madurez del proyecto en Trayecto IV.
 - **Estructura Correcta para PST IV (2026):**
 
