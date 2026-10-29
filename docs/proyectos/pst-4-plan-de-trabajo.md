@@ -53,16 +53,33 @@ La Fase I documenta el contexto y el modelo correspondientes al período estudia
 
 ### ⚙️ EQUIPO FASE II — Requerimientos y Diseño Técnico (Software)
 
+#### 👤 4. Daniel Pérez (Especificación Técnica, Requerimientos y Casos de Uso)
+
+> **Estado:** **✅ COMPLETADO Y VERIFICADO (28/10/2026)**  
+> **Resultado de la Revisión:** Vaciado íntegro de los 13 Requerimientos Funcionales (`RF-01` a `RF-13`), 15 Requerimientos No Funcionales (`RNF-01` a `RNF-15`) y fichas de Casos de Uso del Software (CUS) bajo la plantilla formal PNFI. Cumplimiento estricto del alcance (cero menciones a cobros/facturación) y correcta delimitación de componentes (`Dory`, `Jarvis`, `NexoInt`).
+
+> [!NOTE]
+> **Detalle pendiente por pulir (Formato de Imágenes):**  
+> En la sección de Diagramas de Casos de Uso, se insertaron 4 imágenes continuas que solo tienen *"Fuente: Pérez Daniel (2026)"*. Debe agregarse a cada una su número e identificación descriptiva arriba de la imagen.  
+> 
+> *Ejemplo de cómo debe quedar:*
+> ```text
+> Imagen N° 10: Diagrama de Casos de Uso General del Sistema
+> [Imagen del Diagrama]
+> Fuente: Pérez Daniel (2026).
+> 
+> Imagen N° 11: Diagrama de Casos de Uso - Gestión de Soporte y Casos (Dory)
+> [Imagen del Diagrama]
+> Fuente: Pérez Daniel (2026).
+> ```
+
 <details>
-<summary><b>✅ 👤 4. Daniel Pérez (Especificación Técnica, Requerimientos y Casos de Uso) — [COMPLETADO / OK]</b></summary>
+<summary><b>📂 Ver Detalle de Tareas Ejecutadas por Daniel Pérez (Click para desplegar)</b></summary>
 <br>
 
-* **Estado de la Asignación:** **Completado y Verificado (28/10/2026)**.
-* **Resultado de la Revisión en Google Docs (`.docx`):** Vaciado íntegro de los 13 Requerimientos Funcionales (`RF-01` a `RF-13`), 15 Requerimientos No Funcionales (`RNF-01` a `RNF-15`) y fichas de Casos de Uso del Software (CUS) bajo la plantilla formal PNFI, con total respeto al alcance funcional (cero menciones a cobros/facturación) y correcta separación de componentes (Dory, Jarvis, NexoInt).
-* **Observación Menor de Formato:** Agregar número y título descriptivo a las 4 imágenes de diagramas de casos de uso (arriba de *"Fuente: Pérez Daniel"*).
 * **Responsabilidad Principal:** Redactar la sección técnica de la Fase II con las fichas PNFI y los casos de uso sustentados en la arquitectura y la documentación técnica proporcionada para el proyecto.
-* **Detalle de Tareas Ejecutadas:**
-  1. **Sección técnica del informe:** Documentar componentes, límites entre NexoInt web, Supabase, API de Dory/Discord y Jarvis; flujo de datos, permisos y dependencias, tomando como fuente las guías técnicas entregadas.
+* **Detalle de Contenido Vaciado:**
+  1. **Sección técnica del informe:** Documentación de componentes, límites entre NexoInt web, Supabase, API de Dory/Discord y Jarvis; flujo de datos, permisos y dependencias.
   2. **Requerimientos Funcionales (RF):** Completadas las 13 fichas oficiales del PNFI (`RF-01` a `RF-13`):
      - `RF-01`: Autenticación y autorización por roles y permisos de ventana/acción en NexoInt.
      - `RF-02`: Apertura, clasificación y sincronización de tickets de clientes y solicitudes internas desde Discord.
@@ -81,6 +98,8 @@ La Fase I documenta el contexto y el modelo correspondientes al período estudia
   4. **Casos de Uso del Software (CUS):** Especificaciones de flujos de eventos principales, excepciones y postcondiciones.
 
 </details>
+
+---
 
 #### 👤 5. José Zúñiga (Ingeniería Técnica, Arquitectura y Modelo de Datos)
 * **Responsabilidad Principal:** Diagramas UML, modelo relacional y diseño técnico.
