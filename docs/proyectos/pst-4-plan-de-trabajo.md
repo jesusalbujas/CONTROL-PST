@@ -38,9 +38,9 @@ La Fase I documenta el contexto y el modelo correspondientes al período estudia
 > 
 > *Estructura Real 2026 que debe graficar:*
 > - **Dirección General (Cabecera):** Carlos Parada y José Botero (Socios Directores).
-> - **Área Funcional:** Silviana (Senior) -> Nahomy y Daniel.
+> - **Área Funcional y Soporte:** Silviana (Senior) -> Nahomy y Daniel.
 > - **Área de Ingeniería/Integraciones (Rama directa de Carlos Parada):** Jesús Albujas (independiente).
-> - **Área de Administración (Rama directa de Dirección):** Waditza (independiente; ni manda a Jesús ni Jesús la manda a ella).
+> - **Área de Proyectos (Rama directa de Dirección):** Waditza (Líder de Proyectos) -> José Uzcátegui (Analista de Proyectos).
 > - 📖 Ver diagrama de referencia exacto en: [Guía de Organigrama Estructural 2026](./pst-4-organigrama-guia.md).
 
 <details>

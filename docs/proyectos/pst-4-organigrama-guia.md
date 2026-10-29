@@ -19,9 +19,10 @@ Para corregir el organigrama en el documento (que erróneamente agrupó a todos 
      - Consultores / Analistas Funcionales: **Nahomy** y **Daniel**.
    - **Rama Técnica Especializada / Arquitectura e Integraciones:**
      - Dependencia directa de Carlos Parada: **Jesús Albujas** (Desarrollo, Arquitectura de Sistemas y Automatización).
-   - **Rama Administrativa / Gestión:**
-     - Dependencia directa de Dirección: **Waditza** (Administración y Gestión de Servicios).
-     *(Waditza no depende de Jesús Albujas ni Jesús Albujas depende de Waditza; ambos son departamentos independientes que reportan a la Dirección).*
+   - **Rama de Proyectos:**
+     - Líder / Gestión de Proyectos: **Waditza**.
+     - Integrante / Analista de Proyecto: **José Uzcátegui** (depende de Waditza).
+     *(Waditza no depende de Jesús Albujas ni Jesús Albujas depende de Waditza; el área de Proyectos reporta directamente a la Dirección).*
 
 ---
 
@@ -44,8 +45,9 @@ graph TD
         JA["Jesús Albujas<br><b>Ingeniería de Software / Integraciones</b>"]
     end
 
-    subgraph sub_Admin ["ÁREA ADMINISTRATIVA"]
-        WAD["Waditza<br><b>Administración y Servicios</b>"]
+    subgraph sub_Proyectos ["ÁREA DE PROYECTOS"]
+        WAD["Waditza<br><b>Líder de Proyectos</b>"]
+        JUZ["José Uzcátegui<br><b>Analista de Proyectos</b>"]
     end
 
     CP --- JB
@@ -55,18 +57,20 @@ graph TD
     SIL --> DAN
 
     CP --> JA
+
     CP --> WAD
     JB --> WAD
+    WAD --> JUZ
 
     classDef dir fill:#1e293b,stroke:#3b82f6,stroke-width:2px,color:#fff;
     classDef func fill:#0f766e,stroke:#14b8a6,stroke-width:2px,color:#fff;
     classDef tec fill:#1e40af,stroke:#60a5fa,stroke-width:2px,color:#fff;
-    classDef adm fill:#854d0e,stroke:#facc15,stroke-width:2px,color:#fff;
+    classDef proy fill:#7c2d12,stroke:#f97316,stroke-width:2px,color:#fff;
 
     class CP,JB dir;
     class SIL,NAH,DAN func;
     class JA tec;
-    class WAD adm;
+    class WAD,JUZ proy;
 ```
 
 ---

@@ -32,8 +32,10 @@ La organización opera mediante **tres ramas departamentales independientes** qu
    - De Silviana se ramifican: **Nahomy** (Analista Funcional) y **Daniel** (Analista Funcional).
 3. **Rama 2: Ingeniería de Software, Arquitectura y Automatización:**
    - **Jesús Albujas** (Ingeniería de Software / Integraciones). Depende directamente de Carlos Parada. Es un área técnica independiente del área funcional.
-4. **Rama 3: Administración y Servicios:**
-   - **Waditza** (Administración y Gestión). Depende directamente de la Dirección General. Es independiente: Waditza no depende de Jesús Albujas ni Jesús Albujas depende de Waditza.
+4. **Rama 3: Gestión de Proyectos:**
+   - **Waditza** (Líder de Proyectos). Depende directamente de la Dirección General.
+   - De Waditza depende: **José Uzcátegui** (Analista de Proyectos).
+   *(El área de Proyectos es independiente: Waditza no depende de Jesús Albujas ni Jesús Albujas depende de Waditza).*
 
 ### Diagrama de Referencia para Graficar:
 
@@ -54,8 +56,9 @@ graph TD
         JA["Jesús Albujas<br><b>Ingeniería de Software / Integraciones</b>"]
     end
 
-    subgraph sub_Adm ["ÁREA ADMINISTRATIVA"]
-        WAD["Waditza<br><b>Administración y Servicios</b>"]
+    subgraph sub_Proy ["ÁREA DE PROYECTOS"]
+        WAD["Waditza<br><b>Líder de Proyectos</b>"]
+        JUZ["José Uzcátegui<br><b>Analista de Proyectos</b>"]
     end
 
     CP --- JB
@@ -65,8 +68,10 @@ graph TD
     SIL --> DAN
 
     CP --> JA
+
     CP --> WAD
     JB --> WAD
+    WAD --> JUZ
 ```
 
 ### Formato en el Documento:
