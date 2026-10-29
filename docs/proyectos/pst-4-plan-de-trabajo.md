@@ -53,29 +53,34 @@ La Fase I documenta el contexto y el modelo correspondientes al período estudia
 
 ### ⚙️ EQUIPO FASE II — Requerimientos y Diseño Técnico (Software)
 
-#### 👤 4. Daniel Pérez (Especificación Técnica, Requerimientos y Casos de Uso)
+<details>
+<summary><b>✅ 👤 4. Daniel Pérez (Especificación Técnica, Requerimientos y Casos de Uso) — [COMPLETADO / OK]</b></summary>
+<br>
+
+* **Estado de la Asignación:** **Completado y Verificado (28/10/2026)**.
+* **Resultado de la Revisión en Google Docs (`.docx`):** Vaciado íntegro de los 13 Requerimientos Funcionales (`RF-01` a `RF-13`), 15 Requerimientos No Funcionales (`RNF-01` a `RNF-15`) y fichas de Casos de Uso del Software (CUS) bajo la plantilla formal PNFI, con total respeto al alcance funcional (cero menciones a cobros/facturación) y correcta separación de componentes (Dory, Jarvis, NexoInt).
+* **Observación Menor de Formato:** Agregar número y título descriptivo a las 4 imágenes de diagramas de casos de uso (arriba de *"Fuente: Pérez Daniel"*).
 * **Responsabilidad Principal:** Redactar la sección técnica de la Fase II con las fichas PNFI y los casos de uso sustentados en la arquitectura y la documentación técnica proporcionada para el proyecto.
-* **Tareas a Ejecutar:**
-  1. **Sección técnica del informe:** Documentar componentes, límites entre NexoInt web, Supabase, API de Dory/Discord y Jarvis; flujo de datos, permisos y dependencias, tomando como fuente las guías técnicas entregadas. No se le asigna revisar código ni acceder a repositorios privados; tampoco debe describir un backend/API Gateway propio como parte del sistema.
-  2. **Documentación técnica de apoyo:** Usar primero la [Guía técnica de procesos PST IV](./pst-4-guia-tecnica-procesos.md), que describe los flujos de NexoInt, Dory/Jarvis, sincronización, reportes, permisos y estados de desarrollo. Complementar con [Arquitectura del PST IV](./pst-4-arquitectura.md) y el [índice de referencias técnicas del PST IV](./referencias-tecnicas/README.md), que organiza la API de conversaciones, releases, IA y NexoKube. Consultar también el [inventario conceptual de datos `dory`](../database/README.md), sin tomarlo como definición definitiva de columnas o políticas vigentes. Todo el material asignado está dentro de Control-PST y debe bastar para redactar esta sección; las dudas funcionales se consultan al equipo.
-  3. **Requerimientos Funcionales (RF):** Completar las fichas oficiales del PNFI para:
+* **Detalle de Tareas Ejecutadas:**
+  1. **Sección técnica del informe:** Documentar componentes, límites entre NexoInt web, Supabase, API de Dory/Discord y Jarvis; flujo de datos, permisos y dependencias, tomando como fuente las guías técnicas entregadas.
+  2. **Requerimientos Funcionales (RF):** Completadas las 13 fichas oficiales del PNFI (`RF-01` a `RF-13`):
      - `RF-01`: Autenticación y autorización por roles y permisos de ventana/acción en NexoInt.
-     - `RF-02`: Apertura, clasificación y sincronización de tickets de clientes y solicitudes internas desde Discord, validando compañía y canal. La separación básica existe; la consolidación de campos, vistas, búsquedas y reportes forma parte del alcance de continuidad y sigue en desarrollo.
-     - `RF-03`: Actualización y cierre de casos, asignación de consultor, estado de atención y registro del tiempo consumido. Documentar por separado la base operativa y los ajustes de flujo todavía en desarrollo.
-     - `RF-04`: Seguimiento contextual de Dory y detección de intención de cierre, con confirmación humana cuando corresponda. La propuesta del mes incluye ampliar el análisis de contexto, conservar pendientes concretos y evitar seguimientos improcedentes; esas mejoras no deben declararse completas sin validación.
-     - `RF-05`: Gestión de releases con Jarvis: evidencia de cambios entre versiones, enlaces relacionados y detección de XML aplicables. La trazabilidad heredada entre ZK, Swing, Patch y bibliotecas, la redacción sin duplicados y la recuperación de publicaciones se mantienen en desarrollo según la propuesta.
-     - `RF-06` (**en desarrollo; no listo para declararse implementado**): Completar y validar el calendario de actividades, guardias, días festivos y cumpleaños visibles según permisos.
-     - `RF-07`: Indicadores de soporte y actividad de consultores, incluyendo la distinción entre tickets e internas. La ampliación del panel mensual y los aportes de GitHub en repositorios configurados deben documentarse según su estado real, no como parte automáticamente terminada del panel.
-     - `RF-08`: Reportes, filtros y exportación/impresión, conservando la selección y los enlaces a los casos. La propuesta mantiene en desarrollo la consistencia entre pantalla, CSV/XLS/XLSX y PDF, junto con la conservación de filtros.
-     - `RF-09`: API de conversación de Dory para consultar mensajes y adjuntos de Discord sin duplicar transcripciones en la base de datos. La consulta base existe; completar y validar los elementos del alcance propuesto (autores, fechas, respuestas, reacciones, embeds, adjuntos y exportación).
-     - `RF-10`: Administración de tokens de integración con alcance y revocación. La propuesta requiere completar permisos diferenciados de lectura, exportación y escritura y verificar la autorización en cada endpoint.
-     - `RF-11`: Consola NexoKube para consultar clústeres, namespaces, pods, deployments/statefulsets, configuración, salud y logs; especificar edición de manifiestos/versiones, escala y reinicio como acciones protegidas por permisos de rol, y no marcarlas entregadas sin validación. La propuesta de octubre no constituye evidencia de aceptación de estas acciones.
-     - `RF-12`: Acceso de compañías en desarrollo: grupos, compañías, usuarios externos, asignación de permisos y aislamiento de datos por organización.
-     - `RF-13`: Aplicación móvil NexoInt, en desarrollo; especificar solo las funciones confirmadas por el equipo y no presentarla como entregada.
-  4. **Requerimientos No Funcionales (RNF):** Especificar seguridad, privacidad por compañía, integridad de sincronización, manejo de errores, rendimiento, portabilidad y disponibilidad con criterios verificables. No atribuir certificaciones ni objetivos de SLA no acordados.
-  5. **Casos de Uso del Software (CUS):** Elaborar actores, precondiciones, flujo principal, excepciones y resultados para apertura/sincronización de casos, actualización/cierre, consulta de conversación, seguimiento, releases, reportes y administración de accesos.
-  6. **Trazabilidad de estado:** Contrastar cada requisito con la propuesta de continuidad de octubre de 2026 y separar (a) base funcional disponible, (b) ampliación propuesta en desarrollo y (c) capacidad pendiente de validar en despliegue. La propuesta expresa alcance y prioridad, no certifica que un entregable esté listo. No marcar como implementado el alcance completo solo porque exista una pantalla o una primera versión. Contratos/bolsas de horas, recibos/facturación y marcajes no forman parte de este alcance.
-* **Plazo de Entrega:** **Jueves 29 de Octubre - 06:00 PM**
+     - `RF-02`: Apertura, clasificación y sincronización de tickets de clientes y solicitudes internas desde Discord.
+     - `RF-03`: Actualización y cierre de casos, asignación de consultor, estado de atención y registro del tiempo consumido.
+     - `RF-04`: Seguimiento contextual de Dory y detección de intención de cierre.
+     - `RF-05`: Gestión de releases con Jarvis y evidencia técnica de versiones.
+     - `RF-06`: Calendario de actividades y guardias.
+     - `RF-07`: Indicadores de soporte y actividad de consultores.
+     - `RF-08`: Reportes, filtros y exportación/impresión.
+     - `RF-09`: API de conversación de Dory para consulta de mensajes y adjuntos.
+     - `RF-10`: Administración de tokens de integración con alcance y revocación.
+     - `RF-11`: Consola NexoKube para consulta y estado de clústeres.
+     - `RF-12`: Acceso de compañías (alcance en desarrollo claramente delimitado).
+     - `RF-13`: Aplicación móvil NexoInt (alcance en desarrollo claramente delimitado).
+  3. **Requerimientos No Funcionales (RNF):** Fichas `RNF-01` a `RNF-15` con criterios de verificación medibles (seguridad, aislamiento por compañía, integridad, supervisión de IA, etc.).
+  4. **Casos de Uso del Software (CUS):** Especificaciones de flujos de eventos principales, excepciones y postcondiciones.
+
+</details>
 
 #### 👤 5. José Zúñiga (Ingeniería Técnica, Arquitectura y Modelo de Datos)
 * **Responsabilidad Principal:** Diagramas UML, modelo relacional y diseño técnico.
