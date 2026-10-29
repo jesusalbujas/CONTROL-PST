@@ -29,6 +29,7 @@ La Fase I documenta el contexto y el modelo correspondientes al período estudia
 #### 👤 2. Albany Reyes (Contexto Empresarial, Organigrama y Fundamentación Legal)
 
 > **Estado:** **🔄 EN CORRECCIÓN / REASIGNACIÓN DE APOYO A FASE I**  
+> **Guía de Correcciones y Tareas Asignada:** 📖 Consultar [Auditoría y Guía de Tareas - Albany Reyes](./pst-4-auditoria-albany-fase-1.md) para el detalle de la jerarquía empresarial y las plantillas a completar en el Google Docs.
 > **Responsabilidad Principal:** Actualizar el organigrama estructural 2026 con la jerarquía real de la empresa y apoyar activamente a **Jesús Hernández** en el vaciado del Modelo de Negocio (Plantillas CUN y Diagramas de Actividad).
 
 > [!WARNING]
