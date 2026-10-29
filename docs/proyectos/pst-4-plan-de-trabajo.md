@@ -12,38 +12,41 @@ Para avanzar de forma organizada y sin cuellos de botella, las tareas se dividen
 ---
 
 ### 🏛️ EQUIPO FASE I — Planificación, Diagnóstico y Modelo de Negocio
-*El documento de Google Docs actual tiene la Fase I desfasada (con referencias viejas a 2025 y flujos manuales de PST III). Se reforzó este equipo con 3 integrantes para dejar la Fase I impecable.*
+La Fase I documenta el contexto y el modelo correspondientes al período estudiado. Se conservará el contenido histórico aprobado y no se incorporarán retrospectivamente a esa sección las funciones actuales de NexoInt, Dory o Jarvis. Las correcciones se limitarán a errores comprobables; cualquier evolución posterior se explicará en la sección del proyecto que corresponda.
 
-#### 👤 1. Jesús Hernández (Coordinación de Fase I, Metodología y Modelo de Negocio)
-* **Responsabilidad Principal:** Estructurar el nuevo modelo de negocio y la metodología.
+#### 👤 1. Jesús Hernández (Coordinación de Fase I, Metodología y Procesos)
+* **Responsabilidad Principal:** Coordinar los diagramas y la metodología de calidad de la Fase I, respetando el alcance temporal del diagnóstico original.
 * **Tareas a Ejecutar:**
-  1. **Reescribir el Modelo de Negocio:** Eliminar cualquier mención a transcripción manual en Excel o Superset como núcleo. Describir el flujo real de PST IV: **clientes y consultores en Discord ↔ bot/API Dory-Jarvis; usuarios internos en NexoInt Web ↔ Supabase y API de Dory**. La aplicación móvil y el acceso de compañías se documentan aparte como líneas en desarrollo.
-  2. **Diagramas del Negocio:** Revisar e incorporar el **Mapa de Procesos** y el **Diagrama de Casos de Uso del Negocio (CUN)**, alineándolos con los flujos y componentes que realmente existen.
+  1. **Alcance del modelo de negocio:** No reescribir la descripción histórica de la Fase I ni sustituirla por la arquitectura o las funcionalidades posteriores de PST IV. Si se requiere explicar el funcionamiento actual, ubicarlo en la sección de evolución/solución propuesta y diferenciarlo del diagnóstico histórico.
+  2. **Diagramas del Negocio:** Revisar el **Mapa de Procesos** y el **Diagrama de Casos de Uso del Negocio (CUN)** según el alcance y los actores descritos en la Fase I. No añadir a esos diagramas procesos o módulos posteriores sin aprobación expresa.
      - 📖 *¿Dónde consultar la información?* Ver [Sección 2.3 y 2.4 de pst-4-arquitectura.md](./pst-4-arquitectura.md#23-mapa-y-flujograma-de-procesos-de-negocio).
-  3. **Metodología de Calidad RECLAMO (Fase II):** Redactar la justificación y aplicación del estándar venezolano de calidad RECLAMO (exigido en Trayecto IV).
-  4. **Reflexión Crítica de la Fase I.**
+  3. **Metodología de Calidad RECLAMO:** Redactar la justificación y aplicación requerida para el proyecto, sin modificar hechos del diagnóstico original.
+  4. **Reflexión Crítica de la Fase I:** mantenerla vinculada con el período y los resultados documentados en esa fase.
 * **Plazo de Entrega:** **Miércoles 28 de Octubre - 06:00 PM**
 
-#### 👤 2. Albany Reyes (Contexto Empresarial, Reseña y Fundamentación Legal)
-* **Responsabilidad Principal:** Redacción descriptiva, reseña y bases legales (sin tecnicismos de código).
+#### 👤 2. Albany Reyes (Contexto Empresarial, Organigrama y Fundamentación Legal)
+* **Responsabilidad Principal:** Revisar la presentación del contexto empresarial y actualizar el organigrama únicamente con información institucional confirmada.
 * **Tareas a Ejecutar:**
-  1. **Actualización de Reseña y Organigrama:** Describir la empresa ERP Consultores y Asociados C.A., misión, visión y actualizar el organigrama estructural al año 2026.
+  1. **Reseña histórica, misión y visión:** Conservar el contenido aprobado. Corregir solo errores formales o datos que el equipo confirme; no reescribir la historia empresarial sin nuevas fuentes.
+  2. **Organigrama:** Preparar la actualización al año 2026 cuando se proporcionen nombres, cargos y relaciones jerárquicas validadas. No inferir puestos ni líneas de dependencia.
      - 📖 *¿Dónde consultar la información?* Ver [Sección 2.1 de pst-4-arquitectura.md](./pst-4-arquitectura.md#21-contexto-y-diagnóstico-situacional-participativo).
-  2. **Fundamentación Legal:** Redactar la vinculación formal con:
+  3. **Fundamentación Legal:** Mantener la versión aprobada y revisar citas/redacción con fuentes; cambiar el contenido solo si se identifica una corrección necesaria.
      - Constitución de la República Bolivariana de Venezuela (Art. 110).
      - Ley de Infogobierno y Decreto N° 3.390 (Software Libre).
      - Plan de la Patria (Objetivos históricos de soberanía tecnológica).
      - Ley Orgánica de Ciencia, Tecnología e Innovación (LOCTI).
-  3. **Corrección de Forma y Redacción:** Leer y corregir ortografía y coherencia en toda la Fase I.
+  4. **Corrección de forma:** Revisar ortografía y coherencia sin alterar hechos ni cambiar el sentido de las secciones aprobadas.
 * **Plazo de Entrega:** **Miércoles 28 de Octubre - 06:00 PM**
 
 #### 👤 3. Candy Gutiérrez (Diagnóstico Situacional, FODA y Árbol de Problemas)
-* **Responsabilidad Principal:** Formulación analítica del problema y viabilidad.
-* **Tareas a Ejecutar:**
-  1. **Matriz FODA:** Actualizar las Fortalezas, Oportunidades, Debilidades y Amenazas de ERP Consultores y Asociados C.A. enfocadas en la nueva arquitectura.
-     - 📖 *¿Dónde consultar la información?* Ver [Sección 2.5 de pst-4-arquitectura.md](./pst-4-arquitectura.md#25-matriz-foda-y-árbol-del-problema).
-  2. **Tabla de Jerarquización de Problemas y Árbol del Problema:** Sustentar causas y efectos con el diagnóstico vigente; no presentar como hechos la falta de API unificada, retrasos de SLA o fricción de facturación sin evidencia.
-  3. **Estudio de Factibilidad:** Redactar la factibilidad técnica, económica, operativa y social del proyecto.
+* **Responsabilidad Principal:** Formulación analítica del problema, estudio de factibilidad y viabilidad operativa.
+* **Guía de Correcciones Asignada:** 📖 Consultar [Auditoría y Correcciones Fase I - Candy Gutiérrez](./pst-4-auditoria-candy-fase-1.md) para el detalle de cambios requeridos en el Google Docs.
+* **Tareas a Ejecutar y Corregir:**
+  1. **Estudio de Factibilidad:** Completar las 4 dimensiones (Social, Económica, Técnica y Operativa) que actualmente están en blanco en el Google Docs.
+  2. **Eliminación de términos contables/facturación:** Sustituir "facturación formal", "horas facturables" e "inexactitud contable" por "registro de tiempo consumido" y "auditoría operativa de casos" (conforme al alcance aprobado por la tutora Profa. Eglée Rivas).
+  3. **Árbol del Problema y Tabla de Jerarquización:** Actualizar el problema central y causas según el modelo de PST IV 2026 (sin indicar que la empresa está "sin tecnología" ni usa "hojas de cálculo").
+  4. **Matriz FODA:** Ajustar debilidades y oportunidades para enfocarlas en la fragmentación de canales y consolidación en NexoInt.
+  5. **Diferenciación Dory / Jarvis:** Corregir en la Reflexión Crítica para identificar a Dory como el bot de Discord y a Jarvis como el agente de GitHub.
 * **Plazo de Entrega:** **Miércoles 28 de Octubre - 06:00 PM**
 
 ---
