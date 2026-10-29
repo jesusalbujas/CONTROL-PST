@@ -24,19 +24,40 @@ La Fase I documenta el contexto y el modelo correspondientes al período estudia
   4. **Reflexión Crítica de la Fase I:** mantenerla vinculada con el período y los resultados documentados en esa fase.
 * **Plazo de Entrega:** **Miércoles 28 de Octubre - 06:00 PM**
 
+---
+
 #### 👤 2. Albany Reyes (Contexto Empresarial, Organigrama y Fundamentación Legal)
-* **Responsabilidad Principal:** Revisar la presentación del contexto empresarial y actualizar el organigrama únicamente con información institucional confirmada.
+
+> **Estado:** **🔄 EN CORRECCIÓN / REASIGNACIÓN DE APOYO A FASE I**  
+> **Responsabilidad Principal:** Actualizar el organigrama estructural 2026 con la jerarquía real de la empresa y apoyar activamente a **Jesús Hernández** en el vaciado del Modelo de Negocio (Plantillas CUN y Diagramas de Actividad).
+
+> [!WARNING]
+> **Detalle Crítico en el Organigrama Actual (Imagen N° 2 en Google Docs):**  
+> El organigrama que subió tiene errores graves de jerarquía: agrupó a todo el personal en un solo bloque genérico de "analistas funcionales", incluyó a Jesús Albujas bajo esa área y subordinó a Waditza bajo Jesús.  
+> 
+> *Estructura Real 2026 que debe graficar:*
+> - **Dirección General (Cabecera):** Carlos Parada y José Botero (Socios Directores).
+> - **Área Funcional:** Silviana (Senior) -> Nahomy y Daniel.
+> - **Área de Ingeniería/Integraciones (Rama directa de Carlos Parada):** Jesús Albujas (independiente).
+> - **Área de Administración (Rama directa de Dirección):** Waditza (independiente; ni manda a Jesús ni Jesús la manda a ella).
+> - 📖 Ver diagrama de referencia exacto en: [Guía de Organigrama Estructural 2026](./pst-4-organigrama-guia.md).
+
+<details>
+<summary><b>📂 Ver Tareas y Asignación de Apoyo para Albany Reyes (Click para desplegar)</b></summary>
+<br>
+
 * **Tareas a Ejecutar:**
-  1. **Reseña histórica, misión y visión:** Conservar el contenido aprobado. Corregir solo errores formales o datos que el equipo confirme; no reescribir la historia empresarial sin nuevas fuentes.
-  2. **Organigrama:** Preparar la actualización al año 2026 cuando se proporcionen nombres, cargos y relaciones jerárquicas validadas. No inferir puestos ni líneas de dependencia.
-     - 📖 *¿Dónde consultar la información?* Ver [Sección 2.1 de pst-4-arquitectura.md](./pst-4-arquitectura.md#21-contexto-y-diagnóstico-situacional-participativo).
-  3. **Fundamentación Legal:** Mantener la versión aprobada y revisar citas/redacción con fuentes; cambiar el contenido solo si se identifica una corrección necesaria.
-     - Constitución de la República Bolivariana de Venezuela (Art. 110).
-     - Ley de Infogobierno y Decreto N° 3.390 (Software Libre).
-     - Plan de la Patria (Objetivos históricos de soberanía tecnológica).
-     - Ley Orgánica de Ciencia, Tecnología e Innovación (LOCTI).
-  4. **Corrección de forma:** Revisar ortografía y coherencia sin alterar hechos ni cambiar el sentido de las secciones aprobadas.
-* **Plazo de Entrega:** **Miércoles 28 de Octubre - 06:00 PM**
+  1. **Corregir Imagen N° 2 (Organigrama):** Reemplazar la imagen actual en el Google Docs por el organigrama con las 3 ramas independientes (Funcional, Técnica y Administrativa).
+  2. **Apoyo Inmediato a Jesús Hernández en la Sección III (Modelo de Negocio):**  
+     Al estar el contexto histórico y la fundamentación legal ya redactados, Albany debe apoyar a Jesús Hernández en el vaciado de los elementos que están en blanco:
+     - Completar las **Plantillas de Especificación de Casos de Uso del Negocio (Cuadros N° 11, 12, 13 y 14)** que actualmente están vacías.
+     - Diseñar e insertar el **Diagrama de Casos de Uso del Negocio (CUN)** y los **Diagramas de Actividad** faltantes.
+  3. **Revisión de Coherencia:** Verificar que en toda la Fase I se sustituyan los términos viejos de "facturación de horas" por "registro de tiempo operativo".
+* **Plazo de Entrega:** **Miércoles 28 de Octubre - 10:00 PM**
+
+</details>
+
+---
 
 #### 👤 3. Candy Gutiérrez (Diagnóstico Situacional, FODA y Árbol de Problemas)
 * **Responsabilidad Principal:** Formulación analítica del problema, estudio de factibilidad y viabilidad operativa.
