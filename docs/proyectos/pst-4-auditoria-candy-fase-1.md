@@ -2,59 +2,63 @@
 > **Asignación:** Candy Gutiérrez  
 > **Área:** Diagnóstico Situacional, Estudio de Factibilidad, Matriz FODA, Tabla de Jerarquización y Árbol del Problema  
 > **Proyecto:** Proyecto Socio Tecnológico IV (PST IV) — PNFI / UPTEP "JJ Montilla"  
-> **Fecha de Revisión:** 28 de Octubre de 2026  
+> **Última Revisión:** 30 de Octubre de 2026  
 
 ---
 
-## 📌 Resumen de Hallazgos en el Documento Actual (Google Docs)
+## 📌 Estado de Avance al 30 de Octubre de 2026
 
-Tras la revisión del documento oficial de Google Docs (`Proyecto Socio-tecnológico IV`), se identificaron avances importantes en la estructura, pero también inconsistencias metodológicas críticas que deben corregirse para cumplir con el esquema oficial PNFI 2018 y las directrices metodológicas del proyecto.
+Tras la revisión detallada del documento `.docx` más reciente, se constata un avance fundamental:
 
----
-
-## 1. ⚠️ Factibilidad (Social, Económica, Técnica y Operativa)
-- **Estado Actual en el Docs (Líneas 297 a 301):**  
-  Los títulos de las 4 factibilidades fueron creados, pero **el contenido está completamente en blanco**:
-  ```text
-  FACTIBILIDAD (SOCIAL, ECONÓMICA, TÉCNICA Y OPERATIVA)
-  A. Factibilidad Social
-  B. Factibilidad Económica
-  C. Factibilidad Técnica
-  D. Factibilidad Operativa
-  ```
-- **Acción Requerida:** Redactar el contenido de cada una sustentado en el proyecto real de PST IV:
-  - **A. Factibilidad Social:** Promoción de la soberanía tecnológica bajo la Ley de Infogobierno y Decreto N° 3.390; mejora en la calidad y tiempos de respuesta en el soporte a empresas nacionales atendidas por ERP Consultores y Asociados C.A.; vinculación activa UPTEP-sector productivo.
-  - **B. Factibilidad Económica:** Cero costos por licenciamiento (100% Software Libre bajo licencias MIT/Apache); aprovechamiento de infraestructura Cloud escalable existente (Supabase y contenedores) sin requerir compras costosas de servidores dedicados; reducción de horas hombre perdidas en tareas de supervisión dispersa.
-  - **C. Factibilidad Técnica:** Viabilidad plena mediante el uso de tecnologías modernas, estables y bien documentadas: Frontend en React 19/Vite/TypeScript (`NexoInt`), persistencia relacional administrada en PostgreSQL 16 (Supabase esquema `dory`), y automatizaciones mediante Discord Gateway API (`discord_bot`) y GitHub Actions (`Jarvis`). El equipo domina las herramientas.
-  - **D. Factibilidad Operativa:** Adopción natural sin resistencia al cambio: los clientes continúan utilizando Discord (su canal habitual), mientras que los consultores y administradores disponen de una consola web intuitiva (`NexoInt`) que elimina la búsqueda manual entre hilos.
-  - 📖 *Texto de referencia listo para usar:* Consultar la [Sección 4.A de pst-4-fase-1-guia-metodologica.md](./pst-4-fase-1-guia-metodologica.md#a-estudio-de-factibilidad-sección-actualmente-en-blanco-en-el-docs).
+1. **✅ Matriz FODA (Cuadro N° 15 / Tabla 10): APROBADA (10/10).**  
+   Candy rehízo por completo la matriz FODA con un nivel técnico excelente:
+   - **Cero menciones** a "hojas de cálculo", "Excel" ni "facturación".
+   - Alineación total a PST IV: Sincronización Discord ↔ NexoInt ↔ Supabase, supervisión humana de IA (Jarvis), trazabilidad en horas y minutos, validación categórica y comandos `/abrir_hilo` y `/cerrar_hilo`.
+   - Identificación honesta y precisa de debilidades y amenazas reales (componentes en desarrollo como móvil/externos, dependencia de APIs cloud y gestión de concurrencia).
+2. **✅ Estudio de Factibilidad (Líneas 99 a 119): REDACTADO Y COMPLETADO.**  
+   Las 4 perspectivas (Social, Económica, Técnica y Operativa) fueron desarrolladas en su totalidad. Solo requiere un ajuste menor de terminología en la parte Económica.
+3. **⏳ Tareas pendientes para Candy:**  
+   Ahora que la Matriz FODA está aprobada, Candy debe proceder con las **3 tareas restantes**:
+   - Ajustar la **Tabla de Jerarquización de Problemas** (Problema N° 2).
+   - Actualizar el **Árbol del Problema** (Texto e Imagen N° 20).
+   - Actualizar la **Reflexión Crítica de la Fase I**.
 
 ---
 
-## 2. ⚠️ Delimitación de Alcance: Prohibición de Términos Contables / Facturación
+## 1. ✅ Matriz FODA (Cuadro N° 15) — [COMPLETADA Y VALIDADA]
+- **Evaluación:** La versión actual en la Tabla 10 del documento cumple al 100% con los requerimientos metodológicos y técnicos de Trayecto IV. Queda formalmente aprobada.
+
+---
+
+## 2. ⚠️ Estudio de Factibilidad: Ajuste Menor en Factibilidad Económica
+- **Estado Actual:** Las secciones Social, Técnica y Operativa están impecables. En **Factibilidad Económica** (Párrafos 106-107) aún se colaron dos frases del modelo viejo:
+  - *"procesos administrativos y de facturación"*
+  - *"horas de soporte que anteriormente quedaban sin registrar o facturar"*
+- **Ajuste Requerido:** Cambiar esas dos frases por:
+  - 👉 *"procesos administrativos y de auditoría de servicio"*
+  - 👉 *"horas de soporte que anteriormente quedaban sin trazabilidad operativa ni registro formal"*.
+
+---
+
+## 3. ⚠️ Tabla de Jerarquización de Problemas (Cuadro N° 16 / Tabla 11)
 - **Estado Actual en el Docs:**  
-  En el párrafo introductorio, la Matriz FODA, la Tabla de Problemas y la Reflexión Crítica se repite constantemente:
-  - *"para la contabilidad de horas facturables"*
-  - *"proceder con la facturación formal"*
-  - *"inexactitud contable y financiera"*
-  - *"garantizando exactitud en la facturación"*
-- **Riesgo Metodológico:**  
-  **El alcance del sistema NO incluye módulos contables, tarifas, bolsas de horas comerciales ni facturación**. Si el informe promete "facturación y contabilidad", se exigirá la demostración de dichos módulos en la evaluación y entrega formal.
-- **Acción Requerida:**  
-  Reemplazar toda referencia a cobros/facturación por términos de **control operativo e ingeniería**:
-  - Sustituir *"contabilidad de horas facturables / facturación formal"* por:  
-    👉 **"Registro y trazabilidad de tiempo consumido / horas dedicadas al servicio técnico"**.
-  - Sustituir *"inexactitud contable y financiera"* por:  
-    👉 **"Dificultad en la fiscalización operativa y auditoría de la carga de trabajo de los consultores"**.
+  El Problema N° 2 sigue diciendo:
+  > *"Transcripción manual y desestructurada de datos desde los chats hacia hojas de cálculo para la contabilidad de horas facturables."*
+- **Ajuste Requerido:**  
+  Reemplazar la redacción del Problema N° 2 por:  
+  👉 **"Dificultad para auditar, fiscalizar y consolidar los tiempos operativos invertidos por el personal técnico en la atención de casos."**  
+  (Área afectada: *Gestión de Operaciones y Soporte Técnico*).
 
 ---
 
-## 3. ⚠️ Árbol del Problema: Ajuste de Causas, Problema Central y Consecuencias
-- **Estado Actual en el Docs (Imagen N°20 y esquema):**  
-  Se describe el soporte como un proceso realizado *"a través de planillas de cálculo y mensajes, sin tecnología"*.
-- **Riesgo Metodológico:**  
-  En Trayecto III ya se aprobó el bot Dory en Discord y la base de datos de tickets. Afirmar que la empresa está *"sin tecnología"* contradice la aprobación de PST III y desvirtúa la madurez del proyecto en Trayecto IV.
-- **Estructura Correcta para PST IV (2026):**
+## 4. ⚠️ Árbol del Problema (Párrafos 272-277 / Imagen N° 20)
+- **Estado Actual en el Docs:**  
+  El texto y la imagen siguen indicando que el soporte se realiza *"de manera manual a través de planillas de cálculo y mensajes, sin tecnología"*.
+- **Ajuste Requerido:**  
+  Actualizar el texto introductorio y la imagen conforme a la estructura de PST IV:
+  - **Tronco (Problema Central):** *Fragmentación en el seguimiento administrativo y carencia de una consola web centralizada para la auditoría, control operativo y gestión de incidencias en ERP Consultores y Asociados C.A.*
+  - **Raíces (Causas):** Datos aislados en Discord, falta de una consola web (NexoInt) para reclasificación y auditoría gerencial, y desarticulación con la documentación técnica de releases (Jarvis).
+  - **Ramas (Consecuencias):** Tiempos prolongados de supervisión gerencial, dificultad en la fiscalización del tiempo operativo por cliente, y desfase en las notas de versión de software.
 
 ```mermaid
 graph TD
@@ -82,18 +86,9 @@ graph TD
 
 ---
 
-## 4. ⚠️ Matriz FODA y Tabla de Jerarquización de Problemas
-- **Matriz FODA:**  
-  - En **Debilidades:** Ajustar la mención de *"copiar a mano la información en tablas de cálculo"* por *"falta de sincronización entre los hilos de Discord y un panel de auditoría web"*.  
-  - En **Oportunidades:** Cambiar *"control automático de horas cobrables"* por *"auditoría y medición precisa de tiempos de respuesta operativa"*.
-- **Tabla de Jerarquización de Problemas:**  
-  - Modificar el Problema N° 2 (actualmente: *"Transcripción manual hacia hojas de cálculo para la contabilidad de horas facturables"*).  
-  - Redacción correcta: **"Dificultad para auditar y consolidar los tiempos operativos invertidos por el personal técnico en la atención de casos"** (Área afectada: Gestión de Operaciones y Soporte Técnico).
-
----
-
-## 5. ⚠️ Diferenciación de Componentes (Dory vs. Jarvis)
-- **Estado Actual:** En la Reflexión Crítica se menciona a *"Jarvis (Bot de Discord) para la captura de hilos"*.
-- **Corrección Técnica:**  
-  - El bot de Discord se llama **Dory** (`discord_bot`). Es quien interactúa con clientes, abre hilos y procesa comandos de cierre.  
-  - **Jarvis** es el agente automatizado que apoya el flujo técnico de **GitHub** (documentación de issues y notas de versión). No mezclar ambos nombres en las descripciones de Discord.
+## 5. ⚠️ Reflexión Crítica de la Fase I (Párrafo 282)
+- **Estado Actual en el Docs:**  
+  Conserva la redacción de PST III que habla de *"contabilidad de horas facturables dependen de la revisión visual y transcripción a hojas de cálculo... exactitud en la facturación"*.
+- **Ajuste Requerido:**  
+  Reescribir el párrafo eliminando "hojas de cálculo" y "facturación", enfocándolo en:
+  👉 *La transición desde la captura inicial por Discord (logro de PST III) hacia la consolidación de un ecosistema integral con consola web administrativa (NexoInt), persistencia estructurada en Supabase y soporte de automatización técnica (Jarvis), erradicando la dispersión operativa y garantizando la trazabilidad auditable de los tiempos de soporte.*

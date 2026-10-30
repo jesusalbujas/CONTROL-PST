@@ -15,14 +15,30 @@ Para avanzar de forma organizada y sin cuellos de botella, las tareas se dividen
 La Fase I documenta el contexto y el modelo correspondientes al período estudiado. Se conservará el contenido histórico aprobado y no se incorporarán retrospectivamente a esa sección las funciones actuales de NexoInt, Dory o Jarvis. Las correcciones se limitarán a errores comprobables; cualquier evolución posterior se explicará en la sección del proyecto que corresponda.
 
 #### 👤 1. Jesús Hernández (Coordinación de Fase I, Metodología y Procesos)
-* **Responsabilidad Principal:** Coordinar la estructuración del Modelo de Negocio (Sección III) y la metodología de calidad RECLAMO, trabajando en conjunto con **Albany Reyes** (reasignada para apoyarlo en la redacción y vaciado de tablas).
+
+> **Estado:** **🔄 AVANCES VERIFICADOS (30/10/2026)**  
+> **Resultado de la Revisión:** Vaciadas y completadas con éxito las 4 plantillas de Casos de Uso del Negocio (Cuadros N° 11 al 14: `CU-01 Registrar caso`, `CU-02 Gestionar caso`, `CU-03 Generar reporte`, `CU-04 Recibir reportes`) e insertada la imagen del Diagrama CUN. La metodología de calidad RECLAMO está incorporada.
+
+> [!NOTE]
+> **Detalles pendientes por pulir (Jesús Hernández):**  
+> 1. **Falta la Imagen del Diagrama de Actividad:** El título y párrafo descriptivo están en el documento (Párrafos 248-249), pero falta insertar el gráfico de actividad del negocio (Párrafos 250-251).  
+> 2. **Rotulado de la Imagen del CUN:** Agregar número formal arriba y fuente abajo (`Imagen N° X: Diagrama de Casos de Uso del Negocio` / `Fuente: Hernández H. Jesús A. (2026)`).  
+> 3. **Actualizar Año en Cuadros 11 al 14:** Las fuentes de las plantillas CUN dicen *(2025)*; deben actualizarse a *(2026)*. En el Cuadro 11 corregir el título (*Plantilla de especificación de Registrar caso*).
+
+<details>
+<summary><b>📂 Ver Detalle de Tareas de Jesús Hernández (Click para desplegar)</b></summary>
+<br>
+
+* **Responsabilidad Principal:** Coordinar la estructuración del Modelo de Negocio (Sección III) y la metodología de calidad RECLAMO, trabajando en conjunto con Albany Reyes.
 * **Guía de Apoyo Metodológico:** 📖 Consultar [Guía de Fase I (Diagnóstico, Factibilidad y FODA)](./pst-4-fase-1-guia-metodologica.md) y [Sección 2 de pst-4-arquitectura.md](./pst-4-arquitectura.md#2-fase-i-planificación-diagnóstico-y-modelo-de-negocio).
-* **Tareas a Ejecutar en Conjunto con Albany Reyes:**
-  1. **Llenar las 4 Plantillas CUN (Cuadros N° 11, 12, 13 y 14):** Las tablas 6, 7, 8 y 9 actualmente están vacías en el Google Docs. Deben vaciar los flujos de eventos para: Solicitar Soporte (Cliente), Atender Caso (Consultor), Registrar Tiempo (Consultor/Bot) y Consultar Indicadores (Gerencia).
-  2. **Diagramas del Negocio:** Diseñar e insertar el **Diagrama de Casos de Uso del Negocio (CUN)** (Párrafo 222) y el **Diagrama de Actividad** (Párrafo 241), usando los actores reales (Cliente, Consultor, Gerencia, Administrador) y componentes (Discord ↔ Dory ↔ Supabase ↔ NexoInt).
-  3. **Metodología de Calidad RECLAMO:** Redactar la justificación y aplicación del estándar venezolano de calidad exigido en Trayecto IV.
-  4. **Reflexión Crítica de la Fase I:** Mantenerla enfocada en la necesidad de integración y auditoría de soporte de 2026 (sin mencionar cobros ni planillas manuales).
-* **Plazo de Entrega:** **Miércoles 28 de Octubre - 10:00 PM**
+* **Detalle de Tareas Ejecutadas y Pendientes:**
+  1. **Plantillas CUN (Cuadros N° 11 al 14):** ✅ Vaciadas en Tablas 6 a 9 con flujos principales, alternos y reglas del negocio (RN-01 a RN-04).
+  2. **Diagrama CUN:** ✅ Imagen insertada en Párrafo 231. (Pendiente rotular número y fuente 2026).
+  3. **Diagrama de Actividad:** ⏳ Pendiente insertar la imagen del flujo en Párrafo 250.
+  4. **Metodología de Calidad RECLAMO:** ✅ Redactada en la sección correspondiente.
+  5. **Reflexión Crítica de la Fase I:** Mantenerla enfocada en la necesidad de integración y auditoría de soporte de 2026 (sin mencionar cobros ni planillas manuales).
+
+</details>
 
 ---
 
@@ -61,15 +77,33 @@ La Fase I documenta el contexto y el modelo correspondientes al período estudia
 ---
 
 #### 👤 3. Candy Gutiérrez (Diagnóstico Situacional, FODA y Árbol de Problemas)
+
+> **Estado:** **🔄 MATRIZ FODA Y FACTIBILIDAD COMPLETADAS (30/10/2026)**  
+> **Resultado de la Revisión:**  
+> - **✅ Matriz FODA (Cuadro N° 15 / Tabla 10): APROBADA (10/10).** Candy rehízo la matriz completamente alineada a PST IV: cero menciones a "hojas de cálculo" ni "facturación", enfoque en Discord ↔ NexoInt ↔ Supabase, supervisión humana de IA (Jarvis) y delimitación de componentes en desarrollo.
+> - **✅ Estudio de Factibilidad (Líneas 99 a 119):** Desarrolladas las 4 dimensiones (Social, Económica, Técnica y Operativa).
+
+> [!IMPORTANT]
+> **Tareas Inmediatas para Candy Gutiérrez (Pasos finales para cerrar su entrega):**  
+> 1. **Tabla de Jerarquización de Problemas (Cuadro N° 16 / Tabla 11):** En el Problema N° 2, sustituir *"transcripción manual hacia hojas de cálculo para la contabilidad de horas facturables"* por *"Dificultad para auditar, fiscalizar y consolidar los tiempos operativos invertidos por el personal técnico en la atención de casos"*.  
+> 2. **Árbol del Problema (Párrafos 272-277 / Imagen N° 20):** Actualizar el texto y la imagen para no decir que la empresa está *"sin tecnología y con planillas de cálculo"*. Colocar el problema central: *Fragmentación en el seguimiento administrativo y carencia de una consola web centralizada...*  
+> 3. **Reflexión Crítica de Fase I (Párrafo 282):** Actualizar el párrafo para eliminar las menciones heredadas de PST III a "hojas de cálculo" y "facturación".  
+> 4. **Ajuste Menor en Factibilidad Económica (Párrafos 106-107):** Reemplazar las dos frases que dicen "facturación" por "auditoría operativa y registro de tiempos".  
+> 📖 Consultar el detalle exacto de redacción en [Auditoría y Correcciones Fase I - Candy Gutiérrez](./pst-4-auditoria-candy-fase-1.md).
+
+<details>
+<summary><b>📂 Ver Detalle de Tareas de Candy Gutiérrez (Click para desplegar)</b></summary>
+<br>
+
 * **Responsabilidad Principal:** Formulación analítica del problema, estudio de factibilidad y viabilidad operativa.
-* **Guía de Correcciones Asignada:** 📖 Consultar [Auditoría y Correcciones Fase I - Candy Gutiérrez](./pst-4-auditoria-candy-fase-1.md) para el detalle de cambios requeridos en el Google Docs.
-* **Tareas a Ejecutar y Corregir:**
-  1. **Estudio de Factibilidad:** Completar las 4 dimensiones (Social, Económica, Técnica y Operativa) que actualmente están en blanco en el Google Docs.
-  2. **Eliminación de términos contables/facturación:** Sustituir "facturación formal", "horas facturables" e "inexactitud contable" por "registro de tiempo consumido" y "auditoría operativa de casos" (conforme al alcance funcional delimitado para este trayecto).
-  3. **Árbol del Problema y Tabla de Jerarquización:** Actualizar el problema central y causas según el modelo de PST IV 2026 (sin indicar que la empresa está "sin tecnología" ni usa "hojas de cálculo").
-  4. **Matriz FODA:** Ajustar debilidades y oportunidades para enfocarlas en la fragmentación de canales y consolidación en NexoInt.
-  5. **Diferenciación Dory / Jarvis:** Corregir en la Reflexión Crítica para identificar a Dory como el bot de Discord y a Jarvis como el agente de GitHub.
-* **Plazo de Entrega:** **Miércoles 28 de Octubre - 06:00 PM**
+* **Detalle de Estado:**
+  1. **Matriz FODA:** ✅ Completada y Aprobada formalmente.
+  2. **Estudio de Factibilidad:** ✅ Redactado (Pendiente ajuste menor de dos términos en económica).
+  3. **Tabla de Jerarquización:** ⏳ Pendiente actualizar Problema N° 2.
+  4. **Árbol del Problema:** ⏳ Pendiente actualizar texto e Imagen N° 20.
+  5. **Reflexión Crítica de la Fase I:** ⏳ Pendiente actualizar redacción sin términos contables/hojas de cálculo.
+
+</details>
 
 ---
 
