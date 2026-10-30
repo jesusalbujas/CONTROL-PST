@@ -17,12 +17,13 @@ La Fase I documenta el contexto y el modelo correspondientes al período estudia
 #### 👤 1. Jesús Hernández (Coordinación de Fase I, Metodología y Procesos)
 
 > **Estado:** **🔄 AVANCES VERIFICADOS (30/10/2026)**  
+> **Guía Detallada Asignada:** 📖 Consultar [Auditoría y Guía de Tareas - Jesús Hernández](./pst-4-auditoria-jesus-h-fase-1.md) para el detalle de flujos y diagramas pendientes.  
 > **Resultado de la Revisión:** Vaciadas y completadas con éxito las 4 plantillas de Casos de Uso del Negocio (Cuadros N° 11 al 14: `CU-01 Registrar caso`, `CU-02 Gestionar caso`, `CU-03 Generar reporte`, `CU-04 Recibir reportes`) e insertada la imagen del Diagrama CUN. La metodología de calidad RECLAMO está incorporada.
 
 > [!NOTE]
 > **Detalles pendientes por pulir (Jesús Hernández):**  
 > 1. **Falta la Imagen del Diagrama de Actividad:** El título y párrafo descriptivo están en el documento (Párrafos 248-249), pero falta insertar el gráfico de actividad del negocio (Párrafos 250-251).  
-> 2. **Rotulado de la Imagen del CUN:** Agregar número formal arriba y fuente abajo (`Imagen N° X: Diagrama de Casos de Uso del Negocio` / `Fuente: Hernández H. Jesús A. (2026)`).  
+> 2. **Rotulado de la Imagen del CUN:** Agregar número formal arriba y fuente abajo (`Imagen N° 7: Diagrama de Casos de Uso del Negocio` / `Fuente: Hernández H. Jesús A. (2026)`).  
 > 3. **Actualizar Año en Cuadros 11 al 14:** Las fuentes de las plantillas CUN dicen *(2025)*; deben actualizarse a *(2026)*. En el Cuadro 11 corregir el título (*Plantilla de especificación de Registrar caso*).
 
 <details>
@@ -158,7 +159,14 @@ La Fase I documenta el contexto y el modelo correspondientes al período estudia
 ---
 
 #### 👤 5. José Zúñiga (Ingeniería Técnica, Arquitectura y Modelo de Datos)
-* **Responsabilidad Principal:** Diagramas UML, modelo relacional y diseño técnico.
+
+> **Estado:** **⏳ PENDIENTE DE REVISIÓN Y ENTREGA (Fase II)**  
+> **Responsabilidad Principal:** Diagramas UML, modelo relacional (esquema `dory`), arquitectura técnica de software y diseño del sistema.
+
+<details>
+<summary><b>📂 Ver Detalle de Tareas de José Zúñiga (Click para desplegar)</b></summary>
+<br>
+
 * **Tareas a Ejecutar:**
   1. **Arquitectura del Software (3 Pilares):** Describir `nexoint`, `discord_bot`/`jarvis` y `NexoInt`.
      - 📖 *¿Dónde consultar la información?* Ver [Sección 3.1 y 3.2 de pst-4-arquitectura.md](./pst-4-arquitectura.md#31-visión-arquitectónica-general).
@@ -169,12 +177,21 @@ La Fase I documenta el contexto y el modelo correspondientes al período estudia
   4. **Reflexión Crítica de la Fase II.**
 * **Plazo de Entrega:** **Jueves 29 de Octubre - 06:00 PM**
 
+</details>
+
 ---
 
 ### 🧪 EQUIPO FASE III — Implantación, Pruebas y Auditoría
 
 #### 👤 6. Giovana Garrido (Pruebas del Sistema y Auditoría Informática)
-* **Responsabilidad Principal:** Casos de prueba actualizados y reporte formal de auditoría.
+
+> **Estado:** **⏳ PENDIENTE DE REVISIÓN Y ENTREGA (Fase III)**  
+> **Responsabilidad Principal:** Casos de prueba actualizados bajo norma ISO/IEC 25010 y reporte formal de auditoría informática (SAST/DAST y RBAC).
+
+<details>
+<summary><b>📂 Ver Detalle de Tareas de Giovana Garrido (Click para desplegar)</b></summary>
+<br>
+
 * **Tareas a Ejecutar:**
   1. **Actualizar Casos de Prueba:** Corregir fechas y flujos obsoletos. Definir y ejecutar pruebas verificables para apertura/sincronización de casos, permisos, OAuth, llamadas a Dory, calendario y publicación de releases; registrar resultados reales, sin asumir que existe una suite automatizada.
   2. **Pruebas de Integración y Rendimiento:** Medir escenarios acordados y documentar resultados observados. No prometer latencias (< 250 ms), concurrencia o disponibilidad hasta tener mediciones y criterios aprobados.
@@ -185,6 +202,8 @@ La Fase I documenta el contexto y el modelo correspondientes al período estudia
      - 📖 *¿Dónde consultar la información?* Ver [Sección 4 de pst-4-arquitectura.md](./pst-4-arquitectura.md#4-fase-iii-estrategias-de-implantación-pruebas-y-auditoría-informática).
   4. **Reflexión Crítica de la Fase III.**
 * **Plazo de Entrega:** **Viernes 30 de Octubre - 12:00 PM (Mediodía)**
+
+</details>
 
 ---
 
