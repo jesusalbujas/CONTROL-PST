@@ -1,20 +1,54 @@
-# 🚀 Plan de Trabajo y Cronograma — PST IV
+# 🚀 Plan de Trabajo, Cronograma y Calendario de Ejecución — PST IV
 ### Actualización y Corrección Integral de Fases I, II y III (Normativa PNFI 2018)
 **Meta General:** Transformar el documento heredado de PST III en el informe formal de **PST IV**, corrigiendo inconsistencias, eliminando menciones desfasadas (Excel, Superset, cobros/facturación) y completando formalmente **hasta la Fase III inclusive**.  
-**Última Auditoría en Google Docs:** **02 de Noviembre de 2026**.  
+**Fecha de Actualización y Auditoría:** **Lunes 02 de Noviembre de 2026**.  
+
+---
+
+## 📈 Tablero de Avance Global del Proyecto
+
+```text
+[████████████████░░░░] 78% Avance Global del Documento (Fases I, II y III)
+
+Fase I   (Diagnóstico y Negocio):  [████████████████░░░░] 85%  (Detalles en Organigrama, Actividad y Factibilidad)
+Fase II  (Ingeniería y Software):  [████████████████████] 100% (¡Aprobada y Cerrada al 100%!)
+Fase III (Pruebas y Auditoría):    [░░░░░░░░░░░░░░░░░░░░]  5%  (Guía lista en repo, pendiente vaciado)
+```
+
+---
+
+## 📅 Calendario Semanal de Ejecución y Registro de Cumplimiento
+**Semana Objetivo:** Lunes 02 de Noviembre al Viernes 06 de Noviembre de 2026.
+
+| Día | Integrante | Tarea / Entrega Asignada | Estado | Verificación / Comprobación |
+| :--- | :--- | :--- | :---: | :--- |
+| **Lunes 02/11** | **Daniel Pérez** | Vaciado y rotulado formal de 4 Diagramas de Casos de Uso (`Imágenes N° 10, 11, 12 y 13`). | ✅ **CUMPLIDO** | Verificado en Google Docs. Títulos formales y fuente `(2026)`. Fase II de Daniel cerrada al 100%. |
+| **Lunes 02/11** | **José Zúñiga** | Vaciado íntegro de arquitectura, 18 tablas de diccionario, UML y reflexión Fase II. | ✅ **CUMPLIDO** | Verificado en Google Docs. Esquema `dory` completo, fuentes `(2026)`. Fase II de José cerrada al 100%. |
+| **Lunes 02/11** | **Candy Gutiérrez** | Matriz FODA (Cuadro 15), Problema N° 2 (Cuadro 16) y nueva Reflexión Crítica Fase I. | ✅ **CUMPLIDO** | Verificado en Google Docs. Aprobado 10/10 sin términos contables ni Excel. |
+| **Lunes 02/11** | **Jesús Hernández** | Redacción de 4 tablas CUN (Cuadros 11 al 14) y montaje del Diagrama CUN. | ✅ **CUMPLIDO** | Verificado en Google Docs. Tablas de negocio llenas y CUN montado en P[231]. |
+| **Lunes 02/11** | **Albany Reyes** | Notificación de corrección de Organigrama Estructural 2026. | 🔄 **EN PROCESO** | Respuesta recibida ("no había podido"). Estructura formal de 3 ramas enviada para montaje. |
+| **Lunes 02/11** | **Giovana Garrido** | Entrega de guía técnica de Fase III con plantilla de pruebas y auditoría. | ✅ **CUMPLIDO** | Documento guía publicado en el repositorio (`pst-4-auditoria-giovana-fase-3.md`). |
+| **Martes 03/11** | **Albany Reyes** | Montar la nueva imagen del Organigrama 2026 (Imagen N° 2) con las 3 ramas independientes. | ⏳ **PENDIENTE** | Subir imagen con: Dirección General (Carlos y Botero), Funcional (Silviana), Técnica (Jesús A.) y Proyectos (Waditza y José U.). |
+| **Martes 03/11** | **Jesús Hernández** | Insertar imagen del Diagrama de Actividad (Párrafo 248) y rotular formalmente CUN. | ⏳ **PENDIENTE** | Pegar imagen de actividad; agregar `Imagen N° 7...` y cambiar año de fuentes a `(2026)` en Cuadros 11 al 14. |
+| **Martes 03/11** | **Candy Gutiérrez** | Ajustar 2 palabras en Factibilidad Económica y texto previo al Árbol de Problemas. | ⏳ **PENDIENTE** | Cambiar "facturación" por "gestión operativa" y ajustar P[273] según la guía. |
+| **Miércoles 04/11**| **Giovana Garrido** | Eliminar Apache Superset del documento y vaciar stack tecnológico 2026 de PST IV. | ⏳ **PENDIENTE** | Vaciado de frameworks (NestJS, React/Vite, Supabase, Discord.js, GitHub Octokit) en P[658-690]. |
+| **Miércoles 04/11**| **Giovana Garrido** | Vaciado de Casos de Prueba CP-01 al CP-04 (Discord, Dory, NexoInt Web). | ⏳ **PENDIENTE** | Completar tablas de pruebas funcionales 2026 según especificación del repo. |
+| **Jueves 05/11** | **Giovana Garrido** | Vaciado de Casos de Prueba CP-05 y CP-06 + Informe de Auditoría Informática. | ⏳ **PENDIENTE** | Documentar SAST, DAST, RBAC en NexoInt y auditoría de tablas `dory_changelog`. |
+| **Jueves 05/11** | **Giovana Garrido** | Redactar Reflexión Crítica de Fase III con enfoque de cierre de Trayecto IV. | ⏳ **PENDIENTE** | Reflexión formal sin fechas de 2025 ni menciones a Superset. |
+| **Viernes 06/11** | **Equipo Completo** | Control de calidad integral, verificación de numeración cruzada y entrega final. | ⏳ **PENDIENTE** | Comprobación de que todas las tablas y figuras tengan año 2026 y generar PDF definitivo. |
 
 ---
 
 ## 📊 Tablero Resumen de Estado y Entregas por Integrante
 
-| Integrante | Fase / Responsabilidad | Estado | ✅ Listo y Verificado | ⏳ Pendiente por Hacer / Corregir |
-| :--- | :--- | :---: | :--- | :--- |
-| **José Zúñiga** | **Fase II:** Arquitectura, BD y UML | **✅ 100% COMPLETADO** | • Arquitectura de 3 pilares (`Imagen N° 14`).<br>• Modelo de Clases (`Imagen N° 15`) y Secuencia (`Imagen N° 16`).<br>• Modelo Relacional E/R (`Imagen N° 17`) y **18 tablas de Diccionario de Datos** (Cuadros N° 20 al 37).<br>• Navegación y Carta Estructurada (`Imágenes N° 18 y 19`).<br>• Componentes y Despliegue (`Imágenes N° 20 y 21`).<br>• Reflexión Crítica de Fase II. | *Ninguno (Sección 100% aprobada).* |
-| **Daniel Pérez** | **Fase II:** Requerimientos y CUS | **✅ 100% COMPLETADO** | • 13 Requerimientos Funcionales (`RF-01` al `RF-13`).<br>• 15 Requerimientos No Funcionales (`RNF-01` al `RNF-15`).<br>• Fichas técnicas CUS completas.<br>• **4 diagramas de Casos de Uso separados y rotulados** (`Imágenes N° 10, 11, 12 y 13`). | *Ninguno (Sección 100% aprobada).* |
-| **Candy Gutiérrez** | **Fase I:** Diagnóstico, FODA y Problemas | **🔄 EN AVANCE AVANZADO** | • **Matriz FODA (Cuadro N° 15): Aprobada 10/10** (sin Excel ni facturación).<br>• **Problema N° 2 (Cuadro N° 16): Corregido y Aprobado**.<br>• **Reflexión Crítica Fase I: Rehecha y Aprobada**.<br>• **Estudio de Factibilidad:** Redactado en las 4 dimensiones. | • Actualizar texto descriptivo del Árbol del Problema (Párrafo 273).<br>• Ajustar 2 frases de "facturación" en Factibilidad Económica (Párrafos 106-107). |
-| **Jesús Hernández** | **Fase I:** Modelo de Negocio y Diagramas | **🔄 EN AVANCE AVANZADO** | • **4 Tablas CUN (`CU-01` al `CU-04`)** llenas con flujos y reglas.<br>• Imagen del Diagrama CUN insertada (Párrafo 231).<br>• Metodología RECLAMO redactada. | • **Insertar imagen del Diagrama de Actividad** (Párrafos 248 a 251 en blanco).<br>• Rotular imagen del CUN (`Imagen N° 7... Fuente: (2026)`).<br>• Cambiar año de fuentes a (2026) en Cuadros 11 al 14. |
-| **Albany Reyes** | **Fase I:** Organigrama y Fundamentación | **⏳ PENDIENTE CRÍTICO** | • Reseña histórica, Misión, Visión y Fundamentación Legal completas. | • **Reemplazar Imagen N° 2 del Organigrama 2026** por el diseño con las 3 ramas independientes (Funcional, Técnica de Jesús Albujas, y Proyectos con Waditza y José Uzcátegui). |
-| **Giovana Garrido** | **Fase III:** Pruebas y Auditoría | **⏳ PENDIENTE COMPLETO** | — | • Actualizar casos de prueba a 2026 (NexoInt, Discord, Jarvis, Supabase).<br>• Eliminar menciones a Superset y fechas de 2025.<br>• Incorporar Informe de Auditoría Informática (SAST/DAST y RBAC).<br>• Actualizar Reflexión Crítica de Fase III. |
+| Integrante | Fase / Responsabilidad | Estado | % Avance | ✅ Listo y Verificado | ⏳ Pendiente por Hacer / Corregir |
+| :--- | :--- | :---: | :---: | :--- | :--- |
+| **José Zúñiga** | **Fase II:** Arquitectura, BD y UML | **✅ 100% COMPLETADO** | **100%** | • Arquitectura de 3 pilares (`Imagen N° 14`).<br>• Modelo de Clases (`Imagen N° 15`) y Secuencia (`Imagen N° 16`).<br>• Modelo Relacional E/R (`Imagen N° 17`) y **18 tablas de Diccionario de Datos** (Cuadros N° 20 al 37).<br>• Navegación y Carta Estructurada (`Imágenes N° 18 y 19`).<br>• Componentes y Despliegue (`Imágenes N° 20 y 21`).<br>• Reflexión Crítica de Fase II. | *Ninguno (Sección 100% aprobada).* |
+| **Daniel Pérez** | **Fase II:** Requerimientos y CUS | **✅ 100% COMPLETADO** | **100%** | • 13 Requerimientos Funcionales (`RF-01` al `RF-13`).<br>• 15 Requerimientos No Funcionales (`RNF-01` al `RNF-15`).<br>• Fichas técnicas CUS completas.<br>• **4 diagramas de Casos de Uso separados y rotulados** (`Imágenes N° 10, 11, 12 y 13`). | *Ninguno (Sección 100% aprobada).* |
+| **Candy Gutiérrez** | **Fase I:** Diagnóstico, FODA y Problemas | **🔄 AVANCE AVANZADO** | **90%** | • **Matriz FODA (Cuadro N° 15): Aprobada 10/10** (sin Excel ni facturación).<br>• **Problema N° 2 (Cuadro N° 16): Corregido y Aprobado**.<br>• **Reflexión Crítica Fase I: Rehecha y Aprobada**.<br>• **Estudio de Factibilidad:** Redactado en las 4 dimensiones. | • Actualizar texto descriptivo del Árbol del Problema (Párrafo 273).<br>• Ajustar 2 frases de "facturación" en Factibilidad Económica (Párrafos 106-107). |
+| **Jesús Hernández** | **Fase I:** Modelo de Negocio y Diagramas | **🔄 AVANCE AVANZADO** | **85%** | • **4 Tablas CUN (`CU-01` al `CU-04`)** llenas con flujos y reglas.<br>• Imagen del Diagrama CUN insertada (Párrafo 231).<br>• Metodología RECLAMO redactada. | • **Insertar imagen del Diagrama de Actividad** (Párrafos 248 a 251 en blanco).<br>• Rotular imagen del CUN (`Imagen N° 7... Fuente: (2026)`).<br>• Cambiar año de fuentes a (2026) en Cuadros 11 al 14. |
+| **Albany Reyes** | **Fase I:** Organigrama y Fundamentación | **⏳ PENDIENTE CRÍTICO** | **80%** | • Reseña histórica, Misión, Visión y Fundamentación Legal completas. | • **Reemplazar Imagen N° 2 del Organigrama 2026** por el diseño con las 3 ramas independientes (Funcional, Técnica de Jesús Albujas, y Proyectos con Waditza y José Uzcátegui). |
+| **Giovana Garrido** | **Fase III:** Pruebas y Auditoría | **⏳ PENDIENTE COMPLETO** | **10%** | • Guía detallada y plantillas técnicas estructuradas en el repositorio. | • Actualizar casos de prueba a 2026 (NexoInt, Discord, Jarvis, Supabase).<br>• Eliminar menciones a Superset y fechas de 2025.<br>• Incorporar Informe de Auditoría Informática (SAST/DAST y RBAC).<br>• Actualizar Reflexión Crítica de Fase III. |
 
 ---
 
