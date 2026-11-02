@@ -83,11 +83,12 @@ docs/
 4. [**Proyecto Socio Tecnológico IV (Trayecto IV - Proyecto Actual)**](./proyectos/pst-4-arquitectura.md)
    - **Organización:** ERP Consultores y Asociados C.A.
    - **Plan de Trabajo y Cronograma 2026:** [Plan de Trabajo PST IV](./proyectos/pst-4-plan-de-trabajo.md)
-   - **Guías Metodológicas y Auditorías de Fase I:**
+   - **Guías Metodológicas y Auditorías por Fase:**
      - [Guía General de Fase I (Diagnóstico, Factibilidad y FODA)](./proyectos/pst-4-fase-1-guia-metodologica.md)
      - [Auditoría y Tareas: Jesús Hernández (Modelo de Negocio y CUN)](./proyectos/pst-4-auditoria-jesus-h-fase-1.md)
      - [Auditoría y Tareas: Albany Reyes (Organigrama 2026)](./proyectos/pst-4-auditoria-albany-fase-1.md)
      - [Auditoría y Tareas: Candy Gutiérrez (FODA Aprobado y Diagnóstico)](./proyectos/pst-4-auditoria-candy-fase-1.md)
+     - [Auditoría y Tareas: Giovana Garrido (Fase III - Pruebas y Auditoría)](./proyectos/pst-4-auditoria-giovana-fase-3.md)
    - **Alcance:** Nueva Arquitectura Modular y Distribuida desglosada en:
      - **`nexoint`**: API Gateway, Core Backend, gestión de contratos, tarifas, tickets y reglas de negocio.
      - **`discord_bot` (y `jarvis`)**: Agentes conversacionales y asistente de automatización cognitiva e integración en tiempo real.
