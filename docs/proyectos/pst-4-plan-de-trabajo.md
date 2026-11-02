@@ -75,9 +75,6 @@ Fase III (Pruebas y Auditoría):    [░░░░░░░░░░░░░░�
 > 2. **Rotulado de la Imagen del CUN:** Agregar arriba `Imagen N° 7: Diagrama de Casos de Uso del Negocio (CUN)` y abajo `Fuente: Hernández H. Jesús A. (2026)`.  
 > 3. **Actualizar Año en Cuadros 11 al 14:** Las fuentes de las plantillas CUN dicen *(2025)*; deben actualizarse a *(2026)*. En el Cuadro 11 corregir el título (*Plantilla de especificación de Registrar caso*).
 
-> 💬 **Mensaje para copiar y enviar a Jesús Hernández:**  
-> *"Epa Jesús, revisé tu sección del Modelo de Negocio: las 4 tablas de Casos de Uso del Negocio (Cuadros 11 al 14) quedaron muy bien llenas y la imagen del CUN ya está montada en el documento. Solo te faltan dos detalles mínimos para cerrar tu parte: 1) Montar la imagen del Diagrama de Actividad en el párrafo 248 que quedó en blanco, y 2) Ponerle a la imagen del CUN su título formal arriba y fuente abajo (Imagen N° 7: Diagrama CUN / Fuente: Hernández H. Jesús A. 2026), y cambiar a 2026 las fuentes de los cuadros 11 al 14."*
-
 <details>
 <summary><b>📂 Ver Detalle Técnico de Tareas de Jesús Hernández</b></summary>
 <br>
@@ -110,9 +107,6 @@ Fase III (Pruebas y Auditoría):    [░░░░░░░░░░░░░░�
 > - **Rama 3 (Gestión de Proyectos):** Waditza (Líder de Proyectos) ➔ José Uzcátegui (Analista de Proyectos).
 > - **Pie de figura:** `Imagen N° 2: Organigrama Estructural... Fuente: Reyes S. Albany A. (2026).`
 
-> 💬 **Mensaje para copiar y enviar a Albany Reyes:**  
-> *"Hola Albany, lo de la reseña y leyes está listo y aprobado. Lo único que nos falta de tu parte es actualizar la imagen del organigrama (Imagen N° 2 en el doc), que todavía tiene la versión vieja de 2025. Recuerda que arriba van Carlos Parada y José Botero, y de ahí salen 3 ramas separadas: 1) Silviana con Nahomy y Daniel, 2) Jesús Albujas en Ingeniería aparte, y 3) Waditza en Proyectos con José Uzcátegui. En el repositorio dejé el diagrama exacto para que lo copies idéntico."*
-
 ---
 
 #### 👤 3. Candy Gutiérrez (Diagnóstico Situacional, FODA y Árbol de Problemas)
@@ -129,9 +123,6 @@ Fase III (Pruebas y Auditoría):    [░░░░░░░░░░░░░░�
 > **⏳ Tareas pendientes por pulir (Candy Gutiérrez):**  
 > 1. **Texto del Árbol del Problema (Párrafo 273):** Cambiar la frase que dice *"la problemática central de la empresa (la gestión manual)..."* por *"la fragmentación en el seguimiento administrativo y carencia de una consola web centralizada"*.  
 > 2. **Factibilidad Económica (Párrafos 106-107):** Reemplazar las dos frases de *"procesos administrativos y de facturación"* y *"horas que anteriormente quedaban sin registrar o facturar"* por *"procesos de auditoría operativa"* y *"horas que anteriormente quedaban sin trazabilidad formal"*.
-
-> 💬 **Mensaje para copiar y enviar a Candy Gutiérrez:**  
-> *"Hola Candy, excelente trabajo con la Reflexión Crítica y la corrección del Problema 2 en la tabla, quedaron aprobados. Ya solo te faltan dos detalles mínimos para cerrar tu parte: 1) En el párrafo 273 (antes del árbol), cambia la frase que dice 'la gestión manual' por 'la fragmentación en el seguimiento administrativo y carencia de una consola web centralizada', y 2) En la Factibilidad Económica (párrafos 106 y 107), cambia dos palabras donde dice 'facturación' por 'auditoría operativa y registro de tiempos'."*
 
 ---
 
@@ -152,9 +143,6 @@ Fase III (Pruebas y Auditoría):    [░░░░░░░░░░░░░░�
 >   - `Imagen N° 12: Asistencia contextual de Dory` (Fuente: Pérez Daniel, 2026).  
 >   - `Imagen N° 13: Jarvis, Informes y NexoKube` (Fuente: Pérez Daniel, 2026).
 
-> 💬 **Mensaje para copiar y enviar a Daniel Pérez:**  
-> *"Daniel, revisé tus cambios en el documento: los 4 diagramas de casos de uso quedaron perfectos, separados y con sus títulos formales (Imágenes 10 a 13) con tu fuente 2026. Toda tu sección de requerimientos y casos de uso de la Fase II está 100% aprobada."*
-
 ---
 
 #### 👤 5. José Zúñiga (Ingeniería Técnica, Arquitectura y Modelo de Datos)
@@ -171,9 +159,6 @@ Fase III (Pruebas y Auditoría):    [░░░░░░░░░░░░░░�
 > - [x] **Diagrama de Componentes y Despliegue:** `Imagen N° 20: Diagrama de Componentes` e `Imagen N° 21: Diagrama de Despliegue`.
 > - [x] **Reflexión Crítica de la Fase II:** Redactada con enfoque formal de Trayecto IV.  
 *(Todas las figuras y tablas debidamente rotuladas con Fuente: Zúñiga S. José D. 2026).*
-
-> 💬 **Mensaje para copiar y enviar a José Zúñiga:**  
-> *"José, revisé toda tu parte de la Fase II en el documento y quedó impecable, un trabajo de ingeniería 20/20. Toda la arquitectura de 3 pilares, diagramas UML (clases, secuencia, componentes, despliegue), las 18 tablas de diccionario de datos del esquema dory y la reflexión crítica están completas y aprobadas al 100%."*
 
 ---
 
@@ -201,9 +186,6 @@ Fase III (Pruebas y Auditoría):    [░░░░░░░░░░░░░░�
 >    - Análisis SAST/DAST (prevención de SQLi y protección de variables `.env`).
 >    - Auditabilidad en `dory_changelog`.
 > 4. **Actualizar Reflexión Crítica de Fase III:** Eliminar las fechas de 2025 y las menciones a Superset, enfocándola en los resultados de pruebas y auditoría 2026.
-
-> 💬 **Mensaje para copiar y enviar a Giovana Garrido:**  
-> *"Giovana, cuando puedas entra al documento para actualizar la Fase III. Actualmente tiene el texto del año pasado que menciona diciembre de 2025 y Apache Superset (recuerda que Superset se eliminó y ahora usamos NexoInt). En el repositorio te dejé la guía completa en docs/proyectos/pst-4-auditoria-giovana-fase-3.md con los 4 casos de prueba nuevos que debes colocar y el esquema del Informe de Auditoría Informática que pide la universidad."*
 
 ---
 
