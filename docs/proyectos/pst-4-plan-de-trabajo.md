@@ -79,18 +79,18 @@ La Fase I documenta el contexto y el modelo correspondientes al período estudia
 
 #### 👤 3. Candy Gutiérrez (Diagnóstico Situacional, FODA y Árbol de Problemas)
 
-> **Estado:** **🔄 MATRIZ FODA Y FACTIBILIDAD COMPLETADAS (30/10/2026)**  
+> **Estado:** **🔄 EN AVANCE AVANZADO (FODA, REFLEXIÓN Y TABLA DE PROBLEMAS COMPLETADAS - 02/11/2026)**  
 > **Resultado de la Revisión:**  
-> - **✅ Matriz FODA (Cuadro N° 15 / Tabla 10): APROBADA (10/10).** Candy rehízo la matriz completamente alineada a PST IV: cero menciones a "hojas de cálculo" ni "facturación", enfoque en Discord ↔ NexoInt ↔ Supabase, supervisión humana de IA (Jarvis) y delimitación de componentes en desarrollo.
+> - **✅ Matriz FODA (Cuadro N° 15 / Tabla 10): APROBADA (10/10).** Totalmente alineada a PST IV: cero menciones a Excel ni facturación.  
+> - **✅ Tabla de Jerarquización de Problemas (Cuadro N° 16 / Tabla 11): APROBADA.** El Problema N° 2 fue corregido exitosamente a: *"Dificultad para auditar y consolidar los tiempos operativos invertidos por el personal técnico en la atención de casos"*.  
+> - **✅ Reflexión Crítica de Fase I (Párrafo 283): APROBADA.** Párrafo nuevo impecable que sustituye por completo el texto viejo de PST III, resaltando a Dory (Discord), Jarvis (GitHub), NexoInt y Supabase.  
 > - **✅ Estudio de Factibilidad (Líneas 99 a 119):** Desarrolladas las 4 dimensiones (Social, Económica, Técnica y Operativa).
 
-> [!IMPORTANT]
-> **Tareas Inmediatas para Candy Gutiérrez (Pasos finales para cerrar su entrega):**  
-> 1. **Tabla de Jerarquización de Problemas (Cuadro N° 16 / Tabla 11):** En el Problema N° 2, sustituir *"transcripción manual hacia hojas de cálculo para la contabilidad de horas facturables"* por *"Dificultad para auditar, fiscalizar y consolidar los tiempos operativos invertidos por el personal técnico en la atención de casos"*.  
-> 2. **Árbol del Problema (Párrafos 272-277 / Imagen N° 20):** Actualizar el texto y la imagen para no decir que la empresa está *"sin tecnología y con planillas de cálculo"*. Colocar el problema central: *Fragmentación en el seguimiento administrativo y carencia de una consola web centralizada...*  
-> 3. **Reflexión Crítica de Fase I (Párrafo 282):** Actualizar el párrafo para eliminar las menciones heredadas de PST III a "hojas de cálculo" y "facturación".  
-> 4. **Ajuste Menor en Factibilidad Económica (Párrafos 106-107):** Reemplazar las dos frases que dicen "facturación" por "auditoría operativa y registro de tiempos".  
-> 📖 Consultar el detalle exacto de redacción en [Auditoría y Correcciones Fase I - Candy Gutiérrez](./pst-4-auditoria-candy-fase-1.md).
+> [!NOTE]
+> **Detalles menores pendientes para Candy Gutiérrez:**  
+> 1. **Texto del Árbol del Problema (Párrafo 273):** El texto descriptivo aún dice *"la problemática central de la empresa (la gestión manual)..."*. Cambiarlo por *"la fragmentación en el seguimiento administrativo y carencia de una consola web centralizada"*.  
+> 2. **Factibilidad Económica (Párrafos 106-107):** Reemplazar las frases *"procesos administrativos y de facturación"* y *"horas que anteriormente quedaban sin registrar o facturar"* por *"procesos de auditoría operativa"* y *"horas que anteriormente quedaban sin trazabilidad formal"*.  
+> 📖 Consultar [Auditoría y Correcciones Fase I - Candy Gutiérrez](./pst-4-auditoria-candy-fase-1.md).
 
 <details>
 <summary><b>📂 Ver Detalle de Tareas de Candy Gutiérrez (Click para desplegar)</b></summary>
@@ -99,10 +99,10 @@ La Fase I documenta el contexto y el modelo correspondientes al período estudia
 * **Responsabilidad Principal:** Formulación analítica del problema, estudio de factibilidad y viabilidad operativa.
 * **Detalle de Estado:**
   1. **Matriz FODA:** ✅ Completada y Aprobada formalmente.
-  2. **Estudio de Factibilidad:** ✅ Redactado (Pendiente ajuste menor de dos términos en económica).
-  3. **Tabla de Jerarquización:** ⏳ Pendiente actualizar Problema N° 2.
-  4. **Árbol del Problema:** ⏳ Pendiente actualizar texto e Imagen N° 20.
-  5. **Reflexión Crítica de la Fase I:** ⏳ Pendiente actualizar redacción sin términos contables/hojas de cálculo.
+  2. **Tabla de Jerarquización:** ✅ Problema N° 2 corregido y aprobado.
+  3. **Reflexión Crítica de la Fase I:** ✅ Redactada y aprobada.
+  4. **Estudio de Factibilidad:** ✅ Redactado (Pendiente ajuste menor de dos términos en económica).
+  5. **Árbol del Problema:** ⏳ Pendiente ajuste del texto introductorio e Imagen N° 20.
 
 </details>
 
@@ -112,23 +112,13 @@ La Fase I documenta el contexto y el modelo correspondientes al período estudia
 
 #### 👤 4. Daniel Pérez (Especificación Técnica, Requerimientos y Casos de Uso)
 
-> **Estado:** **✅ COMPLETADO Y VERIFICADO (28/10/2026)**  
-> **Resultado de la Revisión:** Vaciado íntegro de los 13 Requerimientos Funcionales (`RF-01` a `RF-13`), 15 Requerimientos No Funcionales (`RNF-01` a `RNF-15`) y fichas de Casos de Uso del Software (CUS) bajo la plantilla formal PNFI. Cumplimiento estricto del alcance (cero menciones a cobros/facturación) y correcta delimitación de componentes (`Dory`, `Jarvis`, `NexoInt`).
-
-> [!NOTE]
-> **Detalle pendiente por pulir (Formato de Imágenes):**  
-> En la sección de Diagramas de Casos de Uso, se insertaron 4 imágenes continuas que solo tienen *"Fuente: Pérez Daniel (2026)"*. Debe agregarse a cada una su número e identificación descriptiva arriba de la imagen.  
-> 
-> *Ejemplo de cómo debe quedar:*
-> ```text
-> Imagen N° 10: Diagrama de Casos de Uso General del Sistema
-> [Imagen del Diagrama]
-> Fuente: Pérez Daniel (2026).
-> 
-> Imagen N° 11: Diagrama de Casos de Uso - Gestión de Soporte y Casos (Dory)
-> [Imagen del Diagrama]
-> Fuente: Pérez Daniel (2026).
-> ```
+> **Estado:** **✅ COMPLETADO Y APROBADO (100% - 02/11/2026)**  
+> **Resultado de la Revisión:** Vaciado íntegro de los 13 Requerimientos Funcionales (`RF-01` a `RF-13`), 15 Requerimientos No Funcionales (`RNF-01` a `RNF-15`) y fichas de Casos de Uso del Software (CUS) bajo la plantilla formal PNFI.  
+> **Diagramas de Casos de Uso Separados y Rotulados:**  
+> - `Imagen N° 10: Gestión de soporte y seguimiento de casos` (Fuente: Pérez Daniel, 2026).  
+> - `Imagen N° 11: Integración con Discord y API de Dory` (Fuente: Pérez Daniel, 2026).  
+> - `Imagen N° 12: Asistencia contextual de Dory` (Fuente: Pérez Daniel, 2026).  
+> - `Imagen N° 13: Jarvis, Informes y NexoKube` (Fuente: Pérez Daniel, 2026).
 
 <details>
 <summary><b>📂 Ver Detalle de Tareas Ejecutadas por Daniel Pérez (Click para desplegar)</b></summary>
@@ -137,22 +127,10 @@ La Fase I documenta el contexto y el modelo correspondientes al período estudia
 * **Responsabilidad Principal:** Redactar la sección técnica de la Fase II con las fichas PNFI y los casos de uso sustentados en la arquitectura y la documentación técnica proporcionada para el proyecto.
 * **Detalle de Contenido Vaciado:**
   1. **Sección técnica del informe:** Documentación de componentes, límites entre NexoInt web, Supabase, API de Dory/Discord y Jarvis; flujo de datos, permisos y dependencias.
-  2. **Requerimientos Funcionales (RF):** Completadas las 13 fichas oficiales del PNFI (`RF-01` a `RF-13`):
-     - `RF-01`: Autenticación y autorización por roles y permisos de ventana/acción en NexoInt.
-     - `RF-02`: Apertura, clasificación y sincronización de tickets de clientes y solicitudes internas desde Discord.
-     - `RF-03`: Actualización y cierre de casos, asignación de consultor, estado de atención y registro del tiempo consumido.
-     - `RF-04`: Seguimiento contextual de Dory y detección de intención de cierre.
-     - `RF-05`: Gestión de releases con Jarvis y evidencia técnica de versiones.
-     - `RF-06`: Calendario de actividades y guardias.
-     - `RF-07`: Indicadores de soporte y actividad de consultores.
-     - `RF-08`: Reportes, filtros y exportación/impresión.
-     - `RF-09`: API de conversación de Dory para consulta de mensajes y adjuntos.
-     - `RF-10`: Administración de tokens de integración con alcance y revocación.
-     - `RF-11`: Consola NexoKube para consulta y estado de clústeres.
-     - `RF-12`: Acceso de compañías (alcance en desarrollo claramente delimitado).
-     - `RF-13`: Aplicación móvil NexoInt (alcance en desarrollo claramente delimitado).
-  3. **Requerimientos No Funcionales (RNF):** Fichas `RNF-01` a `RNF-15` con criterios de verificación medibles (seguridad, aislamiento por compañía, integridad, supervisión de IA, etc.).
+  2. **Requerimientos Funcionales (RF):** Completadas las 13 fichas oficiales del PNFI (`RF-01` a `RF-13`).
+  3. **Requerimientos No Funcionales (RNF):** Fichas `RNF-01` a `RNF-15` con criterios de verificación medibles.
   4. **Casos de Uso del Software (CUS):** Especificaciones de flujos de eventos principales, excepciones y postcondiciones.
+  5. **Diagramas CUS:** 4 imágenes correctamente tituladas y referenciadas.
 
 </details>
 
@@ -160,22 +138,28 @@ La Fase I documenta el contexto y el modelo correspondientes al período estudia
 
 #### 👤 5. José Zúñiga (Ingeniería Técnica, Arquitectura y Modelo de Datos)
 
-> **Estado:** **⏳ PENDIENTE DE REVISIÓN Y ENTREGA (Fase II)**  
-> **Responsabilidad Principal:** Diagramas UML, modelo relacional (esquema `dory`), arquitectura técnica de software y diseño del sistema.
+> **Estado:** **✅ COMPLETADO Y APROBADO (100% - 02/11/2026)**  
+> **Resultado de la Revisión:** Despliegue de ingeniería exhaustivo y de máxima calidad académica en la Fase II:  
+> - **Visión Arquitectónica General:** Detallados los 3 pilares (`NexoInt Web`, `discord_bot / Dory / Jarvis`, `Supabase Cloud esquema dory`) y delimitación de módulos en desarrollo (`Imagen N° 14`).  
+> - **Modelo de Clases y Objetos:** 4 paquetes lógicos documentados con la `Imagen N° 15: Diagrama de Clases y Dominio`.  
+> - **Comportamiento Dinámico:** Flujo transaccional con la `Imagen N° 16: Diagrama de Secuencia Global`.  
+> - **Modelo de Datos Relacional:** `Imagen N° 17: Modelo Entidad-Relación (Esquema dory)`.  
+> - **Diccionario de Datos Exhaustivo:** 18 tablas detalladas (Cuadros N° 20 al 37: `dory_client`, `dory_channel`, `dory_thread`, `dory_message`, `dory_changelog`, etc.).  
+> - **Mapa de Navegación y Carta Estructurada:** `Imagen N° 18` (Navegación Web) e `Imagen N° 19` (Carta Estructurada).  
+> - **Interfaz de Usuario y Formularios:** Vistas web y comandos slash en Discord.  
+> - **Diagrama de Componentes y Despliegue:** `Imagen N° 20: Diagrama de Componentes` e `Imagen N° 21: Diagrama de Despliegue`.  
+> - **Reflexión Crítica de la Fase II:** Redactada con enfoque formal de Trayecto IV.
 
 <details>
 <summary><b>📂 Ver Detalle de Tareas de José Zúñiga (Click para desplegar)</b></summary>
 <br>
 
-* **Tareas a Ejecutar:**
-  1. **Arquitectura del Software (3 Pilares):** Describir `nexoint`, `discord_bot`/`jarvis` y `NexoInt`.
-     - 📖 *¿Dónde consultar la información?* Ver [Sección 3.1 y 3.2 de pst-4-arquitectura.md](./pst-4-arquitectura.md#31-visión-arquitectónica-general).
-  2. **Modelo E/R y Diccionario de Datos:** Transcribir el modelo del esquema `dory` (PostgreSQL 16 en Supabase) y la tabla de entidades.
-     - 📖 *¿Dónde consultar la información?* Ver [Diccionario de Datos en database/README.md](../database/README.md).
-  3. **Diagramas de Ingeniería:** Diagrama de Componentes, Diagrama de Despliegue y Diagrama de Secuencia Global.
-     - 📖 *¿Dónde consultar la información?* Ver [Sección 3.5 y 3.6 de pst-4-arquitectura.md](./pst-4-arquitectura.md#35-diagrama-de-interacción-y-flujo-de-datos-global).
-  4. **Reflexión Crítica de la Fase II.**
-* **Plazo de Entrega:** **Jueves 29 de Octubre - 06:00 PM**
+* **Responsabilidad Principal:** Diagramas UML, modelo relacional (esquema `dory`), arquitectura técnica de software y diseño del sistema.
+* **Detalle de Entregables Completados:**
+  1. **Arquitectura del Software (3 Pilares):** NexoInt, discord_bot/jarvis y Supabase Cloud documentados íntegramente.
+  2. **Modelo E/R y Diccionario de Datos:** 18 cuadros de diccionario de datos con columnas, tipos, restricciones y descripciones.
+  3. **Diagramas de Ingeniería:** Diagramas de Clases, Secuencia, Componentes, Despliegue, Navegación y Carta Estructurada.
+  4. **Reflexión Crítica de la Fase II:** Incorporada con éxito.
 
 </details>
 
