@@ -83,6 +83,7 @@ docs/
 4. [**Proyecto Socio Tecnológico IV (Trayecto IV - Proyecto Actual)**](./proyectos/pst-4-arquitectura.md)
    - **Organización:** ERP Consultores y Asociados C.A.
    - **Plan de Trabajo y Cronograma 2026:** [Plan de Trabajo PST IV](./proyectos/pst-4-plan-de-trabajo.md)
+   - **Estrategia de Transición y Fase IV:** [Depuración y Distribución de Lo Nuevo](./proyectos/pst-4-transicion-y-fase-4.md)
    - **Guías Metodológicas y Auditorías por Fase:**
      - [Guía General de Fase I (Diagnóstico, Factibilidad y FODA)](./proyectos/pst-4-fase-1-guia-metodologica.md)
      - [Auditoría y Tareas: Jesús Hernández (Modelo de Negocio y CUN)](./proyectos/pst-4-auditoria-jesus-h-fase-1.md)
