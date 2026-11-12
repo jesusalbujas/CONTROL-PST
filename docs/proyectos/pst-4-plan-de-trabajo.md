@@ -28,8 +28,7 @@ Fase V   (Manuales y Normativas):  [░░░░░░░░░░░░░░�
 | **Candy Gutiérrez** | **Fase I:** Diagnóstico, FODA y Problemas | **🔄 AVANCE AVANZADO** | **95%** | • **Matriz FODA (Cuadro N° 15): Aprobada (10/10)**.<br>• **Problema N° 2 (Cuadro N° 16): Aprobado**.<br>• **Reflexión Crítica Fase I: Aprobada**.<br>• **Texto intro Árbol del Problema (P[273]): Actualizado** (sin mención a Excel ni procesos manuales).<br>• **Factibilidad Económica P[106]: Corregido** ("gestión operativa"). | • **P[107]:** Ajustar 1 sola frase donde aún dice *"quedaban sin registrar o facturar, impactando de manera directa y favorable en la liquidez y el control financiero"* (cambiar por *"sin registrar ni auditar, impactando en el control operativo"*). |
 | **Jesús Hernández** | **Fase I:** Modelo de Negocio y Diagramas | **🔄 AVANCE AVANZADO** | **90%** | • **4 Tablas CUN (`CU-01` al `CU-04`):** Completas en Cuadros 11 al 14.<br>• **Diagrama CUN:** Montado en P[231].<br>• **Diagrama de Actividad:** **¡INSERTADO!** Imagen montada con éxito en P[251] (resolvió el espacio en blanco).<br>• Metodología RECLAMO redactada. | • Agregar títulos y fuentes a las imágenes:<br>  - P[231]: `Imagen N° 7: Diagrama CUN / Fuente: Hernández H. Jesús A. (2026)`.<br>  - P[251]: `Imagen N° 8: Diagrama de Actividad / Fuente: Hernández H. Jesús A. (2026)`.<br>• Actualizar fuentes de Cuadros 11 al 14 a `(2026)`. |
 | **Albany Reyes** | **Fase I:** Organigrama y Fundamentación | **⏳ PENDIENTE CRÍTICO** | **80%** | • Reseña histórica, Misión, Visión y Fundamentación Legal completas y aprobadas. | • **Imagen N° 2 (Organigrama):** Sigue la imagen de 2025 (`Fuente: Albujas R. Jesús A 2025`). Debe reemplazarse por el organigrama 2026 con las 3 ramas (Funcional, Técnica de Jesús Albujas, y Proyectos con Waditza y José Uzcátegui). |
-| **Giovana Garrido** | **Fase III:** Pruebas y Auditoría | **⚠️ RETRASO CRÍTICO** | **5%** | • Guía detallada y tablas listas en el repositorio (`pst-4-auditoria-giovana-fase-3.md`). | • **No ha vaciado nada en el documento:** P[658-750] sigue teniendo el texto de diciembre de 2025 con Apache Superset, fechas viejas y facturación contable.<br>• Falta vaciar los 6 Casos de Prueba 2026 y el Informe de Auditoría Informática. |
-| **Giovana Garrido** | **Fase III:** Pruebas y Auditoría | **⏳ PENDIENTE COMPLETO** | **10%** | • Guía detallada y plantillas técnicas estructuradas en el repositorio. | • Actualizar casos de prueba a 2026 (NexoInt, Discord, Jarvis, Supabase).<br>• Eliminar menciones a Superset y fechas de 2025.<br>• Incorporar Informe de Auditoría Informática (SAST/DAST y RBAC).<br>• Actualizar Reflexión Crítica de Fase III. |
+| **Giovana Garrido** | **Fase III:** Pruebas y Auditoría | **⚠️ RETRASO CRÍTICO** | **5%** | • Guía detallada y tablas listas en el repositorio (`pst-4-auditoria-giovana-fase-3.md`). | • **No ha vaciado nada en el documento:** P[658-750] sigue teniendo el texto de diciembre de 2025 con Apache Superset, fechas viejas y facturación contable.<br>• Falta vaciar los 6 Casos de Prueba 2026 y el Informe de Auditoría Informática (equipo de apoyo asignado: Daniel y José). |
 
 ---
 
@@ -51,10 +50,11 @@ Fase V   (Manuales y Normativas):  [░░░░░░░░░░░░░░�
 > - [x] **Metodología de Calidad RECLAMO:** Redactada en la sección correspondiente.
 
 > [!NOTE]
-> **⏳ Tareas pendientes por corregir (Jesús Hernández):**  
-> 1. **Falta la Imagen del Diagrama de Actividad:** El título está en el Párrafo 248, pero entre P[249] y P[252] no hay imagen (el espacio quedó en blanco).  
-> 2. **Rotulado de la Imagen del CUN:** Agregar arriba `Imagen N° 7: Diagrama de Casos de Uso del Negocio (CUN)` y abajo `Fuente: Hernández H. Jesús A. (2026)`.  
-> 3. **Actualizar Año en Cuadros 11 al 14:** Las fuentes de las plantillas CUN dicen *(2025)*; deben actualizarse a *(2026)*. En el Cuadro 11 corregir el título (*Plantilla de especificación de Registrar caso*).
+> **⏳ Tareas pendientes de formato (Jesús Hernández):**  
+> 1. **Rotulado de Imágenes:**  
+>    - Párrafo 231 (CUN): Agregar arriba `Imagen N° 7: Diagrama de Casos de Uso del Negocio (CUN)` y abajo `Fuente: Hernández H. Jesús A. (2026)`.  
+>    - Párrafo 251 (Actividad): Agregar arriba `Imagen N° 8: Diagrama de Actividad del Proceso de Atención y Cierre de Casos` y abajo `Fuente: Hernández H. Jesús A. (2026)`.  
+> 2. **Actualizar Año en Cuadros 11 al 14:** Las fuentes de las plantillas CUN dicen *(2025)*; deben actualizarse a *(2026)*. En el Cuadro 11 corregir el título (*Plantilla de especificación: Registrar caso (CU-01)*).
 
 <details>
 <summary><b>📂 Ver Detalle Técnico de Tareas de Jesús Hernández</b></summary>
