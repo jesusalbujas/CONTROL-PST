@@ -143,30 +143,22 @@ Fase V   (Manuales y Normativas):  [░░░░░░░░░░░░░░�
 
 ---
 
-### 🧪 EQUIPO FASE III — Implantación, Pruebas y Auditoría
+### 🧪 EQUIPO FASE III — Implantación, Pruebas y Auditoría (Equipo de Choque)
 
 ---
 
-#### 👤 6. Giovana Garrido (Pruebas del Sistema y Auditoría Informática)
+#### 👤 6. Giovana Garrido (Líder de Auditoría) con Apoyo de Daniel Pérez y José Zúñiga
 
-> **Estado:** **⏳ PENDIENTE COMPLETO DE ACTUALIZACIÓN (02/11/2026)**  
-> **Guía Asignada:** 📖 Consultar [Auditoría y Guía de Tareas - Giovana Garrido (Fase III)](./pst-4-auditoria-giovana-fase-3.md)  
-> **Diagnóstico del Documento:** La Fase III (Párrafos 658 al 750) conserva el texto viejo de diciembre de 2025 que menciona Apache Superset y pruebas viejas de PST III.
+> **Estado:** **🚨 EN REASIGNACIÓN DE APOYO URGENTE (12/11/2026)**  
+> **Guía Asignada:** 📖 Consultar [Plan de Desbloqueo y Reasignación - Fase III](./pst-4-auditoria-giovana-fase-3.md)  
+> **Diagnóstico del Documento:** La Fase III (Párrafos 658 al 750) conserva el texto viejo de diciembre de 2025 que menciona Apache Superset y pruebas viejas de PST III. Para evitar cuellos de botella, se divide el vaciado técnico entre 3 personas:
 
-> [!WARNING]
-> **⏳ Tareas Requeridas para Giovana Garrido:**  
-> 1. **Actualizar Casos de Prueba a 2026:** Eliminar menciones a Apache Superset y fechas de 2025. Incorporar pruebas de:
->    - Creación de caso por Discord (`/abrir_hilo`).
->    - Cierre de caso con tiempo consumido (`/cerrar_hilo`).
->    - Visualización de indicadores y reportes en `NexoInt Web` (sustituye a Superset).
->    - Releases con Jarvis en GitHub.
-> 2. **Estrategias de Implantación:** Documentar el despliegue del ecosistema (Frontend React/Vite en Nginx, demonio `discord_bot` en Node.js, y Supabase Cloud con RLS).
-> 3. **Informe de Resultados de Auditoría Informática (Exigido en Trayecto IV):**
->    - Auditoría de autenticación y tokens JWT (Supabase Auth).
->    - Control de acceso dinámico por roles (RBAC) en NexoInt.
->    - Análisis SAST/DAST (prevención de SQLi y protección de variables `.env`).
->    - Auditabilidad en `dory_changelog`.
-> 4. **Actualizar Reflexión Crítica de Fase III:** Eliminar las fechas de 2025 y las menciones a Superset, enfocándola en los resultados de pruebas y auditoría 2026.
+> [!IMPORTANT]
+> **División de Tareas para Desbloquear la Fase III en 24-48 horas:**  
+> 1. **Daniel Pérez (Apoyo en Casos de Prueba 2026):** Vaciar los 4 cuadros de pruebas funcionales del software (`CP-01` Discord / Dory, `CP-02` Cierre y Tiempos, `CP-03` Dashboard NexoInt Web, `CP-04` Releases con Jarvis).  
+> 2. **José Zúñiga (Apoyo en Estrategias de Implantación):** Documentar el despliegue del ecosistema (VPS, Docker, Nginx, demonio Node.js, y Supabase Cloud con RLS).  
+> 3. **Giovana Garrido (Informe de Auditoría y Reflexión):** Redactar la sección de Auditoría Informática (análisis SAST/DAST, control de acceso RBAC, auditabilidad en `dory_changelog`) y la Reflexión Crítica de Fase III.  
+> 4. **Albany Reyes (Apoyo en Limpieza):** Eliminar párrafos viejos de Superset y ajustar formato general.
 
 ---
 
